@@ -10,3 +10,7 @@ The published dashboard is read-only and focuses on project progress, QA respons
 
 ## MVP 0.5.2
 Table-first shared dashboard UI, QA list layout, schedule progress, and compact artifact directory.
+
+## MVP 0.5.3
+
+Shared horizontal schedule Gantt and QA navigation refinement.

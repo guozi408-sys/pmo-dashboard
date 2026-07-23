@@ -3,7 +3,7 @@ window.PMO_DATA = {
     "project_id": "KEISEI",
     "title": "KEISEI プロジェクト管理ダッシュボード",
     "subtitle": "内部プロジェクト向け Daily PM Workflow",
-    "version": "MVP 0.5.1",
+    "version": "MVP 0.5.3",
     "updated_at": "2026-07-23",
     "method": "acap-methodology-v0.3.2"
   },
@@ -4413,59 +4413,131 @@ window.PMO_DATA = {
       },
       "gantt": [
         {
-          "stage_id": "requirements_definition",
-          "label_ja": "要件定義",
+          "stage_id": "project_launch",
+          "label_ja": "プロジェクト立上げ",
+          "label_zh": "项目启动",
+          "primary_artifact_id": "MGT-001",
+          "artifact_ids": [
+            "MGT-001",
+            "WBS-001"
+          ],
+          "qa_ids": [],
+          "progress_percentage": 100,
+          "artifact_status": "review_required",
+          "artifact_version": "v0.2",
+          "planned_start": "2026-07-01",
+          "planned_end": "2026-07-31",
+          "forecast_end": "2026-07-31",
+          "delay_days": 0,
+          "status": "completed"
+        },
+        {
+          "stage_id": "requirements_external_if",
+          "label_ja": "要件定義・外部I/F確認",
+          "label_zh": "需求定义・外部接口确认",
           "primary_artifact_id": "REQ-001",
+          "artifact_ids": [
+            "REQ-001",
+            "SCR-001",
+            "API-001"
+          ],
+          "qa_ids": [
+            "QA-001",
+            "QA-002",
+            "QA-003",
+            "QA-004",
+            "QA-005",
+            "QA-006",
+            "QA-007",
+            "QA-008",
+            "QA-009",
+            "QA-010"
+          ],
+          "progress_percentage": 35,
+          "artifact_status": "review_required",
+          "artifact_version": "v0.2",
+          "planned_start": "2026-07-01",
+          "planned_end": "2026-09-30",
+          "forecast_end": "2026-10-15",
+          "delay_days": 15,
+          "status": "delayed"
+        },
+        {
+          "stage_id": "basic_detailed_design",
+          "label_ja": "基本・詳細設計",
+          "label_zh": "基本・详细设计",
+          "primary_artifact_id": "ARC-001",
+          "artifact_ids": [
+            "ARC-001",
+            "API-001",
+            "DB-001"
+          ],
+          "qa_ids": [],
+          "progress_percentage": 5,
+          "artifact_status": "review_required",
+          "artifact_version": "v0.2",
+          "planned_start": "2026-08-01",
+          "planned_end": "2026-10-31",
+          "forecast_end": "2026-11-15",
+          "delay_days": 15,
+          "status": "planned"
+        },
+        {
+          "stage_id": "development_unit_test",
+          "label_ja": "開発・単体テスト",
+          "label_zh": "开发・单元测试",
+          "primary_artifact_id": "TST-001",
+          "artifact_ids": [
+            "DEV-001",
+            "TST-001"
+          ],
+          "qa_ids": [],
           "progress_percentage": 0,
           "artifact_status": "review_required",
           "artifact_version": "v0.2",
-          "planned_start": "2026-07-01",
-          "planned_end": "2026-07-31",
-          "status": "review_required"
+          "planned_start": "2026-09-01",
+          "planned_end": "2026-12-31",
+          "forecast_end": "2027-01-15",
+          "delay_days": 15,
+          "status": "planned"
         },
         {
-          "stage_id": "screen_definition",
-          "label_ja": "画面定義",
-          "primary_artifact_id": "SCR-001",
-          "progress_percentage": null,
-          "artifact_status": "review_required",
-          "artifact_version": "v0.2",
-          "planned_start": null,
-          "planned_end": null,
-          "status": "review_required"
-        },
-        {
-          "stage_id": "basic_design",
-          "label_ja": "基本設計",
-          "primary_artifact_id": "ARC-001",
-          "progress_percentage": null,
-          "artifact_status": "review_required",
-          "artifact_version": "v0.2",
-          "planned_start": null,
-          "planned_end": null,
-          "status": "review_required"
-        },
-        {
-          "stage_id": "api_definition",
-          "label_ja": "API定義",
-          "primary_artifact_id": "API-001",
-          "progress_percentage": null,
-          "artifact_status": "review_required",
-          "artifact_version": "v0.2",
-          "planned_start": "2026-07-01",
-          "planned_end": "2026-07-31",
-          "status": "review_required"
-        },
-        {
-          "stage_id": "test_planning",
-          "label_ja": "テスト計画",
+          "stage_id": "integration_system_test",
+          "label_ja": "結合・総合テスト",
+          "label_zh": "集成・系统测试",
           "primary_artifact_id": "TST-001",
-          "progress_percentage": null,
+          "artifact_ids": [
+            "TST-001"
+          ],
+          "qa_ids": [],
+          "progress_percentage": 0,
           "artifact_status": "review_required",
           "artifact_version": "v0.2",
-          "planned_start": null,
-          "planned_end": null,
-          "status": "review_required"
+          "planned_start": "2026-12-01",
+          "planned_end": "2027-01-31",
+          "forecast_end": "2027-02-15",
+          "delay_days": 15,
+          "status": "tentative"
+        },
+        {
+          "stage_id": "acceptance_release",
+          "label_ja": "受入テスト・リリース",
+          "label_zh": "验收测试・发布",
+          "primary_artifact_id": "REL-001",
+          "artifact_ids": [
+            "REL-001",
+            "MIG-001",
+            "OPS-001"
+          ],
+          "qa_ids": [],
+          "progress_percentage": 0,
+          "artifact_status": "review_required",
+          "artifact_version": "v0.2",
+          "planned_start": "2027-01-01",
+          "planned_end": "2027-03-31",
+          "forecast_end": "2027-03-31",
+          "delay_days": 0,
+          "status": "tentative"
         }
       ],
       "artifact_tree": {
