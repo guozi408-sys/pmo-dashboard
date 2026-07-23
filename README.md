@@ -1,16 +1,14 @@
-# PMO Dashboard Public Runtime
+# PMO Dashboard — MVP 0.5.4
 
-Static public projection generated from `pmo-private`.
+This repository contains the privacy-minimized, read-only project sharing dashboard.
 
-MVP 0.5 adds the PM Action Center while retaining the existing Project Shared view and artifact previews.
+Published artifact information is limited to:
 
-## MVP 0.5.1 shared dashboard
+- 番号
+- 成果物
+- Version
+- 状態
+- 進捗
+- 更新日
 
-The published dashboard is read-only and focuses on project progress, QA response lifecycle, and Artifact / Preview. Internal PM decision queues remain available only in the private workspace projection.
-
-## MVP 0.5.2
-Table-first shared dashboard UI, QA list layout, schedule progress, and compact artifact directory.
-
-## MVP 0.5.3
-
-Shared horizontal schedule Gantt and QA navigation refinement.
+`docs/previews`, artifact bodies, review comments, evidence, internal paths, and PM Action data must not be published. Concrete HTML artifacts are distributed through a separate controlled channel.

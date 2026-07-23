@@ -1,4 +1,4 @@
-window.PMO_DATA = {
+{
   "meta": {
     "project_id": "KEISEI",
     "title": "KEISEI プロジェクト管理ダッシュボード",
@@ -471,4 +471,4 @@ window.PMO_DATA = {
       }
     }
   }
-};
+}
