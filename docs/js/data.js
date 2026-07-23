@@ -3,24 +3,28 @@ window.PMO_DATA = {
     "project_id": "KEISEI",
     "title": "KEISEI プロジェクト管理ダッシュボード",
     "subtitle": "内部プロジェクト向け Daily PM Workflow",
-    "version": "MVP 0.5",
+    "version": "MVP 0.5.1",
     "updated_at": "2026-07-23",
     "method": "acap-methodology-v0.3.2"
   },
   "summary": {
     "current_phase": "要件定義・外部I/F確認",
     "status": "要確認事項を整理中",
-    "open_items_total": 21,
-    "partially_resolved": 4,
-    "in_progress": 2,
-    "open": 4,
     "qa_total": 10,
-    "qa_answered": 1,
-    "qa_partial": 7,
+    "qa_resolved": 1,
+    "qa_waiting": 1,
     "artifact_count": 8,
+    "artifact_completed": 0,
     "pending_artifact_impacts": 61,
     "review_comments_total": 0,
-    "review_comments_pending": 0
+    "review_comments_pending": 0,
+    "pm_action_counts": {
+      "decision": 7,
+      "overdue": 1,
+      "change_candidate": 0,
+      "customer_waiting": 8,
+      "auto_processed": 0
+    }
   },
   "localization": {
     "primary": "ja",
@@ -1145,7 +1149,8 @@ window.PMO_DATA = {
       ],
       "impact_count": 5,
       "review_comment_count": 0,
-      "pending_review_comment_count": 0
+      "pending_review_comment_count": 0,
+      "open_qa_count": 0
     },
     {
       "artifact_id": "WBS-001",
@@ -1170,7 +1175,8 @@ window.PMO_DATA = {
       ],
       "impact_count": 7,
       "review_comment_count": 0,
-      "pending_review_comment_count": 0
+      "pending_review_comment_count": 0,
+      "open_qa_count": 0
     },
     {
       "artifact_id": "REQ-001",
@@ -1195,7 +1201,8 @@ window.PMO_DATA = {
       ],
       "impact_count": 9,
       "review_comment_count": 0,
-      "pending_review_comment_count": 0
+      "pending_review_comment_count": 0,
+      "open_qa_count": 0
     },
     {
       "artifact_id": "SCR-001",
@@ -1220,7 +1227,8 @@ window.PMO_DATA = {
       ],
       "impact_count": 4,
       "review_comment_count": 0,
-      "pending_review_comment_count": 0
+      "pending_review_comment_count": 0,
+      "open_qa_count": 0
     },
     {
       "artifact_id": "ARC-001",
@@ -1245,7 +1253,8 @@ window.PMO_DATA = {
       ],
       "impact_count": 6,
       "review_comment_count": 0,
-      "pending_review_comment_count": 0
+      "pending_review_comment_count": 0,
+      "open_qa_count": 0
     },
     {
       "artifact_id": "API-001",
@@ -1270,7 +1279,8 @@ window.PMO_DATA = {
       ],
       "impact_count": 12,
       "review_comment_count": 0,
-      "pending_review_comment_count": 0
+      "pending_review_comment_count": 0,
+      "open_qa_count": 0
     },
     {
       "artifact_id": "TST-001",
@@ -1295,7 +1305,8 @@ window.PMO_DATA = {
       ],
       "impact_count": 9,
       "review_comment_count": 0,
-      "pending_review_comment_count": 0
+      "pending_review_comment_count": 0,
+      "open_qa_count": 0
     },
     {
       "artifact_id": "REL-001",
@@ -1320,7 +1331,8 @@ window.PMO_DATA = {
       ],
       "impact_count": 4,
       "review_comment_count": 0,
-      "pending_review_comment_count": 0
+      "pending_review_comment_count": 0,
+      "open_qa_count": 0
     }
   ],
   "artifact_impacts": [
@@ -2467,13 +2479,237 @@ window.PMO_DATA = {
   },
   "intake_items": [],
   "pm_inbox": {
+    "display_order": [
+      "decision",
+      "overdue",
+      "change_candidate",
+      "customer_waiting",
+      "auto_processed"
+    ],
     "counts": {
-      "decisions": 7,
-      "customer_questions": 8,
-      "overdue_items": 1,
-      "change_candidates": 0,
-      "artifact_approvals": 8,
+      "decision": 7,
+      "overdue": 1,
+      "change_candidate": 0,
+      "customer_waiting": 8,
       "auto_processed": 0
+    },
+    "queues": {
+      "decision": [
+        {
+          "id": "OPN-002",
+          "title": "顔認証登録フロー、責任分界および越境データ取扱いを確定する",
+          "owner": "京成電鉄 / 日立製作所 / NSS",
+          "due_date": null,
+          "status": "partially_resolved",
+          "source_type": "open_item",
+          "available_actions": [
+            "accept",
+            "edit",
+            "escalate"
+          ]
+        },
+        {
+          "id": "OPN-003",
+          "title": "正式なリリース目標と全体スケジュールを確定する",
+          "owner": "京成電鉄 / NSS / 日立製作所",
+          "due_date": null,
+          "status": "partially_resolved",
+          "source_type": "open_item",
+          "available_actions": [
+            "accept",
+            "edit",
+            "escalate"
+          ]
+        },
+        {
+          "id": "OPN-004",
+          "title": "QRコード、顔認証、座席指定のフェーズ分割と正式スコープを確定する",
+          "owner": "京成電鉄 / NSS",
+          "due_date": null,
+          "status": "open",
+          "source_type": "open_item",
+          "available_actions": [
+            "accept",
+            "edit",
+            "escalate"
+          ]
+        },
+        {
+          "id": "OPN-005",
+          "title": "キャンセル／返金対応の要否、業務フローおよびシステム影響を確定する",
+          "owner": "京成電鉄 / NSS",
+          "due_date": null,
+          "status": "open",
+          "source_type": "open_item",
+          "available_actions": [
+            "accept",
+            "edit",
+            "escalate"
+          ]
+        },
+        {
+          "id": "OPN-006",
+          "title": "管理画面、非機能要件、セキュリティおよび運用保守範囲を確定する",
+          "owner": "NSS / 京成電鉄",
+          "due_date": null,
+          "status": "open",
+          "source_type": "open_item",
+          "available_actions": [
+            "accept",
+            "edit",
+            "escalate"
+          ]
+        },
+        {
+          "id": "OPN-007",
+          "title": "プロジェクト体制、意思決定者、各社・社内の担当範囲を確定する",
+          "owner": "京成電鉄 / NSS",
+          "due_date": null,
+          "status": "partially_resolved",
+          "source_type": "open_item",
+          "available_actions": [
+            "accept",
+            "edit",
+            "escalate"
+          ]
+        },
+        {
+          "id": "OPN-009",
+          "title": "見積・予算・発注条件を確定する",
+          "owner": "京成電鉄 / NSS営業",
+          "due_date": null,
+          "status": "open",
+          "source_type": "open_item",
+          "available_actions": [
+            "accept",
+            "edit",
+            "escalate"
+          ]
+        }
+      ],
+      "overdue": [
+        {
+          "id": "OPN-010",
+          "title": "要件定義書初版のレビューコメントを回収する",
+          "owner": "PM",
+          "due_date": "2026-07-17",
+          "status": "in_progress",
+          "source_type": "open_item",
+          "available_actions": [
+            "complete",
+            "extend",
+            "escalate"
+          ]
+        }
+      ],
+      "change_candidate": [],
+      "customer_waiting": [
+        {
+          "id": "QA-002",
+          "title": "日立製作所側I/F仕様書の初版および正式版はいつ提供されるか。",
+          "owner": null,
+          "due_date": null,
+          "status": "partially_answered",
+          "source_type": "qa",
+          "available_actions": [
+            "follow_up",
+            "edit_due_date",
+            "escalate"
+          ]
+        },
+        {
+          "id": "QA-003",
+          "title": "顔認証、乗車券管理、座席管理等の各社開発範囲と責任分界をどのように確定するか。",
+          "owner": null,
+          "due_date": null,
+          "status": "partially_answered",
+          "source_type": "qa",
+          "available_actions": [
+            "follow_up",
+            "edit_due_date",
+            "escalate"
+          ]
+        },
+        {
+          "id": "QA-004",
+          "title": "要件定義Fix、各発注、開発完了、サービスインの正式日程はいつか。",
+          "owner": null,
+          "due_date": null,
+          "status": "partially_answered",
+          "source_type": "qa",
+          "available_actions": [
+            "follow_up",
+            "edit_due_date",
+            "escalate"
+          ]
+        },
+        {
+          "id": "QA-005",
+          "title": "総額2,500万円の予算条件と、超過時の来年度予算扱いは正式な前提か。",
+          "owner": null,
+          "due_date": null,
+          "status": "unanswered",
+          "source_type": "qa",
+          "available_actions": [
+            "follow_up",
+            "edit_due_date",
+            "escalate"
+          ]
+        },
+        {
+          "id": "QA-006",
+          "title": "Ph.1、Ph.1.1、Ph.2の正式な機能範囲とリリース分割をどう確定するか。",
+          "owner": null,
+          "due_date": null,
+          "status": "partially_answered",
+          "source_type": "qa",
+          "available_actions": [
+            "follow_up",
+            "edit_due_date",
+            "escalate"
+          ]
+        },
+        {
+          "id": "QA-007",
+          "title": "API連携を購入情報I/Fのみに限定する条件は正式決定か。",
+          "owner": null,
+          "due_date": null,
+          "status": "partially_answered",
+          "source_type": "qa",
+          "available_actions": [
+            "follow_up",
+            "edit_due_date",
+            "escalate"
+          ]
+        },
+        {
+          "id": "QA-008",
+          "title": "エンドユーザーへの顔登録URL連携および決済・チケット情報連携の責任範囲はどこか。",
+          "owner": null,
+          "due_date": null,
+          "status": "partially_answered",
+          "source_type": "qa",
+          "available_actions": [
+            "follow_up",
+            "edit_due_date",
+            "escalate"
+          ]
+        },
+        {
+          "id": "QA-009",
+          "title": "決済処理をWeChat側で完結させる前提は正式決定か。",
+          "owner": null,
+          "due_date": null,
+          "status": "partially_answered",
+          "source_type": "qa",
+          "available_actions": [
+            "follow_up",
+            "edit_due_date",
+            "escalate"
+          ]
+        }
+      ],
+      "auto_processed": []
     },
     "decisions": [
       {
@@ -2482,7 +2718,12 @@ window.PMO_DATA = {
         "owner": "京成電鉄 / 日立製作所 / NSS",
         "due_date": null,
         "status": "partially_resolved",
-        "action": "decide"
+        "source_type": "open_item",
+        "available_actions": [
+          "accept",
+          "edit",
+          "escalate"
+        ]
       },
       {
         "id": "OPN-003",
@@ -2490,7 +2731,12 @@ window.PMO_DATA = {
         "owner": "京成電鉄 / NSS / 日立製作所",
         "due_date": null,
         "status": "partially_resolved",
-        "action": "decide"
+        "source_type": "open_item",
+        "available_actions": [
+          "accept",
+          "edit",
+          "escalate"
+        ]
       },
       {
         "id": "OPN-004",
@@ -2498,7 +2744,12 @@ window.PMO_DATA = {
         "owner": "京成電鉄 / NSS",
         "due_date": null,
         "status": "open",
-        "action": "decide"
+        "source_type": "open_item",
+        "available_actions": [
+          "accept",
+          "edit",
+          "escalate"
+        ]
       },
       {
         "id": "OPN-005",
@@ -2506,7 +2757,12 @@ window.PMO_DATA = {
         "owner": "京成電鉄 / NSS",
         "due_date": null,
         "status": "open",
-        "action": "decide"
+        "source_type": "open_item",
+        "available_actions": [
+          "accept",
+          "edit",
+          "escalate"
+        ]
       },
       {
         "id": "OPN-006",
@@ -2514,7 +2770,12 @@ window.PMO_DATA = {
         "owner": "NSS / 京成電鉄",
         "due_date": null,
         "status": "open",
-        "action": "decide"
+        "source_type": "open_item",
+        "available_actions": [
+          "accept",
+          "edit",
+          "escalate"
+        ]
       },
       {
         "id": "OPN-007",
@@ -2522,7 +2783,12 @@ window.PMO_DATA = {
         "owner": "京成電鉄 / NSS",
         "due_date": null,
         "status": "partially_resolved",
-        "action": "decide"
+        "source_type": "open_item",
+        "available_actions": [
+          "accept",
+          "edit",
+          "escalate"
+        ]
       },
       {
         "id": "OPN-009",
@@ -2530,73 +2796,12 @@ window.PMO_DATA = {
         "owner": "京成電鉄 / NSS営業",
         "due_date": null,
         "status": "open",
-        "action": "decide"
-      }
-    ],
-    "customer_questions": [
-      {
-        "id": "QA-002",
-        "title": "日立製作所側I/F仕様書の初版および正式版はいつ提供されるか。",
-        "owner": null,
-        "due_date": null,
-        "status": "partially_answered",
-        "action": "follow_up"
-      },
-      {
-        "id": "QA-003",
-        "title": "顔認証、乗車券管理、座席管理等の各社開発範囲と責任分界をどのように確定するか。",
-        "owner": null,
-        "due_date": null,
-        "status": "partially_answered",
-        "action": "follow_up"
-      },
-      {
-        "id": "QA-004",
-        "title": "要件定義Fix、各発注、開発完了、サービスインの正式日程はいつか。",
-        "owner": null,
-        "due_date": null,
-        "status": "partially_answered",
-        "action": "follow_up"
-      },
-      {
-        "id": "QA-005",
-        "title": "総額2,500万円の予算条件と、超過時の来年度予算扱いは正式な前提か。",
-        "owner": null,
-        "due_date": null,
-        "status": "unanswered",
-        "action": "follow_up"
-      },
-      {
-        "id": "QA-006",
-        "title": "Ph.1、Ph.1.1、Ph.2の正式な機能範囲とリリース分割をどう確定するか。",
-        "owner": null,
-        "due_date": null,
-        "status": "partially_answered",
-        "action": "follow_up"
-      },
-      {
-        "id": "QA-007",
-        "title": "API連携を購入情報I/Fのみに限定する条件は正式決定か。",
-        "owner": null,
-        "due_date": null,
-        "status": "partially_answered",
-        "action": "follow_up"
-      },
-      {
-        "id": "QA-008",
-        "title": "エンドユーザーへの顔登録URL連携および決済・チケット情報連携の責任範囲はどこか。",
-        "owner": null,
-        "due_date": null,
-        "status": "partially_answered",
-        "action": "follow_up"
-      },
-      {
-        "id": "QA-009",
-        "title": "決済処理をWeChat側で完結させる前提は正式決定か。",
-        "owner": null,
-        "due_date": null,
-        "status": "partially_answered",
-        "action": "follow_up"
+        "source_type": "open_item",
+        "available_actions": [
+          "accept",
+          "edit",
+          "escalate"
+        ]
       }
     ],
     "overdue_items": [
@@ -2606,350 +2811,125 @@ window.PMO_DATA = {
         "owner": "PM",
         "due_date": "2026-07-17",
         "status": "in_progress",
-        "action": "escalate"
+        "source_type": "open_item",
+        "available_actions": [
+          "complete",
+          "extend",
+          "escalate"
+        ]
       }
     ],
     "change_candidates": [],
-    "artifact_approvals": [
+    "customer_questions": [
       {
-        "id": "MGT-001",
-        "title": "プロジェクト計画書",
-        "version": "v0.2",
-        "status": "review_required",
-        "action": "review_artifact"
+        "id": "QA-002",
+        "title": "日立製作所側I/F仕様書の初版および正式版はいつ提供されるか。",
+        "owner": null,
+        "due_date": null,
+        "status": "partially_answered",
+        "source_type": "qa",
+        "available_actions": [
+          "follow_up",
+          "edit_due_date",
+          "escalate"
+        ]
       },
       {
-        "id": "WBS-001",
-        "title": "WBS / スケジュール",
-        "version": "v0.2",
-        "status": "review_required",
-        "action": "review_artifact"
+        "id": "QA-003",
+        "title": "顔認証、乗車券管理、座席管理等の各社開発範囲と責任分界をどのように確定するか。",
+        "owner": null,
+        "due_date": null,
+        "status": "partially_answered",
+        "source_type": "qa",
+        "available_actions": [
+          "follow_up",
+          "edit_due_date",
+          "escalate"
+        ]
       },
       {
-        "id": "REQ-001",
-        "title": "要件定義書",
-        "version": "v0.2",
-        "status": "review_required",
-        "action": "review_artifact"
+        "id": "QA-004",
+        "title": "要件定義Fix、各発注、開発完了、サービスインの正式日程はいつか。",
+        "owner": null,
+        "due_date": null,
+        "status": "partially_answered",
+        "source_type": "qa",
+        "available_actions": [
+          "follow_up",
+          "edit_due_date",
+          "escalate"
+        ]
       },
       {
-        "id": "SCR-001",
-        "title": "画面・帳票設計書",
-        "version": "v0.2",
-        "status": "review_required",
-        "action": "review_artifact"
+        "id": "QA-005",
+        "title": "総額2,500万円の予算条件と、超過時の来年度予算扱いは正式な前提か。",
+        "owner": null,
+        "due_date": null,
+        "status": "unanswered",
+        "source_type": "qa",
+        "available_actions": [
+          "follow_up",
+          "edit_due_date",
+          "escalate"
+        ]
       },
       {
-        "id": "ARC-001",
-        "title": "システム構成定義",
-        "version": "v0.2",
-        "status": "review_required",
-        "action": "review_artifact"
+        "id": "QA-006",
+        "title": "Ph.1、Ph.1.1、Ph.2の正式な機能範囲とリリース分割をどう確定するか。",
+        "owner": null,
+        "due_date": null,
+        "status": "partially_answered",
+        "source_type": "qa",
+        "available_actions": [
+          "follow_up",
+          "edit_due_date",
+          "escalate"
+        ]
       },
       {
-        "id": "API-001",
-        "title": "API確認表",
-        "version": "v0.2",
-        "status": "review_required",
-        "action": "review_artifact"
+        "id": "QA-007",
+        "title": "API連携を購入情報I/Fのみに限定する条件は正式決定か。",
+        "owner": null,
+        "due_date": null,
+        "status": "partially_answered",
+        "source_type": "qa",
+        "available_actions": [
+          "follow_up",
+          "edit_due_date",
+          "escalate"
+        ]
       },
       {
-        "id": "TST-001",
-        "title": "テスト計画",
-        "version": "v0.2",
-        "status": "review_required",
-        "action": "review_artifact"
+        "id": "QA-008",
+        "title": "エンドユーザーへの顔登録URL連携および決済・チケット情報連携の責任範囲はどこか。",
+        "owner": null,
+        "due_date": null,
+        "status": "partially_answered",
+        "source_type": "qa",
+        "available_actions": [
+          "follow_up",
+          "edit_due_date",
+          "escalate"
+        ]
       },
       {
-        "id": "REL-001",
-        "title": "リリース計画",
-        "version": "v0.2",
-        "status": "review_required",
-        "action": "review_artifact"
+        "id": "QA-009",
+        "title": "決済処理をWeChat側で完結させる前提は正式決定か。",
+        "owner": null,
+        "due_date": null,
+        "status": "partially_answered",
+        "source_type": "qa",
+        "available_actions": [
+          "follow_up",
+          "edit_due_date",
+          "escalate"
+        ]
       }
     ],
     "auto_processed": []
   },
   "views": {
     "pm_management": {
-      "open_items": [
-        {
-          "item_id": "OPN-001",
-          "title": "日立製作所からAPI／I/F仕様書を受領し、正式版を確定する",
-          "item_type": "action",
-          "item_kind": "action",
-          "status": "partially_resolved",
-          "stage": null,
-          "owner": "日立製作所",
-          "due_date": "2026-07-31",
-          "priority": null,
-          "related_qa_ids": [
-            "ACT-003",
-            "ACT-005",
-            "ACT-007",
-            "ISSUE-003",
-            "ISSUE-005",
-            "ISSUE-007",
-            "ISSUE-009",
-            "QA-002",
-            "RISK-002",
-            "RISK-005",
-            "RISK-008"
-          ],
-          "related_artifacts": [
-            "API-001",
-            "ARC-001",
-            "REQ-001",
-            "WBS-001",
-            "TST-001"
-          ],
-          "visibility": null,
-          "latest_update": "SRC-012として2026-07-23にEチケット外部連携API Draftを受領。原計画の2026-07-17現行版目標から遅延して受領したが、認証方式、正式Endpoint/Action、冪等、支払結果回写、Coupon取消・失効、顔認証完了状態取得が未確定のため完全解決ではない。",
-          "remaining_point": "正式版仕様書、認証方式、正式Endpoint/Action、エラー詳細、外部注文番号・冪等、支払結果通知、Coupon取消・失効、顔認証完了状態取得方式、およびNSS側QA整理。"
-        },
-        {
-          "item_id": "OPN-002",
-          "title": "顔認証登録フロー、責任分界および越境データ取扱いを確定する",
-          "item_type": "issue",
-          "item_kind": "issue",
-          "status": "partially_resolved",
-          "stage": null,
-          "owner": "京成電鉄 / 日立製作所 / NSS",
-          "due_date": null,
-          "priority": null,
-          "related_qa_ids": [
-            "ACT-001",
-            "RISK-001",
-            "ISSUE-006",
-            "ISSUE-017",
-            "QA-003",
-            "QA-007",
-            "QA-008",
-            "RISK-004",
-            "RISK-007",
-            "RISK-013",
-            "RISK-014",
-            "RISK-017"
-          ],
-          "related_artifacts": [
-            "REQ-001",
-            "ARC-001",
-            "API-001",
-            "SCR-001",
-            "TST-001",
-            "REL-001"
-          ],
-          "visibility": null,
-          "latest_update": "SRC-012で微信小程序からCoupon登録、微信支付、顔認証リンク遷移、注文履歴状態更新の目標フローと個人情報保護要求を確認。ただし顔認証完了状態の取得方式、複数名の部分完了、責任分界、越境移転・第三者提供の法務確認は未確定。",
-          "remaining_point": "顔認証完了状態のCallback/照会方式、複数名の部分完了、各社責任分界、WeChat規約、個人情報・越境通信要件、エラー時運用。"
-        },
-        {
-          "item_id": "OPN-003",
-          "title": "正式なリリース目標と全体スケジュールを確定する",
-          "item_type": "issue",
-          "item_kind": "issue",
-          "status": "partially_resolved",
-          "stage": null,
-          "owner": "京成電鉄 / NSS / 日立製作所",
-          "due_date": null,
-          "priority": null,
-          "related_qa_ids": [
-            "ACT-006",
-            "ACT-008",
-            "ISSUE-010",
-            "ISSUE-023",
-            "QA-004",
-            "RISK-006",
-            "RISK-009"
-          ],
-          "related_artifacts": [
-            "MGT-001",
-            "WBS-001",
-            "TST-001",
-            "REL-001"
-          ],
-          "visibility": null,
-          "latest_update": "1月～2月、遅くとも3月中旬を軸に再調整し、要件定義完了後に正式確定する。",
-          "remaining_point": "要件定義完了後の正式日程、API提供時期、受入テスト期間との整合。"
-        },
-        {
-          "item_id": "OPN-004",
-          "title": "QRコード、顔認証、座席指定のフェーズ分割と正式スコープを確定する",
-          "item_type": "issue",
-          "item_kind": "issue",
-          "status": "open",
-          "stage": null,
-          "owner": "京成電鉄 / NSS",
-          "due_date": null,
-          "priority": null,
-          "related_qa_ids": [
-            "ACT-013",
-            "ISSUE-019",
-            "ISSUE-020",
-            "QA-006",
-            "RISK-018"
-          ],
-          "related_artifacts": [
-            "MGT-001",
-            "REQ-001",
-            "WBS-001",
-            "SCR-001",
-            "TST-001",
-            "REL-001"
-          ],
-          "visibility": null,
-          "latest_update": "3月中旬前にリリースする場合は顔認証のみとなる可能性があり、QR有無を分けるか一体化するかを要件定義で検討する。",
-          "remaining_point": "Ph.1、Ph.1.1、Ph.2ごとの機能範囲、QR対応時期、追加検証工数。"
-        },
-        {
-          "item_id": "OPN-005",
-          "title": "キャンセル／返金対応の要否、業務フローおよびシステム影響を確定する",
-          "item_type": "question",
-          "item_kind": "question",
-          "status": "open",
-          "stage": null,
-          "owner": "京成電鉄 / NSS",
-          "due_date": null,
-          "priority": null,
-          "related_qa_ids": [
-            "ISSUE-001"
-          ],
-          "related_artifacts": [
-            "REQ-001",
-            "API-001",
-            "WBS-001",
-            "TST-001"
-          ],
-          "visibility": null,
-          "latest_update": "SRC-012のAPI DraftではCoupon取消APIが確認できず、Coupon登録後の未払い・期限切れ・支払失敗時の失効/取消/補償処理が未定義であることを確認。",
-          "remaining_point": "Coupon登録後の支払期限、未払い失効、取消可否、返金・キャンセル業務フロー、補償処理、システム影響、スケジュール影響。"
-        },
-        {
-          "item_id": "OPN-006",
-          "title": "管理画面、非機能要件、セキュリティおよび運用保守範囲を確定する",
-          "item_type": "issue",
-          "item_kind": "issue",
-          "status": "open",
-          "stage": null,
-          "owner": "NSS / 京成電鉄",
-          "due_date": null,
-          "priority": null,
-          "related_qa_ids": [
-            "ISSUE-004",
-            "ISSUE-016",
-            "ISSUE-018",
-            "ACT-012",
-            "RISK-015"
-          ],
-          "related_artifacts": [
-            "REQ-001",
-            "ARC-001",
-            "SCR-001",
-            "TST-001",
-            "REL-001"
-          ],
-          "visibility": null,
-          "latest_update": "SRC-012でHTTPS/TLS、サーバ間認証、ログマスキング、保存時暗号化または同等保護、最小権限、監査ログ、保存期間・削除、テスト環境での実個人情報不使用、データ移転経路確認が必要な統制として提示された。",
-          "remaining_point": "利用者・利用目的、必要機能、対応ブラウザ、性能、冗長化、バックアップ、SLO/SLA、運用保守責任、API認証、個人情報保存・削除・越境移転の法務確認。"
-        },
-        {
-          "item_id": "OPN-007",
-          "title": "プロジェクト体制、意思決定者、各社・社内の担当範囲を確定する",
-          "item_type": "issue",
-          "item_kind": "issue",
-          "status": "partially_resolved",
-          "stage": null,
-          "owner": "京成電鉄 / NSS",
-          "due_date": null,
-          "priority": null,
-          "related_qa_ids": [
-            "ISSUE-002",
-            "ISSUE-013",
-            "ISSUE-015",
-            "ACT-010",
-            "RISK-003",
-            "RISK-011",
-            "RISK-012"
-          ],
-          "related_artifacts": [
-            "MGT-001",
-            "WBS-001"
-          ],
-          "visibility": null,
-          "latest_update": "日立製作所が正式なAPI連携ベンダーとして参画し、実務窓口は林氏と確認。その他の意思決定者・社内担当範囲は継続整理。",
-          "remaining_point": "京成側意思決定者、確認フロー、NSS内PM・技術・UI/UX・Tech Leadの正式担当。"
-        },
-        {
-          "item_id": "OPN-008",
-          "title": "NDAおよび業務委託契約を締結する",
-          "item_type": "action",
-          "item_kind": "action",
-          "status": "in_progress",
-          "stage": null,
-          "owner": "京成電鉄 / NSS",
-          "due_date": "2026-07-31",
-          "priority": null,
-          "related_qa_ids": [
-            "ISSUE-008",
-            "DEC-008"
-          ],
-          "related_artifacts": [
-            "MGT-001",
-            "WBS-001"
-          ],
-          "visibility": null,
-          "latest_update": "NDA締結前でも提出前提で資料共有可能。業務委託契約は要件定義前の締結方針で、ドラフトを7月中に送付する。",
-          "remaining_point": "NDA締結、業務委託契約書ドラフト送付および締結。"
-        },
-        {
-          "item_id": "OPN-009",
-          "title": "見積・予算・発注条件を確定する",
-          "item_type": "issue",
-          "item_kind": "issue",
-          "status": "open",
-          "stage": null,
-          "owner": "京成電鉄 / NSS営業",
-          "due_date": null,
-          "priority": null,
-          "related_qa_ids": [
-            "ACT-009",
-            "ISSUE-011",
-            "ISSUE-012",
-            "ISSUE-021",
-            "ISSUE-022",
-            "QA-005",
-            "RISK-010",
-            "RISK-016"
-          ],
-          "related_artifacts": [
-            "MGT-001",
-            "WBS-001"
-          ],
-          "visibility": null,
-          "latest_update": "正式見積は要件定義完了後に提示する方針。",
-          "remaining_point": "Ph.1予算対象、2,500万円前提、年度内執行、超過時予算、Go判断・発注条件。"
-        },
-        {
-          "item_id": "OPN-010",
-          "title": "要件定義書初版のレビューコメントを回収する",
-          "item_type": "action",
-          "item_kind": "action",
-          "status": "in_progress",
-          "stage": null,
-          "owner": "PM",
-          "due_date": "2026-07-17",
-          "priority": null,
-          "related_qa_ids": [
-            "ACT-002"
-          ],
-          "related_artifacts": [
-            "REQ-001"
-          ],
-          "visibility": null,
-          "latest_update": null,
-          "remaining_point": "レビューコメント回収と反映方針の確定。"
-        }
-      ],
       "artifact_tree": {
         "project_id": "KEISEI",
         "categories": [
@@ -2968,6 +2948,10 @@ window.PMO_DATA = {
                   "default": "previews/artifacts/MGT-001.html"
                 },
                 "completion_percentage": null,
+                "review_status": "review_required",
+                "review_comment_count": 0,
+                "pending_review_comment_count": 0,
+                "open_qa_count": 0,
                 "sections": []
               }
             ]
@@ -2987,6 +2971,10 @@ window.PMO_DATA = {
                   "default": "previews/artifacts/WBS-001.html"
                 },
                 "completion_percentage": null,
+                "review_status": "review_required",
+                "review_comment_count": 0,
+                "pending_review_comment_count": 0,
+                "open_qa_count": 0,
                 "sections": []
               }
             ]
@@ -3006,6 +2994,10 @@ window.PMO_DATA = {
                   "default": "previews/artifacts/REQ-001.html"
                 },
                 "completion_percentage": 0,
+                "review_status": "review_required",
+                "review_comment_count": 0,
+                "pending_review_comment_count": 0,
+                "open_qa_count": 0,
                 "sections": [
                   {
                     "section_id": "REQ-001-S01",
@@ -3103,6 +3095,10 @@ window.PMO_DATA = {
                   "default": "previews/artifacts/SCR-001.html"
                 },
                 "completion_percentage": null,
+                "review_status": "review_required",
+                "review_comment_count": 0,
+                "pending_review_comment_count": 0,
+                "open_qa_count": 0,
                 "sections": []
               }
             ]
@@ -3122,6 +3118,10 @@ window.PMO_DATA = {
                   "default": "previews/artifacts/ARC-001.html"
                 },
                 "completion_percentage": null,
+                "review_status": "review_required",
+                "review_comment_count": 0,
+                "pending_review_comment_count": 0,
+                "open_qa_count": 0,
                 "sections": []
               },
               {
@@ -3136,6 +3136,10 @@ window.PMO_DATA = {
                   "default": "previews/artifacts/API-001.html"
                 },
                 "completion_percentage": null,
+                "review_status": "review_required",
+                "review_comment_count": 0,
+                "pending_review_comment_count": 0,
+                "open_qa_count": 0,
                 "sections": []
               }
             ]
@@ -3155,6 +3159,10 @@ window.PMO_DATA = {
                   "default": "previews/artifacts/TST-001.html"
                 },
                 "completion_percentage": null,
+                "review_status": "review_required",
+                "review_comment_count": 0,
+                "pending_review_comment_count": 0,
+                "open_qa_count": 0,
                 "sections": []
               }
             ]
@@ -3174,20 +3182,248 @@ window.PMO_DATA = {
                   "default": "previews/artifacts/REL-001.html"
                 },
                 "completion_percentage": null,
+                "review_status": "review_required",
+                "review_comment_count": 0,
+                "pending_review_comment_count": 0,
+                "open_qa_count": 0,
                 "sections": []
               }
             ]
           }
         ]
       },
-      "inbox": {
+      "action_center": {
+        "display_order": [
+          "decision",
+          "overdue",
+          "change_candidate",
+          "customer_waiting",
+          "auto_processed"
+        ],
         "counts": {
-          "decisions": 7,
-          "customer_questions": 8,
-          "overdue_items": 1,
-          "change_candidates": 0,
-          "artifact_approvals": 8,
+          "decision": 7,
+          "overdue": 1,
+          "change_candidate": 0,
+          "customer_waiting": 8,
           "auto_processed": 0
+        },
+        "queues": {
+          "decision": [
+            {
+              "id": "OPN-002",
+              "title": "顔認証登録フロー、責任分界および越境データ取扱いを確定する",
+              "owner": "京成電鉄 / 日立製作所 / NSS",
+              "due_date": null,
+              "status": "partially_resolved",
+              "source_type": "open_item",
+              "available_actions": [
+                "accept",
+                "edit",
+                "escalate"
+              ]
+            },
+            {
+              "id": "OPN-003",
+              "title": "正式なリリース目標と全体スケジュールを確定する",
+              "owner": "京成電鉄 / NSS / 日立製作所",
+              "due_date": null,
+              "status": "partially_resolved",
+              "source_type": "open_item",
+              "available_actions": [
+                "accept",
+                "edit",
+                "escalate"
+              ]
+            },
+            {
+              "id": "OPN-004",
+              "title": "QRコード、顔認証、座席指定のフェーズ分割と正式スコープを確定する",
+              "owner": "京成電鉄 / NSS",
+              "due_date": null,
+              "status": "open",
+              "source_type": "open_item",
+              "available_actions": [
+                "accept",
+                "edit",
+                "escalate"
+              ]
+            },
+            {
+              "id": "OPN-005",
+              "title": "キャンセル／返金対応の要否、業務フローおよびシステム影響を確定する",
+              "owner": "京成電鉄 / NSS",
+              "due_date": null,
+              "status": "open",
+              "source_type": "open_item",
+              "available_actions": [
+                "accept",
+                "edit",
+                "escalate"
+              ]
+            },
+            {
+              "id": "OPN-006",
+              "title": "管理画面、非機能要件、セキュリティおよび運用保守範囲を確定する",
+              "owner": "NSS / 京成電鉄",
+              "due_date": null,
+              "status": "open",
+              "source_type": "open_item",
+              "available_actions": [
+                "accept",
+                "edit",
+                "escalate"
+              ]
+            },
+            {
+              "id": "OPN-007",
+              "title": "プロジェクト体制、意思決定者、各社・社内の担当範囲を確定する",
+              "owner": "京成電鉄 / NSS",
+              "due_date": null,
+              "status": "partially_resolved",
+              "source_type": "open_item",
+              "available_actions": [
+                "accept",
+                "edit",
+                "escalate"
+              ]
+            },
+            {
+              "id": "OPN-009",
+              "title": "見積・予算・発注条件を確定する",
+              "owner": "京成電鉄 / NSS営業",
+              "due_date": null,
+              "status": "open",
+              "source_type": "open_item",
+              "available_actions": [
+                "accept",
+                "edit",
+                "escalate"
+              ]
+            }
+          ],
+          "overdue": [
+            {
+              "id": "OPN-010",
+              "title": "要件定義書初版のレビューコメントを回収する",
+              "owner": "PM",
+              "due_date": "2026-07-17",
+              "status": "in_progress",
+              "source_type": "open_item",
+              "available_actions": [
+                "complete",
+                "extend",
+                "escalate"
+              ]
+            }
+          ],
+          "change_candidate": [],
+          "customer_waiting": [
+            {
+              "id": "QA-002",
+              "title": "日立製作所側I/F仕様書の初版および正式版はいつ提供されるか。",
+              "owner": null,
+              "due_date": null,
+              "status": "partially_answered",
+              "source_type": "qa",
+              "available_actions": [
+                "follow_up",
+                "edit_due_date",
+                "escalate"
+              ]
+            },
+            {
+              "id": "QA-003",
+              "title": "顔認証、乗車券管理、座席管理等の各社開発範囲と責任分界をどのように確定するか。",
+              "owner": null,
+              "due_date": null,
+              "status": "partially_answered",
+              "source_type": "qa",
+              "available_actions": [
+                "follow_up",
+                "edit_due_date",
+                "escalate"
+              ]
+            },
+            {
+              "id": "QA-004",
+              "title": "要件定義Fix、各発注、開発完了、サービスインの正式日程はいつか。",
+              "owner": null,
+              "due_date": null,
+              "status": "partially_answered",
+              "source_type": "qa",
+              "available_actions": [
+                "follow_up",
+                "edit_due_date",
+                "escalate"
+              ]
+            },
+            {
+              "id": "QA-005",
+              "title": "総額2,500万円の予算条件と、超過時の来年度予算扱いは正式な前提か。",
+              "owner": null,
+              "due_date": null,
+              "status": "unanswered",
+              "source_type": "qa",
+              "available_actions": [
+                "follow_up",
+                "edit_due_date",
+                "escalate"
+              ]
+            },
+            {
+              "id": "QA-006",
+              "title": "Ph.1、Ph.1.1、Ph.2の正式な機能範囲とリリース分割をどう確定するか。",
+              "owner": null,
+              "due_date": null,
+              "status": "partially_answered",
+              "source_type": "qa",
+              "available_actions": [
+                "follow_up",
+                "edit_due_date",
+                "escalate"
+              ]
+            },
+            {
+              "id": "QA-007",
+              "title": "API連携を購入情報I/Fのみに限定する条件は正式決定か。",
+              "owner": null,
+              "due_date": null,
+              "status": "partially_answered",
+              "source_type": "qa",
+              "available_actions": [
+                "follow_up",
+                "edit_due_date",
+                "escalate"
+              ]
+            },
+            {
+              "id": "QA-008",
+              "title": "エンドユーザーへの顔登録URL連携および決済・チケット情報連携の責任範囲はどこか。",
+              "owner": null,
+              "due_date": null,
+              "status": "partially_answered",
+              "source_type": "qa",
+              "available_actions": [
+                "follow_up",
+                "edit_due_date",
+                "escalate"
+              ]
+            },
+            {
+              "id": "QA-009",
+              "title": "決済処理をWeChat側で完結させる前提は正式決定か。",
+              "owner": null,
+              "due_date": null,
+              "status": "partially_answered",
+              "source_type": "qa",
+              "available_actions": [
+                "follow_up",
+                "edit_due_date",
+                "escalate"
+              ]
+            }
+          ],
+          "auto_processed": []
         },
         "decisions": [
           {
@@ -3196,7 +3432,12 @@ window.PMO_DATA = {
             "owner": "京成電鉄 / 日立製作所 / NSS",
             "due_date": null,
             "status": "partially_resolved",
-            "action": "decide"
+            "source_type": "open_item",
+            "available_actions": [
+              "accept",
+              "edit",
+              "escalate"
+            ]
           },
           {
             "id": "OPN-003",
@@ -3204,7 +3445,12 @@ window.PMO_DATA = {
             "owner": "京成電鉄 / NSS / 日立製作所",
             "due_date": null,
             "status": "partially_resolved",
-            "action": "decide"
+            "source_type": "open_item",
+            "available_actions": [
+              "accept",
+              "edit",
+              "escalate"
+            ]
           },
           {
             "id": "OPN-004",
@@ -3212,7 +3458,12 @@ window.PMO_DATA = {
             "owner": "京成電鉄 / NSS",
             "due_date": null,
             "status": "open",
-            "action": "decide"
+            "source_type": "open_item",
+            "available_actions": [
+              "accept",
+              "edit",
+              "escalate"
+            ]
           },
           {
             "id": "OPN-005",
@@ -3220,7 +3471,12 @@ window.PMO_DATA = {
             "owner": "京成電鉄 / NSS",
             "due_date": null,
             "status": "open",
-            "action": "decide"
+            "source_type": "open_item",
+            "available_actions": [
+              "accept",
+              "edit",
+              "escalate"
+            ]
           },
           {
             "id": "OPN-006",
@@ -3228,7 +3484,12 @@ window.PMO_DATA = {
             "owner": "NSS / 京成電鉄",
             "due_date": null,
             "status": "open",
-            "action": "decide"
+            "source_type": "open_item",
+            "available_actions": [
+              "accept",
+              "edit",
+              "escalate"
+            ]
           },
           {
             "id": "OPN-007",
@@ -3236,7 +3497,12 @@ window.PMO_DATA = {
             "owner": "京成電鉄 / NSS",
             "due_date": null,
             "status": "partially_resolved",
-            "action": "decide"
+            "source_type": "open_item",
+            "available_actions": [
+              "accept",
+              "edit",
+              "escalate"
+            ]
           },
           {
             "id": "OPN-009",
@@ -3244,73 +3510,12 @@ window.PMO_DATA = {
             "owner": "京成電鉄 / NSS営業",
             "due_date": null,
             "status": "open",
-            "action": "decide"
-          }
-        ],
-        "customer_questions": [
-          {
-            "id": "QA-002",
-            "title": "日立製作所側I/F仕様書の初版および正式版はいつ提供されるか。",
-            "owner": null,
-            "due_date": null,
-            "status": "partially_answered",
-            "action": "follow_up"
-          },
-          {
-            "id": "QA-003",
-            "title": "顔認証、乗車券管理、座席管理等の各社開発範囲と責任分界をどのように確定するか。",
-            "owner": null,
-            "due_date": null,
-            "status": "partially_answered",
-            "action": "follow_up"
-          },
-          {
-            "id": "QA-004",
-            "title": "要件定義Fix、各発注、開発完了、サービスインの正式日程はいつか。",
-            "owner": null,
-            "due_date": null,
-            "status": "partially_answered",
-            "action": "follow_up"
-          },
-          {
-            "id": "QA-005",
-            "title": "総額2,500万円の予算条件と、超過時の来年度予算扱いは正式な前提か。",
-            "owner": null,
-            "due_date": null,
-            "status": "unanswered",
-            "action": "follow_up"
-          },
-          {
-            "id": "QA-006",
-            "title": "Ph.1、Ph.1.1、Ph.2の正式な機能範囲とリリース分割をどう確定するか。",
-            "owner": null,
-            "due_date": null,
-            "status": "partially_answered",
-            "action": "follow_up"
-          },
-          {
-            "id": "QA-007",
-            "title": "API連携を購入情報I/Fのみに限定する条件は正式決定か。",
-            "owner": null,
-            "due_date": null,
-            "status": "partially_answered",
-            "action": "follow_up"
-          },
-          {
-            "id": "QA-008",
-            "title": "エンドユーザーへの顔登録URL連携および決済・チケット情報連携の責任範囲はどこか。",
-            "owner": null,
-            "due_date": null,
-            "status": "partially_answered",
-            "action": "follow_up"
-          },
-          {
-            "id": "QA-009",
-            "title": "決済処理をWeChat側で完結させる前提は正式決定か。",
-            "owner": null,
-            "due_date": null,
-            "status": "partially_answered",
-            "action": "follow_up"
+            "source_type": "open_item",
+            "available_actions": [
+              "accept",
+              "edit",
+              "escalate"
+            ]
           }
         ],
         "overdue_items": [
@@ -3320,66 +3525,569 @@ window.PMO_DATA = {
             "owner": "PM",
             "due_date": "2026-07-17",
             "status": "in_progress",
-            "action": "escalate"
+            "source_type": "open_item",
+            "available_actions": [
+              "complete",
+              "extend",
+              "escalate"
+            ]
           }
         ],
         "change_candidates": [],
-        "artifact_approvals": [
+        "customer_questions": [
           {
-            "id": "MGT-001",
-            "title": "プロジェクト計画書",
-            "version": "v0.2",
-            "status": "review_required",
-            "action": "review_artifact"
+            "id": "QA-002",
+            "title": "日立製作所側I/F仕様書の初版および正式版はいつ提供されるか。",
+            "owner": null,
+            "due_date": null,
+            "status": "partially_answered",
+            "source_type": "qa",
+            "available_actions": [
+              "follow_up",
+              "edit_due_date",
+              "escalate"
+            ]
           },
           {
-            "id": "WBS-001",
-            "title": "WBS / スケジュール",
-            "version": "v0.2",
-            "status": "review_required",
-            "action": "review_artifact"
+            "id": "QA-003",
+            "title": "顔認証、乗車券管理、座席管理等の各社開発範囲と責任分界をどのように確定するか。",
+            "owner": null,
+            "due_date": null,
+            "status": "partially_answered",
+            "source_type": "qa",
+            "available_actions": [
+              "follow_up",
+              "edit_due_date",
+              "escalate"
+            ]
           },
           {
-            "id": "REQ-001",
-            "title": "要件定義書",
-            "version": "v0.2",
-            "status": "review_required",
-            "action": "review_artifact"
+            "id": "QA-004",
+            "title": "要件定義Fix、各発注、開発完了、サービスインの正式日程はいつか。",
+            "owner": null,
+            "due_date": null,
+            "status": "partially_answered",
+            "source_type": "qa",
+            "available_actions": [
+              "follow_up",
+              "edit_due_date",
+              "escalate"
+            ]
           },
           {
-            "id": "SCR-001",
-            "title": "画面・帳票設計書",
-            "version": "v0.2",
-            "status": "review_required",
-            "action": "review_artifact"
+            "id": "QA-005",
+            "title": "総額2,500万円の予算条件と、超過時の来年度予算扱いは正式な前提か。",
+            "owner": null,
+            "due_date": null,
+            "status": "unanswered",
+            "source_type": "qa",
+            "available_actions": [
+              "follow_up",
+              "edit_due_date",
+              "escalate"
+            ]
           },
           {
-            "id": "ARC-001",
-            "title": "システム構成定義",
-            "version": "v0.2",
-            "status": "review_required",
-            "action": "review_artifact"
+            "id": "QA-006",
+            "title": "Ph.1、Ph.1.1、Ph.2の正式な機能範囲とリリース分割をどう確定するか。",
+            "owner": null,
+            "due_date": null,
+            "status": "partially_answered",
+            "source_type": "qa",
+            "available_actions": [
+              "follow_up",
+              "edit_due_date",
+              "escalate"
+            ]
           },
           {
-            "id": "API-001",
-            "title": "API確認表",
-            "version": "v0.2",
-            "status": "review_required",
-            "action": "review_artifact"
+            "id": "QA-007",
+            "title": "API連携を購入情報I/Fのみに限定する条件は正式決定か。",
+            "owner": null,
+            "due_date": null,
+            "status": "partially_answered",
+            "source_type": "qa",
+            "available_actions": [
+              "follow_up",
+              "edit_due_date",
+              "escalate"
+            ]
           },
           {
-            "id": "TST-001",
-            "title": "テスト計画",
-            "version": "v0.2",
-            "status": "review_required",
-            "action": "review_artifact"
+            "id": "QA-008",
+            "title": "エンドユーザーへの顔登録URL連携および決済・チケット情報連携の責任範囲はどこか。",
+            "owner": null,
+            "due_date": null,
+            "status": "partially_answered",
+            "source_type": "qa",
+            "available_actions": [
+              "follow_up",
+              "edit_due_date",
+              "escalate"
+            ]
           },
           {
-            "id": "REL-001",
-            "title": "リリース計画",
-            "version": "v0.2",
-            "status": "review_required",
-            "action": "review_artifact"
+            "id": "QA-009",
+            "title": "決済処理をWeChat側で完結させる前提は正式決定か。",
+            "owner": null,
+            "due_date": null,
+            "status": "partially_answered",
+            "source_type": "qa",
+            "available_actions": [
+              "follow_up",
+              "edit_due_date",
+              "escalate"
+            ]
+          }
+        ],
+        "auto_processed": []
+      },
+      "inbox": {
+        "display_order": [
+          "decision",
+          "overdue",
+          "change_candidate",
+          "customer_waiting",
+          "auto_processed"
+        ],
+        "counts": {
+          "decision": 7,
+          "overdue": 1,
+          "change_candidate": 0,
+          "customer_waiting": 8,
+          "auto_processed": 0
+        },
+        "queues": {
+          "decision": [
+            {
+              "id": "OPN-002",
+              "title": "顔認証登録フロー、責任分界および越境データ取扱いを確定する",
+              "owner": "京成電鉄 / 日立製作所 / NSS",
+              "due_date": null,
+              "status": "partially_resolved",
+              "source_type": "open_item",
+              "available_actions": [
+                "accept",
+                "edit",
+                "escalate"
+              ]
+            },
+            {
+              "id": "OPN-003",
+              "title": "正式なリリース目標と全体スケジュールを確定する",
+              "owner": "京成電鉄 / NSS / 日立製作所",
+              "due_date": null,
+              "status": "partially_resolved",
+              "source_type": "open_item",
+              "available_actions": [
+                "accept",
+                "edit",
+                "escalate"
+              ]
+            },
+            {
+              "id": "OPN-004",
+              "title": "QRコード、顔認証、座席指定のフェーズ分割と正式スコープを確定する",
+              "owner": "京成電鉄 / NSS",
+              "due_date": null,
+              "status": "open",
+              "source_type": "open_item",
+              "available_actions": [
+                "accept",
+                "edit",
+                "escalate"
+              ]
+            },
+            {
+              "id": "OPN-005",
+              "title": "キャンセル／返金対応の要否、業務フローおよびシステム影響を確定する",
+              "owner": "京成電鉄 / NSS",
+              "due_date": null,
+              "status": "open",
+              "source_type": "open_item",
+              "available_actions": [
+                "accept",
+                "edit",
+                "escalate"
+              ]
+            },
+            {
+              "id": "OPN-006",
+              "title": "管理画面、非機能要件、セキュリティおよび運用保守範囲を確定する",
+              "owner": "NSS / 京成電鉄",
+              "due_date": null,
+              "status": "open",
+              "source_type": "open_item",
+              "available_actions": [
+                "accept",
+                "edit",
+                "escalate"
+              ]
+            },
+            {
+              "id": "OPN-007",
+              "title": "プロジェクト体制、意思決定者、各社・社内の担当範囲を確定する",
+              "owner": "京成電鉄 / NSS",
+              "due_date": null,
+              "status": "partially_resolved",
+              "source_type": "open_item",
+              "available_actions": [
+                "accept",
+                "edit",
+                "escalate"
+              ]
+            },
+            {
+              "id": "OPN-009",
+              "title": "見積・予算・発注条件を確定する",
+              "owner": "京成電鉄 / NSS営業",
+              "due_date": null,
+              "status": "open",
+              "source_type": "open_item",
+              "available_actions": [
+                "accept",
+                "edit",
+                "escalate"
+              ]
+            }
+          ],
+          "overdue": [
+            {
+              "id": "OPN-010",
+              "title": "要件定義書初版のレビューコメントを回収する",
+              "owner": "PM",
+              "due_date": "2026-07-17",
+              "status": "in_progress",
+              "source_type": "open_item",
+              "available_actions": [
+                "complete",
+                "extend",
+                "escalate"
+              ]
+            }
+          ],
+          "change_candidate": [],
+          "customer_waiting": [
+            {
+              "id": "QA-002",
+              "title": "日立製作所側I/F仕様書の初版および正式版はいつ提供されるか。",
+              "owner": null,
+              "due_date": null,
+              "status": "partially_answered",
+              "source_type": "qa",
+              "available_actions": [
+                "follow_up",
+                "edit_due_date",
+                "escalate"
+              ]
+            },
+            {
+              "id": "QA-003",
+              "title": "顔認証、乗車券管理、座席管理等の各社開発範囲と責任分界をどのように確定するか。",
+              "owner": null,
+              "due_date": null,
+              "status": "partially_answered",
+              "source_type": "qa",
+              "available_actions": [
+                "follow_up",
+                "edit_due_date",
+                "escalate"
+              ]
+            },
+            {
+              "id": "QA-004",
+              "title": "要件定義Fix、各発注、開発完了、サービスインの正式日程はいつか。",
+              "owner": null,
+              "due_date": null,
+              "status": "partially_answered",
+              "source_type": "qa",
+              "available_actions": [
+                "follow_up",
+                "edit_due_date",
+                "escalate"
+              ]
+            },
+            {
+              "id": "QA-005",
+              "title": "総額2,500万円の予算条件と、超過時の来年度予算扱いは正式な前提か。",
+              "owner": null,
+              "due_date": null,
+              "status": "unanswered",
+              "source_type": "qa",
+              "available_actions": [
+                "follow_up",
+                "edit_due_date",
+                "escalate"
+              ]
+            },
+            {
+              "id": "QA-006",
+              "title": "Ph.1、Ph.1.1、Ph.2の正式な機能範囲とリリース分割をどう確定するか。",
+              "owner": null,
+              "due_date": null,
+              "status": "partially_answered",
+              "source_type": "qa",
+              "available_actions": [
+                "follow_up",
+                "edit_due_date",
+                "escalate"
+              ]
+            },
+            {
+              "id": "QA-007",
+              "title": "API連携を購入情報I/Fのみに限定する条件は正式決定か。",
+              "owner": null,
+              "due_date": null,
+              "status": "partially_answered",
+              "source_type": "qa",
+              "available_actions": [
+                "follow_up",
+                "edit_due_date",
+                "escalate"
+              ]
+            },
+            {
+              "id": "QA-008",
+              "title": "エンドユーザーへの顔登録URL連携および決済・チケット情報連携の責任範囲はどこか。",
+              "owner": null,
+              "due_date": null,
+              "status": "partially_answered",
+              "source_type": "qa",
+              "available_actions": [
+                "follow_up",
+                "edit_due_date",
+                "escalate"
+              ]
+            },
+            {
+              "id": "QA-009",
+              "title": "決済処理をWeChat側で完結させる前提は正式決定か。",
+              "owner": null,
+              "due_date": null,
+              "status": "partially_answered",
+              "source_type": "qa",
+              "available_actions": [
+                "follow_up",
+                "edit_due_date",
+                "escalate"
+              ]
+            }
+          ],
+          "auto_processed": []
+        },
+        "decisions": [
+          {
+            "id": "OPN-002",
+            "title": "顔認証登録フロー、責任分界および越境データ取扱いを確定する",
+            "owner": "京成電鉄 / 日立製作所 / NSS",
+            "due_date": null,
+            "status": "partially_resolved",
+            "source_type": "open_item",
+            "available_actions": [
+              "accept",
+              "edit",
+              "escalate"
+            ]
+          },
+          {
+            "id": "OPN-003",
+            "title": "正式なリリース目標と全体スケジュールを確定する",
+            "owner": "京成電鉄 / NSS / 日立製作所",
+            "due_date": null,
+            "status": "partially_resolved",
+            "source_type": "open_item",
+            "available_actions": [
+              "accept",
+              "edit",
+              "escalate"
+            ]
+          },
+          {
+            "id": "OPN-004",
+            "title": "QRコード、顔認証、座席指定のフェーズ分割と正式スコープを確定する",
+            "owner": "京成電鉄 / NSS",
+            "due_date": null,
+            "status": "open",
+            "source_type": "open_item",
+            "available_actions": [
+              "accept",
+              "edit",
+              "escalate"
+            ]
+          },
+          {
+            "id": "OPN-005",
+            "title": "キャンセル／返金対応の要否、業務フローおよびシステム影響を確定する",
+            "owner": "京成電鉄 / NSS",
+            "due_date": null,
+            "status": "open",
+            "source_type": "open_item",
+            "available_actions": [
+              "accept",
+              "edit",
+              "escalate"
+            ]
+          },
+          {
+            "id": "OPN-006",
+            "title": "管理画面、非機能要件、セキュリティおよび運用保守範囲を確定する",
+            "owner": "NSS / 京成電鉄",
+            "due_date": null,
+            "status": "open",
+            "source_type": "open_item",
+            "available_actions": [
+              "accept",
+              "edit",
+              "escalate"
+            ]
+          },
+          {
+            "id": "OPN-007",
+            "title": "プロジェクト体制、意思決定者、各社・社内の担当範囲を確定する",
+            "owner": "京成電鉄 / NSS",
+            "due_date": null,
+            "status": "partially_resolved",
+            "source_type": "open_item",
+            "available_actions": [
+              "accept",
+              "edit",
+              "escalate"
+            ]
+          },
+          {
+            "id": "OPN-009",
+            "title": "見積・予算・発注条件を確定する",
+            "owner": "京成電鉄 / NSS営業",
+            "due_date": null,
+            "status": "open",
+            "source_type": "open_item",
+            "available_actions": [
+              "accept",
+              "edit",
+              "escalate"
+            ]
+          }
+        ],
+        "overdue_items": [
+          {
+            "id": "OPN-010",
+            "title": "要件定義書初版のレビューコメントを回収する",
+            "owner": "PM",
+            "due_date": "2026-07-17",
+            "status": "in_progress",
+            "source_type": "open_item",
+            "available_actions": [
+              "complete",
+              "extend",
+              "escalate"
+            ]
+          }
+        ],
+        "change_candidates": [],
+        "customer_questions": [
+          {
+            "id": "QA-002",
+            "title": "日立製作所側I/F仕様書の初版および正式版はいつ提供されるか。",
+            "owner": null,
+            "due_date": null,
+            "status": "partially_answered",
+            "source_type": "qa",
+            "available_actions": [
+              "follow_up",
+              "edit_due_date",
+              "escalate"
+            ]
+          },
+          {
+            "id": "QA-003",
+            "title": "顔認証、乗車券管理、座席管理等の各社開発範囲と責任分界をどのように確定するか。",
+            "owner": null,
+            "due_date": null,
+            "status": "partially_answered",
+            "source_type": "qa",
+            "available_actions": [
+              "follow_up",
+              "edit_due_date",
+              "escalate"
+            ]
+          },
+          {
+            "id": "QA-004",
+            "title": "要件定義Fix、各発注、開発完了、サービスインの正式日程はいつか。",
+            "owner": null,
+            "due_date": null,
+            "status": "partially_answered",
+            "source_type": "qa",
+            "available_actions": [
+              "follow_up",
+              "edit_due_date",
+              "escalate"
+            ]
+          },
+          {
+            "id": "QA-005",
+            "title": "総額2,500万円の予算条件と、超過時の来年度予算扱いは正式な前提か。",
+            "owner": null,
+            "due_date": null,
+            "status": "unanswered",
+            "source_type": "qa",
+            "available_actions": [
+              "follow_up",
+              "edit_due_date",
+              "escalate"
+            ]
+          },
+          {
+            "id": "QA-006",
+            "title": "Ph.1、Ph.1.1、Ph.2の正式な機能範囲とリリース分割をどう確定するか。",
+            "owner": null,
+            "due_date": null,
+            "status": "partially_answered",
+            "source_type": "qa",
+            "available_actions": [
+              "follow_up",
+              "edit_due_date",
+              "escalate"
+            ]
+          },
+          {
+            "id": "QA-007",
+            "title": "API連携を購入情報I/Fのみに限定する条件は正式決定か。",
+            "owner": null,
+            "due_date": null,
+            "status": "partially_answered",
+            "source_type": "qa",
+            "available_actions": [
+              "follow_up",
+              "edit_due_date",
+              "escalate"
+            ]
+          },
+          {
+            "id": "QA-008",
+            "title": "エンドユーザーへの顔登録URL連携および決済・チケット情報連携の責任範囲はどこか。",
+            "owner": null,
+            "due_date": null,
+            "status": "partially_answered",
+            "source_type": "qa",
+            "available_actions": [
+              "follow_up",
+              "edit_due_date",
+              "escalate"
+            ]
+          },
+          {
+            "id": "QA-009",
+            "title": "決済処理をWeChat側で完結させる前提は正式決定か。",
+            "owner": null,
+            "due_date": null,
+            "status": "partially_answered",
+            "source_type": "qa",
+            "available_actions": [
+              "follow_up",
+              "edit_due_date",
+              "escalate"
+            ]
           }
         ],
         "auto_processed": []
@@ -3393,13 +4101,14 @@ window.PMO_DATA = {
           "background": null,
           "category": null,
           "status": "deferred_internal",
-          "shared_status": "Closed",
+          "shared_status": "under_review",
           "owner": null,
           "asked_to": null,
           "answered_by": null,
           "due_date": null,
           "answer": "初期のPMO Dashboardはプロジェクト内部向けの管理・共有基盤として運用する。Backlog等との最終的な主従関係はMVP範囲外。",
           "answer_date": null,
+          "evidence_ref": null,
           "source_ids": [],
           "related_open_item_ids": [],
           "related_artifacts": []
@@ -3410,13 +4119,14 @@ window.PMO_DATA = {
           "background": null,
           "category": null,
           "status": "partially_answered",
-          "shared_status": "Open",
+          "shared_status": "answer_received",
           "owner": null,
           "asked_to": null,
           "answered_by": null,
           "due_date": null,
           "answer": "現行版は2026-07-17目処、正式版は2026-07-31目標。実受領待ち。",
           "answer_date": null,
+          "evidence_ref": "WB-20260707-MTG",
           "source_ids": [],
           "related_open_item_ids": [
             "OPN-001"
@@ -3429,13 +4139,14 @@ window.PMO_DATA = {
           "background": null,
           "category": null,
           "status": "partially_answered",
-          "shared_status": "Open",
+          "shared_status": "answer_received",
           "owner": null,
           "asked_to": null,
           "answered_by": null,
           "due_date": null,
           "answer": "日立製作所がAPI連携ベンダーとして参画し、実務窓口は林氏。詳細責任分界は継続検討。",
           "answer_date": null,
+          "evidence_ref": "WB-20260707-MTG",
           "source_ids": [],
           "related_open_item_ids": [
             "OPN-002"
@@ -3448,13 +4159,14 @@ window.PMO_DATA = {
           "background": null,
           "category": null,
           "status": "partially_answered",
-          "shared_status": "Open",
+          "shared_status": "answer_received",
           "owner": null,
           "asked_to": null,
           "answered_by": null,
           "due_date": null,
           "answer": "サービスインは1月～2月、遅くとも3月中旬を軸に再調整。要件定義完了後に正式確定。",
           "answer_date": null,
+          "evidence_ref": "WB-20260707-MTG",
           "source_ids": [],
           "related_open_item_ids": [
             "OPN-003"
@@ -3467,13 +4179,14 @@ window.PMO_DATA = {
           "background": null,
           "category": null,
           "status": "unanswered",
-          "shared_status": "Open",
+          "shared_status": "waiting_customer",
           "owner": null,
           "asked_to": null,
           "answered_by": null,
           "due_date": null,
           "answer": null,
           "answer_date": null,
+          "evidence_ref": null,
           "source_ids": [],
           "related_open_item_ids": [
             "OPN-009"
@@ -3486,13 +4199,14 @@ window.PMO_DATA = {
           "background": null,
           "category": null,
           "status": "partially_answered",
-          "shared_status": "Open",
+          "shared_status": "answer_received",
           "owner": null,
           "asked_to": null,
           "answered_by": null,
           "due_date": null,
           "answer": "QR対応時期を踏まえ、顔認証のみの先行提供とQR一体リリースのどちらにするかを要件定義で検討。",
           "answer_date": null,
+          "evidence_ref": "WB-20260707-MTG",
           "source_ids": [],
           "related_open_item_ids": [
             "OPN-004"
@@ -3505,13 +4219,14 @@ window.PMO_DATA = {
           "background": null,
           "category": null,
           "status": "partially_answered",
-          "shared_status": "Open",
+          "shared_status": "answer_received",
           "owner": null,
           "asked_to": null,
           "answered_by": null,
           "due_date": null,
           "answer": "購入・決済完了通知と顔登録URL連携を軸とする構成が示されたが、正式なI/F範囲は未確定。",
           "answer_date": null,
+          "evidence_ref": "WB-20260707-MTG",
           "source_ids": [],
           "related_open_item_ids": [
             "OPN-002"
@@ -3524,13 +4239,14 @@ window.PMO_DATA = {
           "background": null,
           "category": null,
           "status": "partially_answered",
-          "shared_status": "Open",
+          "shared_status": "answer_received",
           "owner": null,
           "asked_to": null,
           "answered_by": null,
           "due_date": null,
           "answer": "NSSからHITACHIへ決済完了通知し、応答として顔登録URLを連携する案。詳細責任は継続確認。",
           "answer_date": null,
+          "evidence_ref": "WB-20260707-MTG",
           "source_ids": [],
           "related_open_item_ids": [
             "OPN-002"
@@ -3543,13 +4259,14 @@ window.PMO_DATA = {
           "background": null,
           "category": null,
           "status": "partially_answered",
-          "shared_status": "Open",
+          "shared_status": "answer_received",
           "owner": null,
           "asked_to": null,
           "answered_by": null,
           "due_date": null,
           "answer": "決済はミニプログラム内で完結させる構成イメージが共有された。規約・技術可否を含め継続確認。",
           "answer_date": null,
+          "evidence_ref": "WB-20260707-MTG",
           "source_ids": [],
           "related_open_item_ids": [
             "OPN-002"
@@ -3562,13 +4279,14 @@ window.PMO_DATA = {
           "background": null,
           "category": null,
           "status": "answered",
-          "shared_status": "Closed",
+          "shared_status": "resolved",
           "owner": null,
           "asked_to": null,
           "answered_by": null,
           "due_date": null,
           "answer": "画像データそのものをWeChatとSRサーバー間で直接やり取りする想定ではない。",
           "answer_date": null,
+          "evidence_ref": "WB-20260707-MTG",
           "source_ids": [],
           "related_open_item_ids": [
             "OPN-002"
@@ -3576,6 +4294,12 @@ window.PMO_DATA = {
           "related_artifacts": []
         }
       ],
+      "qa_counts": {
+        "under_review": 1,
+        "answer_received": 7,
+        "waiting_customer": 1,
+        "resolved": 1
+      },
       "gantt": [
         {
           "stage_id": "requirements_definition",
@@ -3636,6 +4360,10 @@ window.PMO_DATA = {
                   "default": "previews/artifacts/MGT-001.html"
                 },
                 "completion_percentage": null,
+                "review_status": "review_required",
+                "review_comment_count": 0,
+                "pending_review_comment_count": 0,
+                "open_qa_count": 0,
                 "sections": []
               }
             ]
@@ -3655,6 +4383,10 @@ window.PMO_DATA = {
                   "default": "previews/artifacts/WBS-001.html"
                 },
                 "completion_percentage": null,
+                "review_status": "review_required",
+                "review_comment_count": 0,
+                "pending_review_comment_count": 0,
+                "open_qa_count": 0,
                 "sections": []
               }
             ]
@@ -3674,6 +4406,10 @@ window.PMO_DATA = {
                   "default": "previews/artifacts/REQ-001.html"
                 },
                 "completion_percentage": 0,
+                "review_status": "review_required",
+                "review_comment_count": 0,
+                "pending_review_comment_count": 0,
+                "open_qa_count": 0,
                 "sections": [
                   {
                     "section_id": "REQ-001-S01",
@@ -3749,6 +4485,10 @@ window.PMO_DATA = {
                   "default": "previews/artifacts/SCR-001.html"
                 },
                 "completion_percentage": null,
+                "review_status": "review_required",
+                "review_comment_count": 0,
+                "pending_review_comment_count": 0,
+                "open_qa_count": 0,
                 "sections": []
               }
             ]
@@ -3768,6 +4508,10 @@ window.PMO_DATA = {
                   "default": "previews/artifacts/ARC-001.html"
                 },
                 "completion_percentage": null,
+                "review_status": "review_required",
+                "review_comment_count": 0,
+                "pending_review_comment_count": 0,
+                "open_qa_count": 0,
                 "sections": []
               },
               {
@@ -3782,6 +4526,10 @@ window.PMO_DATA = {
                   "default": "previews/artifacts/API-001.html"
                 },
                 "completion_percentage": null,
+                "review_status": "review_required",
+                "review_comment_count": 0,
+                "pending_review_comment_count": 0,
+                "open_qa_count": 0,
                 "sections": []
               }
             ]
@@ -3801,6 +4549,10 @@ window.PMO_DATA = {
                   "default": "previews/artifacts/TST-001.html"
                 },
                 "completion_percentage": null,
+                "review_status": "review_required",
+                "review_comment_count": 0,
+                "pending_review_comment_count": 0,
+                "open_qa_count": 0,
                 "sections": []
               }
             ]
@@ -3820,6 +4572,10 @@ window.PMO_DATA = {
                   "default": "previews/artifacts/REL-001.html"
                 },
                 "completion_percentage": null,
+                "review_status": "review_required",
+                "review_comment_count": 0,
+                "pending_review_comment_count": 0,
+                "open_qa_count": 0,
                 "sections": []
               }
             ]

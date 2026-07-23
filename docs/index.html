@@ -1,63 +1,73 @@
-<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>KEISEI PMO Dashboard MVP</title><link rel="stylesheet" href="assets/styles.css"><style>.header-controls{display:flex;align-items:center;justify-content:space-between;gap:16px}.language-switch{display:flex;gap:4px}.lang-btn{border:1px solid #aaa;background:#fff;padding:6px 10px;cursor:pointer}.lang-btn.active{background:#111;color:#fff}.translation-banner{margin:0 0 12px;padding:8px 10px;border:1px solid #d6b35a;background:#fff8df;font-size:13px}@media(max-width:720px){.header-controls{align-items:flex-start;flex-direction:column}}</style></head><body>
-<header class="header"><div class="header-main"><div><h1 id="title"></h1><div class="sub" id="subtitle"></div></div><div class="build-mark" id="version"></div></div><div class="header-controls"><nav class="tabs"><button class="tab active" data-mode="management" data-i18n="management">PM管理</button><button class="tab" data-mode="shared" data-i18n="shared">プロジェクト共有</button></nav><div class="language-switch" aria-label="Language"><button class="lang-btn active" data-language="ja">日本語</button><button class="lang-btn" data-language="zh-CN">中文</button></div></div></header>
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>PMO Dashboard</title>
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+<header class="header">
+  <div class="header-main"><div><h1 id="title"></h1><div class="sub" id="subtitle"></div></div><div class="build-mark" id="version"></div></div>
+  <div class="header-controls">
+    <nav class="tabs">
+      <button class="tab active" data-mode="management">PM管理</button>
+      <button class="tab" data-mode="shared">プロジェクト共有</button>
+    </nav>
+    <div class="language-switch"><button class="lang-btn active" data-language="ja">日本語</button><button class="lang-btn" data-language="zh-CN">中文</button></div>
+  </div>
+</header>
 <main class="container">
-<section id="management" class="mode active"><div class="view-toolbar"><p>PM向け：例外だけを確認し、Accept / Edit / Escalate で処理します。</p><button class="btn" onclick="window.print()" data-i18n="print">印刷</button></div><div id="management-summary" class="summary-grid"></div><div class="stack"><section class="panel inbox-panel"><div class="panel-head"><div><span class="eyebrow">DAILY PM WORKFLOW</span><h2 data-i18n="pm_inbox">PM Action Center</h2></div><span class="panel-note" id="inbox-total"></span></div><div id="pm-inbox" class="inbox-grid"></div></section><section class="panel"><div class="panel-head"><h2 data-i18n="open_items">待办／保留事項（Open Item）</h2><span class="panel-note" id="open-count"></span></div><div class="filter-row" id="filters"></div><div id="open-items"></div></section><section class="panel"><h2 data-i18n="recent_batches">最近の処理バッチ</h2><div id="batch-summary"></div></section><section class="panel"><h2 data-i18n="decisions">決定事項</h2><div id="decisions"></div></section></div><details class="repository-drawer panel"><summary><strong data-i18n="artifacts_preview">成果物・Preview</strong></summary><div id="management-artifacts" class="artifact-grid"></div></details></section>
-<section id="shared" class="mode"><div class="view-toolbar"><p>内部メンバー向け：現在のプロジェクト状態と主要な確認事項を共有します。</p><button class="btn" onclick="window.print()" data-i18n="print">印刷</button></div><div id="shared-summary" class="summary-grid shared-summary-grid"></div><div class="shared-layout"><section class="panel shared-priority"><h2 data-i18n="priority_items">主要な確認事項／保留事項</h2><div id="shared-open-items"></div></section><section class="panel"><h2 data-i18n="progress">プロジェクト全体進捗</h2><div id="project-gantt"></div></section><section class="panel milestone-panel"><h2 data-i18n="milestones">マイルストーン</h2><div id="milestones" class="milestone-list"></div></section><section class="panel"><h2 data-i18n="artifacts">成果物</h2><div id="shared-artifacts" class="artifact-grid"></div></section></div></section>
+  <section id="management" class="mode active">
+    <div class="view-toolbar"><p id="management-note"></p><button class="btn" onclick="window.print()">印刷</button></div>
+    <div id="management-summary" class="summary-grid action-summary-grid"></div>
+    <section class="panel inbox-panel">
+      <div class="panel-head"><div><span class="eyebrow">DAILY PM WORKFLOW</span><h2>PM Action Center</h2></div><span class="panel-note" id="inbox-total"></span></div>
+      <div id="pm-action-list"></div>
+    </section>
+    <details class="repository-drawer panel" open>
+      <summary><strong id="management-artifact-title"></strong></summary>
+      <div id="management-artifacts" class="artifact-tree"></div>
+    </details>
+  </section>
+
+  <section id="shared" class="mode">
+    <div class="view-toolbar"><p id="shared-note"></p><button class="btn" onclick="window.print()">印刷</button></div>
+    <div id="shared-summary" class="summary-grid shared-summary-grid"></div>
+    <div class="shared-layout">
+      <section class="panel"><h2 id="progress-title"></h2><div id="project-gantt"></div></section>
+      <section class="panel">
+        <div class="panel-head"><h2>QA</h2><span class="panel-note" id="qa-total"></span></div>
+        <div id="qa-filters" class="filter-row"></div>
+        <div id="shared-qa"></div>
+      </section>
+      <section class="panel"><h2 id="shared-artifact-title"></h2><div id="shared-artifacts" class="artifact-tree"></div></section>
+    </div>
+  </section>
 </main>
-<div id="preview-modal" class="modal-overlay" hidden><div class="preview-modal"><div class="modal-header"><div><div class="modal-kicker" id="preview-id"></div><h2 id="preview-title">Preview</h2></div><button class="modal-close" type="button">&times;</button></div><div class="modal-body"><div class="preview-meta" id="preview-meta"></div><iframe class="preview-frame" id="preview-frame"></iframe></div></div></div>
-<script src="js/data.js"></script><script>
-const D=window.PMO_DATA; const $=id=>document.getElementById(id); const esc=v=>String(v??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-let lang=localStorage.getItem('pmo-language')||D.localization?.primary||'ja';
-const localized=(value)=>{if(value&&typeof value==='object'&&!Array.isArray(value)){return value[lang]??value.ja??Object.values(value)[0]??''}return value??''};
-const label=(key)=>localized(D.ui_labels?.[key])||key;
-const fallbackText=(value)=>{const text=localized(value);if(lang==='zh-CN'&&(!value||typeof value!=='object'||!value['zh-CN']))return `${text}（原文・日文）`;return text};
-function applyStaticLabels(){document.documentElement.lang=lang==='zh-CN'?'zh-CN':'ja';document.querySelectorAll('[data-i18n]').forEach(el=>{el.textContent=label(el.dataset.i18n)});document.querySelectorAll('[data-language]').forEach(el=>el.classList.toggle('active',el.dataset.language===lang));}
-function applyHeader(){$('title').textContent=fallbackText(D.meta.title);$('subtitle').textContent=`${fallbackText(D.meta.subtitle)} / Method: ${D.meta.method} / ${lang==='zh-CN'?'更新':'更新'} ${D.meta.updated_at}`;$('version').textContent=D.meta.version;}
-applyStaticLabels();applyHeader();
-const statusJa={open:'未着手',in_progress:'対応中',partially_resolved:'一部解決',resolved:'解決済み',closed:'完了',provisional:'暫定',confirmed:'確定',answered:'回答済み',partially_answered:'一部回答',unanswered:'未回答',deferred_internal:'内部保留',review_required:'レビュー要'};
-const statusZh={open:'未处理',in_progress:'处理中',partially_resolved:'部分解决',resolved:'已解决',closed:'完成',provisional:'暂定',confirmed:'已确认',answered:'已回答',partially_answered:'部分回答',unanswered:'未回答',deferred_internal:'内部保留',review_required:'需要评审'};const kindJa={action:'アクション',issue:'課題',question:'確認事項'};const kindZh={action:'行动',issue:'课题',question:'确认事项'}; const status=v=>(lang==='zh-CN'?statusZh[v]:statusJa[v])||v||'-';
-function summaries(target,shared=false){const s=D.summary;const cards=shared?[["現在フェーズ",s.current_phase,'wide'],["プロジェクト状態",s.status,'wide'],["Open Item",s.open_items_total],["一部解決",s.partially_resolved],["成果物",`${s.artifact_count}件`]]:[["Open Item",s.open_items_total],["対応中",s.in_progress],["一部解決",s.partially_resolved],["未着手",s.open],["決定事項",D.decisions.length]];$(target).innerHTML=cards.map(c=>`<div class="summary-card ${c[2]||''}"><span>${esc(c[0])}</span><strong>${esc(c[1])}</strong></div>`).join('')}
-summaries('management-summary');summaries('shared-summary',true);
-function table(items,cols){return `<div class="table-wrap"><table class="compact-table"><thead><tr>${cols.map(c=>`<th>${c.h}</th>`).join('')}</tr></thead><tbody>${items.map(x=>`<tr>${cols.map(c=>`<td class="${c.c||''}">${c.f(x)}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`}
-let filter='all';const filters=[['all','すべて'],['action','アクション'],['issue','課題'],['question','確認事項'],['partially_resolved','一部解決']];$('filters').innerHTML=filters.map(x=>`<button class="filter-btn ${x[0]==='all'?'active':''}" data-filter="${x[0]}">${x[1]}</button>`).join('');
-function renderOpen(){let a=D.open_items.filter(x=>filter==='all'||x.item_kind===filter||x.status===filter);$('open-count').textContent=`${a.length}件表示`;$('open-items').innerHTML=table(a,[{h:'ID',c:'nowrap',f:x=>esc(x.item_id)},{h:'種別',c:'nowrap',f:x=>esc((lang==='zh-CN'?kindZh:kindJa)[x.item_kind]||x.item_kind)},{h:'内容',f:x=>`<span class="item-title">${esc(fallbackText(x.title))}</span><span class="subtext">${esc(fallbackText(x.latest_update||x.remaining_point||''))}</span>`},{h:'担当',f:x=>esc(x.owner||'-')},{h:'期限',c:'nowrap',f:x=>esc(x.due_date||x.intermediate_due_date||'-')},{h:'状態',c:'nowrap',f:x=>`<span class="status-chip ${esc(x.status)}">${esc(status(x.status))}</span>`}]);}
-
-function renderInbox(){
-  const inbox=D.pm_inbox||D.views?.pm_management?.inbox||{};
-  const groups=[
-    ['decisions',lang==='zh-CN'?'需要决定':'要決定','decide'],
-    ['customer_questions',lang==='zh-CN'?'待客户回答':'顧客回答待ち','follow_up'],
-    ['overdue_items',lang==='zh-CN'?'逾期事项':'期限超過','escalate'],
-    ['change_candidates',lang==='zh-CN'?'变更候选':'変更候補','review'],
-    ['artifact_approvals',lang==='zh-CN'?'成果物评审':'成果物レビュー','review_artifact'],
-    ['auto_processed',lang==='zh-CN'?'自动处理':'自動処理済み','auto']
-  ];
-  const total=Object.entries(inbox.counts||{}).filter(([k])=>k!=='auto_processed').reduce((n,[,v])=>n+Number(v||0),0);
-  $('inbox-total').textContent=`${total}${lang==='zh-CN'?' 项待处理':'件の対応'}`;
-  $('pm-inbox').innerHTML=groups.map(([key,title,action])=>{const items=inbox[key]||[];return `<article class="inbox-lane ${key}"><div class="inbox-lane-head"><h3>${esc(title)}</h3><strong>${items.length}</strong></div>${items.length?items.slice(0,5).map(x=>`<div class="inbox-item"><div><span>${esc(x.id||'-')}</span><p>${esc(fallbackText(x.title))}</p><small>${esc(x.owner||x.route||x.version||'')}</small></div><div class="inbox-actions"><button title="Accept">✓</button><button title="Edit">✎</button><button title="Escalate">↑</button></div></div>`).join(''):`<p class="empty-state">${lang==='zh-CN'?'无待处理事项':'対応項目なし'}</p>`}</article>`}).join('');
-}
-renderInbox();
-renderOpen();$('filters').onclick=e=>{const b=e.target.closest('[data-filter]');if(!b)return;filter=b.dataset.filter;document.querySelectorAll('.filter-btn').forEach(x=>x.classList.toggle('active',x===b));renderOpen()};
-$('shared-open-items').innerHTML=table(D.open_items.slice(0,7),[{h:'ID',c:'nowrap',f:x=>esc(x.item_id)},{h:'主要事項',f:x=>`<span class="item-title">${esc(fallbackText(x.title))}</span><span class="subtext">${esc(fallbackText(x.remaining_point||''))}</span>`},{h:'担当',f:x=>esc(x.owner||'-')},{h:'状態',c:'nowrap',f:x=>`<span class="status-chip ${esc(x.status)}">${esc(status(x.status))}</span>`}]);
-
-$('decisions').innerHTML=D.decisions.map(x=>`<div class="decision"><p>${esc(fallbackText(x.title))}</p><small>${esc(x.decided_at)} / ${esc(status(x.status))}</small></div>`).join('');
-$('milestones').innerHTML=D.milestones.map(x=>`<div class="milestone"><p>${esc(fallbackText(x.title))}</p><small>${esc(x.target_date||x.target_window||'日程未定')} / ${esc(status(x.status))}</small></div>`).join('');
-const ganttRows=[
-  {name:'プロジェクト立上げ',period:'2026/07',start:1,end:1,state:'完了',cls:'done'},
-  {name:'要件定義・外部I/F確認',period:'2026/07〜09',start:1,end:3,state:'進行中',cls:'active'},
-  {name:'基本・詳細設計',period:'2026/08〜10',start:2,end:4,state:'計画',cls:'planned'},
-  {name:'開発・単体テスト',period:'2026/09〜12',start:3,end:6,state:'計画',cls:'planned'},
-  {name:'結合・総合テスト',period:'2026/12〜2027/01',start:6,end:7,state:'暫定',cls:'provisional'},
-  {name:'受入テスト・リリース',period:'2027/01〜03',start:7,end:9,state:'暫定',cls:'provisional'}
-];
-const months=['26/07','26/08','26/09','26/10','26/11','26/12','27/01','27/02','27/03'];
-$('project-gantt').innerHTML=`<div class="project-gantt-wrap"><div class="project-gantt"><div class="pg-head"><div>工程</div>${months.map(m=>`<div>${m}</div>`).join('')}</div>${ganttRows.map(r=>`<div class="pg-row"><div class="pg-label"><strong>${esc(r.name)}</strong><small>${esc(r.period)}</small></div><div class="pg-track" style="grid-column:2 / span 9"><span class="pg-bar ${r.cls}" style="grid-column:${r.start} / ${r.end+1}">${esc(r.state)}</span></div></div>`).join('')}</div><p class="gantt-note">※ 要件定義完了後に正式日程を確定。現在は会議で合意した調整軸と既存WBSを基に表示。</p></div>`;
-$('batch-summary').innerHTML=D.batch_summary.map(x=>`<div class="batch-card"><strong>${esc(x.batch_id)} ${esc(fallbackText(x.title))}</strong><p>${esc(x.automatic_updates)} / ${esc(x.status)}</p></div>`).join('');
-function artifacts(target){$(target).innerHTML=D.artifacts.map(a=>`<article class="artifact-card"><p>${esc(a.artifact_id)} / ${esc(a.version)}</p><h3>${esc(fallbackText(a.title))}</h3><p>${esc(status(a.status))}・影響 ${a.impact_count}件</p><button class="preview-button" data-preview="${esc(a.artifact_id)}">${esc(label('preview'))}</button></article>`).join('')}
-artifacts('management-artifacts');artifacts('shared-artifacts');
-function openPreview(id){const a=D.artifacts.find(x=>x.artifact_id===id);if(!a)return;$('preview-id').textContent=a.artifact_id;$('preview-title').textContent=fallbackText(a.title);const previewPath=(a.preview_paths||{})[lang]||a.preview_path;const previewUrl=new URL(previewPath,window.location.href).href;const translationNote=(lang==='zh-CN'&&a.translation_status==='legacy_ja_only')?`<div class="translation-banner">${esc(label('translation_pending'))}</div>`:'';$('preview-meta').innerHTML=translationNote+`状態: ${esc(status(a.status))} / Version: ${esc(a.version)} / 影響: ${a.impact_count}件 / <a href="${esc(previewUrl)}" target="_blank" rel="noopener">別画面で開く</a>`;$('preview-frame').src=previewUrl;$('preview-modal').hidden=false}
-document.body.onclick=e=>{const t=e.target.closest('[data-preview]');if(t)openPreview(t.dataset.preview)};document.querySelector('.modal-close').onclick=()=>{$('preview-modal').hidden=true;$('preview-frame').src=''};$('preview-modal').onclick=e=>{if(e.target===$('preview-modal'))document.querySelector('.modal-close').click()};
-function rerender(){applyStaticLabels();applyHeader();summaries('management-summary');renderInbox();summaries('shared-summary',true);renderOpen();$('shared-open-items').innerHTML=table(D.open_items.slice(0,7),[{h:'ID',c:'nowrap',f:x=>esc(x.item_id)},{h:lang==='zh-CN'?'主要事项':'主要事項',f:x=>`<span class="item-title">${esc(fallbackText(x.title))}</span><span class="subtext">${esc(fallbackText(x.remaining_point||''))}</span>`},{h:lang==='zh-CN'?'负责人':'担当',f:x=>esc(x.owner||'-')},{h:lang==='zh-CN'?'状态':'状態',c:'nowrap',f:x=>`<span class="status-chip ${esc(x.status)}">${esc(status(x.status))}</span>`}]);artifacts('management-artifacts');artifacts('shared-artifacts');}
-document.querySelectorAll('[data-language]').forEach(b=>b.onclick=()=>{lang=b.dataset.language;localStorage.setItem('pmo-language',lang);rerender();if(!$('preview-modal').hidden&&$('preview-id').textContent)openPreview($('preview-id').textContent)});
-document.querySelectorAll('.tab').forEach(t=>t.onclick=()=>{document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('active',x===t));document.querySelectorAll('.mode').forEach(x=>x.classList.toggle('active',x.id===t.dataset.mode))});
-</script></body></html>
+<script src="js/data.js"></script>
+<script>
+const D=window.PMO_DATA;
+const $=id=>document.getElementById(id);
+const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+let lang='ja', activeQueue='decision', activeQa='all';
+const text=(ja,zh)=>lang==='zh-CN'?zh:ja;
+const fallback=v=>typeof v==='object'&&v?(v[lang]||v.ja||v['zh-CN']||''):v;
+const queueLabels={decision:['要決定','要决定'],overdue:['期限超過','逾期'],change_candidate:['変更候補','变更候选'],customer_waiting:['顧客回答待ち','等待客户回复'],auto_processed:['自動処理済み','自动处理完成']};
+const qaLabels={all:['すべて','全部'],waiting_customer:['回答待ち','等待回复'],answer_received:['回答受領','已收到回复'],under_review:['確認中','确认中'],resolved:['解決済み','已解决'],overdue:['期限超過','逾期']};
+const actionLabels={accept:['Accept','接受'],edit:['Edit','编辑'],escalate:['Escalate','升级'],complete:['Complete','已完成'],extend:['Extend','延期'],follow_up:['Follow up','跟进'],edit_due_date:['Edit due date','修改期限'],accept_update:['Accept as Update','接受为更新'],create_revision:['Create Revision','创建修订'],create_change_request:['Create Change Request','创建变更申请'],dismiss:['Dismiss','忽略'],view_details:['View details','查看详情']};
+function setHeader(){ $('title').textContent=fallback(D.meta.title); $('subtitle').textContent=fallback(D.meta.subtitle); $('version').textContent=`${D.meta.version} · ${D.meta.updated_at||'-'}`; $('management-note').textContent=text('PM向け：対応が必要な例外を5つのキューで確認します。MVP 0.5.1は表示・絞り込みのみです。','面向PM：按5个队列查看需要关注的例外。MVP 0.5.1仅支持显示和筛选。'); $('shared-note').textContent=text('プロジェクトメンバー向け：進捗・QA・成果物を参照する読み取り専用ページです。','面向项目成员：只读查看进度、QA和成果物。'); $('management-artifact-title').textContent=text('成果物・Preview（レビュー統合）','成果物・Preview（已合并评审）'); $('shared-artifact-title').textContent=text('成果物・Preview','成果物・Preview'); $('progress-title').textContent=text('プロジェクト進捗','项目进度'); }
+function renderPmSummary(){const ac=D.views.pm_management.action_center; $('management-summary').innerHTML=ac.display_order.map(k=>`<button class="summary-card clickable ${activeQueue===k?'active':''}" data-queue="${k}"><span>${esc(text(...queueLabels[k]))}</span><strong>${ac.counts[k]||0}</strong></button>`).join(''); document.querySelectorAll('[data-queue]').forEach(b=>b.onclick=()=>{activeQueue=b.dataset.queue; location.hash=`action/${activeQueue}`; renderPmSummary(); renderActionQueue();});}
+function renderActionQueue(){const ac=D.views.pm_management.action_center;const items=ac.queues[activeQueue]||[];$('inbox-total').textContent=`${text(...queueLabels[activeQueue])} · ${items.length}${text('件','项')}`;if(!items.length){$('pm-action-list').innerHTML=`<div class="empty-state">${text('現在、該当項目はありません。','当前没有对应事项。')}</div>`;return;}$('pm-action-list').innerHTML=`<div class="action-list">${items.map(x=>`<article class="action-card"><div><div class="action-meta"><span>${esc(x.id||'-')}</span><span>${esc(x.source_type||'')}</span>${x.due_date?`<span>${esc(x.due_date)}</span>`:''}</div><h3>${esc(fallback(x.title))}</h3><p>${esc(x.owner||x.route||'')}</p></div><div class="action-buttons">${(x.available_actions||[]).map(a=>`<button disabled title="MVP 0.6 write-back">${esc(text(...(actionLabels[a]||[a,a])))}</button>`).join('')}</div></article>`).join('')}</div>`;}
+function qaCounts(){return D.views.project_shared.qa_counts||{};}
+function renderSharedSummary(){const s=D.summary;const cards=[[text('現在フェーズ','当前阶段'),s.current_phase],[text('プロジェクト状態','项目状态'),s.status],[text('QA回答進捗','QA回复进度'),`${s.qa_resolved||0} / ${s.qa_total||0}`],[text('要確認QA','待确认QA'),`${s.qa_waiting||0}${text('件','项')}`],[text('成果物進捗','成果物进度'),`${s.artifact_completed||0} / ${s.artifact_count||0}`]];$('shared-summary').innerHTML=cards.map((c,i)=>`<button class="summary-card clickable ${i<2?'informational':''}" data-shared-index="${i}"><span>${esc(c[0])}</span><strong>${esc(c[1])}</strong></button>`).join('');document.querySelectorAll('[data-shared-index="2"],[data-shared-index="3"]').forEach(b=>b.onclick=()=>{$('shared-qa').scrollIntoView({behavior:'smooth'});});document.querySelector('[data-shared-index="4"]').onclick=()=>{$('shared-artifacts').scrollIntoView({behavior:'smooth'});};}
+function renderQaFilters(){const counts=qaCounts();const order=['all','waiting_customer','answer_received','under_review','resolved','overdue'];$('qa-filters').innerHTML=order.map(k=>`<button class="filter-btn ${activeQa===k?'active':''}" data-qa-filter="${k}">${esc(text(...qaLabels[k]))} ${k==='all'?D.views.project_shared.qa_items.length:(counts[k]||0)}</button>`).join('');document.querySelectorAll('[data-qa-filter]').forEach(b=>b.onclick=()=>{activeQa=b.dataset.qaFilter;location.hash=`qa/${activeQa}`;renderQaFilters();renderQa();});}
+function renderQa(){let items=D.views.project_shared.qa_items||[];if(activeQa!=='all')items=items.filter(x=>x.shared_status===activeQa);$('qa-total').textContent=`${items.length}${text('件','项')}`;if(!items.length){$('shared-qa').innerHTML=`<div class="empty-state">${text('該当するQAはありません。','没有对应QA。')}</div>`;return;}$('shared-qa').innerHTML=`<div class="qa-list">${items.map(x=>`<article class="qa-card"><div class="qa-head"><strong>${esc(x.qa_id)}</strong><span class="status-chip ${esc(x.shared_status)}">${esc(text(...qaLabels[x.shared_status]))}</span></div><h3>${esc(fallback(x.question))}</h3>${x.answer?`<p class="qa-answer">${esc(fallback(x.answer))}</p>`:''}<div class="qa-meta"><span>${text('期限','期限')}: ${esc(x.due_date||'-')}</span><span>${text('担当','负责人')}: ${esc(x.asked_to||x.owner||'-')}</span><span>Evidence: ${esc(x.evidence_ref||'-')}</span></div></article>`).join('')}</div>`;}
+function renderGantt(){const rows=D.views.project_shared.gantt||[];$('project-gantt').innerHTML=`<div class="gantt-list">${rows.map(x=>`<div class="gantt-row"><div><strong>${esc(fallback(x.label_ja)||x.stage_id)}</strong><small>${esc(x.primary_artifact_id)}</small></div><div class="progress-track"><span style="width:${Number(x.progress_percentage||0)}%"></span></div><strong>${esc(x.progress_percentage??0)}%</strong></div>`).join('')}</div>`;}
+function artifactTree(target,view){const tree=D.views[view].artifact_tree;$(target).innerHTML=(tree.categories||[]).map(cat=>`<details class="artifact-category" open><summary>${esc(cat.category)}</summary><div class="artifact-children">${(cat.artifacts||[]).map(a=>`<article class="artifact-node"><div class="artifact-node-main"><div><strong>${esc(a.artifact_id)} · ${esc(fallback(a.title))}</strong><div class="artifact-meta"><span>v${esc(a.version||'-')}</span><span>${esc(a.status||'-')}</span><span>${text('進捗','进度')} ${esc(a.completion_percentage??0)}%</span><span>QA ${esc(a.open_qa_count||0)}</span><span>${text('レビュー','评审')} ${esc(a.review_status||'-')}</span><span>${text('コメント','评论')} ${esc(a.pending_review_comment_count||0)}</span></div></div><a class="preview-button" href="${esc((a.preview_paths||{})[lang]||a.preview_path)}" target="_blank" rel="noopener">Preview</a></div>${(a.sections||[]).length?`<details class="artifact-sections"><summary>${text('セクション','章节')} ${(a.sections||[]).length}</summary><ul>${a.sections.map(s=>`<li>${esc(s.section_id)} · ${esc(fallback(s.section_title))}</li>`).join('')}</ul></details>`:''}</article>`).join('')}</div></details>`).join('');}
+function render(){setHeader();renderPmSummary();renderActionQueue();renderSharedSummary();renderGantt();renderQaFilters();renderQa();artifactTree('management-artifacts','pm_management');artifactTree('shared-artifacts','project_shared');}
+document.querySelectorAll('.tab').forEach(b=>b.onclick=()=>{document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('active',x===b));document.querySelectorAll('.mode').forEach(x=>x.classList.toggle('active',x.id===b.dataset.mode));});document.querySelectorAll('.lang-btn').forEach(b=>b.onclick=()=>{lang=b.dataset.language;document.documentElement.lang=lang;document.querySelectorAll('.lang-btn').forEach(x=>x.classList.toggle('active',x===b));render();});
+const hash=location.hash.replace('#','');if(hash.startsWith('action/'))activeQueue=hash.split('/')[1]||'decision';if(hash.startsWith('qa/'))activeQa=hash.split('/')[1]||'all';render();
+</script>
+</body>
+</html>
