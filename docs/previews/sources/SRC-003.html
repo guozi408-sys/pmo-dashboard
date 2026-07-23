@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SRC-003 20260707 キックオフミーティング_第2回</title><style>
+:root { color-scheme: light; --ink:#1d2733; --muted:#687381; --line:#d9e0e8; --brand:#164f63; --panel:#fff; --bg:#f5f7fa; }
+* { box-sizing: border-box; }
+body { margin:0; padding:24px; color:var(--ink); background:var(--bg); font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans JP",Arial,sans-serif; line-height:1.65; }
+main { max-width:1040px; margin:0 auto; padding:24px 28px; background:var(--panel); border:1px solid var(--line); border-radius:8px; }
+h1,h2,h3 { color:var(--brand); line-height:1.3; }
+h1 { margin-top:0; font-size:26px; } h2 { margin-top:30px; padding-bottom:6px; border-bottom:1px solid var(--line); font-size:20px; } h3 { margin-top:22px; font-size:16px; }
+p { margin:9px 0; } ul,ol { padding-left:24px; }
+table { width:100%; margin:14px 0; border-collapse:collapse; table-layout:fixed; font-size:13px; }
+th,td { padding:8px 9px; border:1px solid var(--line); vertical-align:top; overflow-wrap:anywhere; }
+th { color:var(--brand); background:#edf4f8; text-align:left; }
+pre { overflow:auto; padding:14px; border-radius:6px; background:#111827; color:#e5edf5; white-space:pre-wrap; overflow-wrap:anywhere; font:12px/1.55 Consolas,"Courier New",monospace; }
+code { font-family:Consolas,"Courier New",monospace; }
+.meta { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:8px; margin:12px 0 20px; }
+.meta div { padding:8px 10px; border:1px solid var(--line); border-radius:6px; background:#f8fafc; }
+.meta span { display:block; color:var(--muted); font-size:11px; } .meta strong { display:block; overflow-wrap:anywhere; font-size:13px; }
+.frontmatter { margin:12px 0 22px; border:1px solid var(--line); border-radius:6px; background:#f8fafc; }
+.frontmatter summary { padding:10px 12px; color:var(--brand); cursor:pointer; font-weight:700; }
+.frontmatter pre { margin:0; border-radius:0 0 6px 6px; }
+.section { margin-top:20px; }
+.tag { display:inline-block; margin:2px 4px 2px 0; padding:2px 8px; border-radius:999px; background:#eef3f7; font-size:12px; font-weight:700; }
+.notice { padding:12px 14px; border-left:4px solid #b98200; background:#fff8e5; }
+blockquote { margin:14px 0; padding:10px 14px; border-left:4px solid #82aebd; background:#f3f8fa; color:#42515e; }
+hr { margin:24px 0; border:0; border-top:1px solid var(--line); }
+@media (max-width:720px) { body { padding:10px; } main { padding:18px; } .meta { grid-template-columns:1fr 1fr; } }
+</style></head><body><main><h1>20260707 キックオフミーティング_第2回</h1><div class="meta"><div><span>Source ID</span><strong>SRC-003</strong></div><div><span>資料種別</span><strong>pdf_document</strong></div><div><span>分類</span><strong>00_管理</strong></div><div><span>信頼度</span><strong>medium</strong></div><div><span>原文確認</span><strong>True</strong></div><div><span>資料場所</span><strong>00_管理/20260707 キックオフミーティング_第2回.pdf</strong></div></div><section class="section"><h2>概要</h2><p>本資料は、2026年7月7日に実施された第2回キックオフミーティングの議事メモである。NDA契約、API連携インターフェース仕様書、全体スケジュール、体制・役割、リリース目標、連携仕様の提供時期など、前回課題と協議事項の進捗が整理されている。</p></section><section class="section"><h2>主要事項</h2><ul><li>NDA契約は京成電鉄側で進行中だが、提出前提であれば資料共有は可能との認識。</li><li>API連携I/F仕様書は日立製作所が現行版を来週目処、正式版を7月末目標で提供する想定。</li><li>12月結合は厳しく、リリース目標を1月～2月、最遅3月中旬で再調整する流れ。</li><li>京成・NSS・日立の3者調整がスケジュールの重要要素になっている。</li></ul></section><section class="section"><h2>判断候補</h2><ul><li>NDA締結完了前でも提出前提で資料共有可能とする方向。<br><small>candidate / PAGE-001</small></li><li>API仕様書は現行版を先行提供し、正式版は7月末目標で調整する方向。<br><small>candidate / PAGE-001</small></li></ul></section><section class="section"><h2>確認事項候補</h2><ul><li>NDA契約の締結完了時期。<br><small>京成電鉄 / NSS / PAGE-001</small></li><li>API連携I/F仕様書の現行版・正式版の提供日。<br><small>日立製作所 / PAGE-001</small></li><li>リリース目標を1月～2月または最遅3月中旬のどこに設定するか。<br><small>京成電鉄 / NSS / 日立製作所 / PAGE-001</small></li></ul></section><section class="section"><h2>リスク候補</h2><ul><li>API仕様提供の遅延によりNSS側設計と見積が遅れる可能性。<br><small>high / PAGE-001</small></li><li>京成側起点が1～1.5か月後ろ倒しとなり、リリース目標がずれる可能性。<br><small>high / PAGE-001</small></li></ul></section><section class="section"><h2>アクション候補</h2><ul><li>API連携I/F仕様書の現行版を受領する。<br><small>candidate / 日立製作所 / PAGE-001</small></li><li>全体スケジュールを再調整し、現実的なリリース目標を合意する。<br><small>candidate / 京成電鉄 / NSS / 日立製作所 / PAGE-001</small></li></ul></section><section class="section"><h2>関連成果物</h2><ul><li>MGT-001</li><li>WBS-001</li><li>REQ-001</li><li>API-001</li><li>RISK-001</li><li>ISSUE-001</li></ul></section><section class="section"><h2>成果物への影響</h2><ul><li>update: MGT-001, WBS-001, REQ-001, API-001, RISK-001, ISSUE-001 / review_required: MGT-001, WBS-001, REQ-001, API-001, RISK-001, ISSUE-001</li></ul></section></main></body></html>

@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="artifact-id" content="TST-001"><meta name="artifact-version" content="v0.2">
+<meta name="source-hash" content="84fee7d7942350d2af46544a51dca3e134ad6e3e0563ec6f0e3fdc8e1115798b"><meta name="source-path" content="artifacts/50_test/TST-001.md">
+<title>TST-001 テスト計画・仕様書</title><style>
+:root { color-scheme:light; --ink:#111; --muted:#555; --line:#d5d5d5; --panel:#fff; --bg:#f5f5f5; }
+* { box-sizing:border-box } html { scroll-behavior:smooth } body { margin:0;padding:24px;color:var(--ink);background:var(--bg);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans JP",Arial,sans-serif;line-height:1.65 }
+.artifact-shell { max-width:1440px;margin:auto;display:grid;grid-template-columns:minmax(220px,280px) minmax(0,1120px);gap:20px;align-items:start }
+main { min-width:0;padding:28px 32px;background:var(--panel);border:1px solid var(--line) } h1,h2,h3 { color:#111 } h1[id],h2[id],h3[id],h4[id] { scroll-margin-top:24px }
+.meta { display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:0 0 24px } .meta div { border:1px solid var(--line);padding:8px } .meta span { display:block;color:var(--muted);font-size:12px }
+table { width:100%;border-collapse:collapse;font-size:13px } th,td { border:1px solid var(--line);padding:8px;vertical-align:top;overflow-wrap:anywhere } th { background:#f0f0f0;text-align:left } pre { overflow:auto;padding:14px;background:#171717;color:#eee } code { font-family:Consolas,monospace } blockquote { border-left:4px solid #888;margin-left:0;padding-left:14px;color:#444 }
+.toc-sidebar { position:sticky;top:16px;max-height:calc(100vh - 32px);overflow-y:auto;padding:18px;background:var(--panel);border:1px solid var(--line) }
+.toc-sidebar h2 { margin:0 0 10px;font-size:14px;color:var(--muted);font-weight:600 } .toc-sidebar ul,.toc-mobile ul { list-style:none;margin:0;padding:0 } .toc-sidebar li,.toc-mobile li { margin:0 }
+.toc-sidebar a,.toc-mobile a { display:block;padding:5px 8px;color:var(--ink);text-decoration:none;border-left:3px solid transparent;font-size:13px;line-height:1.35 }
+.toc-sidebar a:hover,.toc-sidebar a.is-active,.toc-mobile a:hover,.toc-mobile a.is-active { background:#f0f0f0;border-left-color:#111 }
+.toc-level-3 a { padding-left:18px } .toc-level-4 a { padding-left:28px } .toc-mobile { display:none;margin:0 0 16px;padding:12px 14px;background:#fff;border:1px solid var(--line) } .toc-mobile summary { cursor:pointer;font-weight:600 }
+@media(max-width:900px) { body{padding:8px} .artifact-shell{display:block;max-width:1120px} .toc-sidebar{display:none} .toc-mobile{display:block} main{padding:16px} .meta{grid-template-columns:1fr} h1[id],h2[id],h3[id],h4[id]{scroll-margin-top:12px} }
+</style></head><body><div class="artifact-shell"><nav class="toc-sidebar" aria-label="目录 / 目次"><h2>目录 / 目次</h2><ul><li class="toc-level-2"><a href="#表紙">表紙</a></li><li class="toc-level-2"><a href="#文書情報">文書情報</a></li><li class="toc-level-3"><a href="#本文書の目的">本文書の目的</a></li><li class="toc-level-2"><a href="#改訂履歴">改訂履歴</a></li><li class="toc-level-2"><a href="#レビュー・承認履歴">レビュー・承認履歴</a></li><li class="toc-level-2"><a href="#1.-目的・品質目標">1. 目的・品質目標</a></li><li class="toc-level-3"><a href="#テストの目的">テストの目的</a></li><li class="toc-level-2"><a href="#2.-テスト基本方針">2. テスト基本方針</a></li><li class="toc-level-2"><a href="#3.-対象・対象外">3. 対象・対象外</a></li><li class="toc-level-3"><a href="#対象範囲">対象範囲</a></li><li class="toc-level-3"><a href="#対象外範囲">対象外範囲</a></li><li class="toc-level-2"><a href="#4.-テストレベル">4. テストレベル</a></li><li class="toc-level-2"><a href="#5.-テスト観点">5. テスト観点</a></li><li class="toc-level-3"><a href="#テスト対象一覧">テスト対象一覧</a></li><li class="toc-level-3"><a href="#機能テスト観点">機能テスト観点</a></li><li class="toc-level-3"><a href="#外部連携テスト観点">外部連携テスト観点</a></li><li class="toc-level-3"><a href="#非機能テスト観点">非機能テスト観点</a></li><li class="toc-level-2"><a href="#6.-テスト環境・データ">6. テスト環境・データ</a></li><li class="toc-level-2"><a href="#7.-体制・役割">7. 体制・役割</a></li><li class="toc-level-2"><a href="#8.-スケジュール">8. スケジュール</a></li><li class="toc-level-2"><a href="#9.-開始・終了条件">9. 開始・終了条件</a></li><li class="toc-level-2"><a href="#10.-テストケース">10. テストケース</a></li><li class="toc-level-2"><a href="#11.-障害管理">11. 障害管理</a></li><li class="toc-level-2"><a href="#12.-回帰テスト">12. 回帰テスト</a></li><li class="toc-level-2"><a href="#13.-受入テスト">13. 受入テスト</a></li><li class="toc-level-3"><a href="#uat目的">UAT目的</a></li><li class="toc-level-3"><a href="#受入観点候補">受入観点候補</a></li><li class="toc-level-2"><a href="#14.-品質評価">14. 品質評価</a></li><li class="toc-level-2"><a href="#15.-結果報告">15. 結果報告</a></li><li class="toc-level-2"><a href="#未決事項">未決事項</a></li><li class="toc-level-3"><a href="#リスク・課題">リスク・課題</a></li><li class="toc-level-3"><a href="#顧客確認事項">顧客確認事項</a></li><li class="toc-level-3"><a href="#外部ベンダー確認事項">外部ベンダー確認事項</a></li><li class="toc-level-3"><a href="#nss内部確認事項">NSS内部確認事項</a></li><li class="toc-level-2"><a href="#関連資料">関連資料</a></li><li class="toc-level-2"><a href="#付録">付録</a></li></ul></nav><main><details class="toc-mobile"><summary>目录 / 目次</summary><ul><li class="toc-level-2"><a href="#表紙">表紙</a></li><li class="toc-level-2"><a href="#文書情報">文書情報</a></li><li class="toc-level-3"><a href="#本文書の目的">本文書の目的</a></li><li class="toc-level-2"><a href="#改訂履歴">改訂履歴</a></li><li class="toc-level-2"><a href="#レビュー・承認履歴">レビュー・承認履歴</a></li><li class="toc-level-2"><a href="#1.-目的・品質目標">1. 目的・品質目標</a></li><li class="toc-level-3"><a href="#テストの目的">テストの目的</a></li><li class="toc-level-2"><a href="#2.-テスト基本方針">2. テスト基本方針</a></li><li class="toc-level-2"><a href="#3.-対象・対象外">3. 対象・対象外</a></li><li class="toc-level-3"><a href="#対象範囲">対象範囲</a></li><li class="toc-level-3"><a href="#対象外範囲">対象外範囲</a></li><li class="toc-level-2"><a href="#4.-テストレベル">4. テストレベル</a></li><li class="toc-level-2"><a href="#5.-テスト観点">5. テスト観点</a></li><li class="toc-level-3"><a href="#テスト対象一覧">テスト対象一覧</a></li><li class="toc-level-3"><a href="#機能テスト観点">機能テスト観点</a></li><li class="toc-level-3"><a href="#外部連携テスト観点">外部連携テスト観点</a></li><li class="toc-level-3"><a href="#非機能テスト観点">非機能テスト観点</a></li><li class="toc-level-2"><a href="#6.-テスト環境・データ">6. テスト環境・データ</a></li><li class="toc-level-2"><a href="#7.-体制・役割">7. 体制・役割</a></li><li class="toc-level-2"><a href="#8.-スケジュール">8. スケジュール</a></li><li class="toc-level-2"><a href="#9.-開始・終了条件">9. 開始・終了条件</a></li><li class="toc-level-2"><a href="#10.-テストケース">10. テストケース</a></li><li class="toc-level-2"><a href="#11.-障害管理">11. 障害管理</a></li><li class="toc-level-2"><a href="#12.-回帰テスト">12. 回帰テスト</a></li><li class="toc-level-2"><a href="#13.-受入テスト">13. 受入テスト</a></li><li class="toc-level-3"><a href="#uat目的">UAT目的</a></li><li class="toc-level-3"><a href="#受入観点候補">受入観点候補</a></li><li class="toc-level-2"><a href="#14.-品質評価">14. 品質評価</a></li><li class="toc-level-2"><a href="#15.-結果報告">15. 結果報告</a></li><li class="toc-level-2"><a href="#未決事項">未決事項</a></li><li class="toc-level-3"><a href="#リスク・課題">リスク・課題</a></li><li class="toc-level-3"><a href="#顧客確認事項">顧客確認事項</a></li><li class="toc-level-3"><a href="#外部ベンダー確認事項">外部ベンダー確認事項</a></li><li class="toc-level-3"><a href="#nss内部確認事項">NSS内部確認事項</a></li><li class="toc-level-2"><a href="#関連資料">関連資料</a></li><li class="toc-level-2"><a href="#付録">付録</a></li></ul></details>
+<h1>テスト計画・仕様書</h1><div class="meta">
+<div><span>成果物ID</span><strong>TST-001</strong></div><div><span>状態</span><strong>review_required</strong></div><div><span>版</span><strong>v0.2</strong></div>
+<div><span>担当</span><strong>QA Lead</strong></div><div><span>レビュー担当</span><strong>Client</strong></div><div><span>Source SHA-256</span><strong>84fee7d7942350d2…</strong></div>
+</div><h1 id="tst-001-テスト計画・仕様書">TST-001 テスト計画・仕様書</h1>
+<h2 id="表紙">表紙</h2>
+<ul>
+<li>ドキュメント名: テスト計画・仕様書</li>
+<li>対象プロジェクト: KEISEI WeChat Mini Program Project</li>
+<li>成果物ID: TST-001</li>
+<li>バージョン: v0.2</li>
+<li>組織: NSS / KEISEI PMO</li>
+</ul>
+<h2 id="文書情報">文書情報</h2>
+<h3 id="本文書の目的">本文書の目的</h3>
+<p>本書は、KEISEI WeChatミニプログラムの品質確認に必要なテスト種別、対象、環境、体制、候補日程および受入確認事項を整理し、顧客・関連ベンダー・NSS間のテスト計画レビューに用いるものである。</p>
+<ul>
+<li>対象プロジェクト: KEISEI WeChat Mini Program Project</li>
+<li>前提資料: MGT-001、REQ-001、ARC-001、API-001、WBS-001、SCR-001および登録済みsource summary</li>
+<li>文書ステータス: <code>review_required</code></li>
+<li>SRC-011: 他案件の様式参考であり、KEISEIのテスト条件を示す事実資料として使用しない。</li>
+</ul>
+<h2 id="改訂履歴">改訂履歴</h2>
+<table><thead><tr><th>Version</th><th>Date</th><th>内容</th><th>Status</th></tr></thead><tbody>
+<tr><td>v0.1</td><td>2026-07-13</td><td>初版作成。テスト種別、対象、UAT、環境、体制、リスクおよび確認事項を整理</td><td>review_required</td></tr>
+<tr><td>v0.2</td><td>2026-07-22</td><td>JPAFC-001契約に基づく日中二言語構造化モデルへの遷移候補を作成</td><td>review_required</td></tr>
+</tbody></table>
+<h2 id="レビュー・承認履歴">レビュー・承認履歴</h2>
+<table><thead><tr><th>役割</th><th>氏名/組織</th><th>日付</th><th>ステータス</th></tr></thead><tbody>
+<tr><td>作成者 (QA Lead)</td><td>NSS QA Lead</td><td>2026-07-13</td><td>完了</td></tr>
+<tr><td>レビュー担当 (PMO)</td><td>NSS PMO</td><td>2026-07-13</td><td>完了</td></tr>
+<tr><td>承認者 (Client)</td><td>京成電鉄</td><td>pending</td><td>review_required</td></tr>
+</tbody></table>
+<h2 id="1.-目的・品質目標">1. 目的・品質目標</h2>
+<h3 id="テストの目的">テストの目的</h3>
+<ul>
+<li>利用者向け購入・決済・チケット表示等の業務が期待どおり成立することを確認する。</li>
+<li>ミニプログラム、中間サーバ、管理機能および外部システム間の状態整合を確認する。</li>
+<li>異常、タイムアウト、再試行、重複操作、有人対応を含む運用可能性を確認する。</li>
+<li>顧客UATとリリース判定に必要な証跡を準備する。</li>
+</ul>
+<h2 id="2.-テスト基本方針">2. テスト基本方針</h2>
+<p>Ph.1の基本機能を確実に検証しつつ、外部接続およびUATへの段階的移行を実施する。</p>
+<h2 id="3.-対象・対象外">3. 対象・対象外</h2>
+<h3 id="対象範囲">対象範囲</h3>
+<p>Ph.1の購入・決済・チケット表示、候補となる顔認証連携、管理機能、関連API、外部接続およびUATを中心に計画する。Ph.1.1の顔写真撮影・アップロード、Ph.2の座席指定・乗車QRは、正式scope確定後に対象範囲を更新する。</p>
+<h3 id="対象外範囲">対象外範囲</h3>
+<p>外部ベンダー内部の単体テスト、既存システム全体の回帰試験、正式scope外の周辺サービスは現時点では対象外候補とする。ただし接続品質を保証するために必要な証跡・結果共有は確認事項とする。</p>
+<h2 id="4.-テストレベル">4. テストレベル</h2>
+<table><thead><tr><th>テスト種別</th><th>主目的</th><th>主担当候補</th><th>状態</th></tr></thead><tbody>
+<tr><td>単体テスト</td><td>各モジュール・画面・API処理の基本品質確認</td><td>NSS Dev</td><td>planning</td></tr>
+<tr><td>内部結合テスト</td><td>ミニプログラム、中間サーバ、管理機能の連携確認</td><td>NSS Dev / QA</td><td>planning</td></tr>
+<tr><td>外部システム接続テスト</td><td>乗車券、顔認証、座席、決済等との接続確認</td><td>NSS / 外部ベンダー</td><td>pending_confirmation</td></tr>
+<tr><td>画面テスト</td><td>表示、入力、遷移、言語、エラー、端末差異の確認</td><td>NSS QA / UIUX</td><td>planning</td></tr>
+<tr><td>APIテスト</td><td>正常・異常・認証・状態・再試行・冪等性の確認</td><td>NSS QA / Vendor</td><td>review_required</td></tr>
+<tr><td>決済テスト</td><td>成功・失敗・取消・返金・照合の確認</td><td>NSS / WeChat Pay関係者</td><td>pending_confirmation</td></tr>
+<tr><td>顔認証連携テスト</td><td>登録、結果、再登録、エラー、個人情報取扱いの確認</td><td>NSS / 顔認証側</td><td>pending_confirmation</td></tr>
+<tr><td>座席指定関連テスト</td><td>空席、確保、確定、競合、変更の確認</td><td>NSS / 座席管理側</td><td>candidate</td></tr>
+<tr><td>UAT</td><td>顧客業務シナリオと受入条件の確認</td><td>京成電鉄 / NSS支援</td><td>review_required</td></tr>
+<tr><td>リリース前確認</td><td>審査、環境、設定、データ、監視、手順の確認</td><td>PM / QA / DevOps / Client</td><td>planning</td></tr>
+</tbody></table>
+<h2 id="5.-テスト観点">5. テスト観点</h2>
+<h3 id="テスト対象一覧">テスト対象一覧</h3>
+<table><thead><tr><th>No</th><th>テスト対象</th><th>対象フェーズ</th><th>関連成果物</th><th>テスト観点</th><th>状態</th><th>確認事項</th><th>source_refs</th></tr></thead><tbody>
+<tr><td>1</td><td>チケット購入</td><td>Ph.1</td><td>REQ-001, SCR-001</td><td>商品選択、入力、確認、購入完了、重複操作</td><td>planning</td><td>販売条件、取消・返金</td><td>SRC-001, SRC-002</td></tr>
+<tr><td>2</td><td>WeChat Pay決済</td><td>Ph.1</td><td>API-001, SCR-001</td><td>成功、失敗、timeout、再試行、状態照合</td><td>review_required</td><td>sandbox、返金、通知仕様</td><td>SRC-001, SRC-002, SRC-007</td></tr>
+<tr><td>3</td><td>チケット詳細 / QR表示</td><td>Ph.1</td><td>REQ-001, SCR-001</td><td>表示内容、期限、再表示、無効状態</td><td>review_required</td><td>QR用途、検札方式</td><td>SRC-001, SRC-008</td></tr>
+<tr><td>4</td><td>購入履歴</td><td>Ph.1</td><td>REQ-001, SCR-001</td><td>表示期間、状態、明細、再表示</td><td>candidate</td><td>保持期間、表示項目</td><td>SRC-001, SRC-008</td></tr>
+<tr><td>5</td><td>顔認証登録</td><td>Ph.1 / Ph.1.1候補</td><td>REQ-001, API-001, SCR-001</td><td>同意、撮影、登録、結果、再登録、削除</td><td>pending_confirmation</td><td>API、データ、責任分界</td><td>SRC-001, SRC-002, SRC-008</td></tr>
+<tr><td>6</td><td>座席指定</td><td>Ph.2候補</td><td>REQ-001, API-001, SCR-001</td><td>空席、確保、確定、競合、変更</td><td>candidate</td><td>I/F、改修範囲、実施時期</td><td>SRC-001, SRC-002, SRC-008</td></tr>
+<tr><td>7</td><td>乗車QR</td><td>Ph.2候補</td><td>REQ-001, API-001, SCR-001</td><td>発行、表示、読取、再発行、無効化</td><td>pending_confirmation</td><td>対象駅、改札、印刷連携</td><td>SRC-001, SRC-002</td></tr>
+<tr><td>8</td><td>管理画面</td><td>共通</td><td>REQ-001, SCR-001</td><td>認証、検索、状態、権限、監査ログ</td><td>pending_confirmation</td><td>利用者、機能、ブラウザ</td><td>SRC-002, SRC-007</td></tr>
+<tr><td>9</td><td>中間サーバ / API Hub</td><td>Ph.1</td><td>ARC-001, API-001</td><td>認証、変換、状態、冪等性、監視</td><td>review_required</td><td>正式I/F、環境、SLO</td><td>SRC-001, SRC-002, SRC-007</td></tr>
+<tr><td>10</td><td>日中間通信</td><td>共通</td><td>ARC-001</td><td>遅延、timeout、再試行、可用性</td><td>candidate</td><td>性能目標、測定条件</td><td>SRC-007</td></tr>
+<tr><td>11</td><td>UAT業務シナリオ</td><td>Ph.1</td><td>MGT-001, REQ-001, WBS-001</td><td>購入から利用・例外・有人対応まで</td><td>review_required</td><td>受入条件、責任者、期間</td><td>SRC-001, SRC-002, SRC-003</td></tr>
+</tbody></table>
+<h3 id="機能テスト観点">機能テスト観点</h3>
+<ul>
+<li><strong>チケット購入</strong>: 入力必須、販売条件、金額、重複購入、途中離脱、完了後状態。</li>
+<li><strong>決済</strong>: 成功、失敗、取消、返金候補、timeout、非同期通知、状態不整合。</li>
+<li><strong>QR表示 / QR乗車券</strong>: 表示対象、期限、再表示、無効化、スクリーンショット等の取扱い。</li>
+<li><strong>顔認証登録</strong>: 同意、撮影品質、アップロード、登録結果、再登録、削除、エラー。</li>
+<li><strong>座席指定</strong>: 空席照会、確保、確定、競合、変更、取消。Ph.2 scope確定後に詳細化する。</li>
+<li><strong>購入履歴</strong>: 表示期間、並び順、取引・チケット状態、詳細遷移。</li>
+<li><strong>管理画面</strong>: 認証、検索、参照、権限、マスキング、ログ。正式scopeは未確定。</li>
+<li><strong>エラー表示</strong>: 利用者向け文言、再試行可否、問い合わせ導線、運用側コード。</li>
+</ul>
+<h3 id="外部連携テスト観点">外部連携テスト観点</h3>
+<table><thead><tr><th>対向</th><th>主な確認</th><th>前提・依存</th></tr></thead><tbody>
+<tr><td>乗車券管理</td><td>購入、注文、票券、状態、取消・返金候補</td><td>正式I/F、試験環境、データ</td></tr>
+<tr><td>座席管理</td><td>空席、確保、確定、競合、変更</td><td>Ph.2 scope、改修計画</td></tr>
+<tr><td>顔認証</td><td>登録URL、登録、結果、再登録、エラー</td><td>顔情報条件、責任分界</td></tr>
+<tr><td>WeChat Pay</td><td>決済開始、結果、通知、照合、返金候補</td><td>sandbox、加盟店、仕様</td></tr>
+<tr><td>WeChat / Tencent</td><td>Mini Program仕様、権限、審査、通信制約</td><td>審査要件、対象バージョン</td></tr>
+</tbody></table>
+<p>API状態同期では、正常だけでなく重複、順序逆転、遅延、timeout、部分成功、再送、復旧後照合を対象候補とする。具体的な期待値はAPI-001の回答後に確定する。</p>
+<h3 id="非機能テスト観点">非機能テスト観点</h3>
+<ul>
+<li>対応OS、WeChatバージョン、管理画面ブラウザの互換性</li>
+<li>認証、認可、暗号化、秘密情報、脆弱性、権限分離</li>
+<li>個人情報・顔情報の最小化、マスキング、保存、削除、監査</li>
+<li>中国・日本間通信の遅延、timeout、再試行、ピーク時性能</li>
+<li>API・画面の応答時間、同時利用、処理量の目標候補</li>
+<li>障害時の可用性、復旧、データ整合、代替運用</li>
+<li>操作ログ、監査ログ、相関ID、保持期間、閲覧権限</li>
+<li>監視、アラート、問い合わせ、障害切り分け、保守引継ぎ</li>
+</ul>
+<p>数値目標、負荷条件、試験時間、合否基準は未確定であり、REQ-001とARC-001の非機能要件確定後に更新する。</p>
+<h2 id="6.-テスト環境・データ">6. テスト環境・データ</h2>
+<table><thead><tr><th>項目</th><th>計画候補</th><th>状態</th></tr></thead><tbody>
+<tr><td>開発環境</td><td>NSS内部の開発・単体確認環境</td><td>planning</td></tr>
+<tr><td>検証環境</td><td>ミニプログラム、中間サーバ、管理機能の結合環境</td><td>review_required</td></tr>
+<tr><td>外部接続環境</td><td>乗車券、顔認証、決済、座席等の試験環境</td><td>pending_confirmation</td></tr>
+<tr><td>本番相当確認</td><td>本番設定・ネットワーク・権限・監視の確認</td><td>candidate</td></tr>
+<tr><td>テストデータ</td><td>乗車券、便、座席、取引、ユーザー、異常データ</td><td>pending_confirmation</td></tr>
+<tr><td>顔情報テストデータ</td><td>同意済みの専用データまたは安全な代替データ</td><td>pending_confirmation</td></tr>
+</tbody></table>
+<p>環境URL、アカウント、証明書、接続元制限、データ準備者、初期化、保持・削除、利用終了後の処理を外部接続開始前に確定する。</p>
+<h2 id="7.-体制・役割">7. 体制・役割</h2>
+<ul>
+<li>京成電鉄側: 業務シナリオ、受入判断、既存ベンダー調整、UAT主管の候補。</li>
+<li>NSS側: 自社範囲の単体・結合、QA、証跡、障害対応、UAT支援の候補。</li>
+<li>外部ベンダー: I/F、環境、データ、自社改修、接続支援、障害切り分けの候補。</li>
+</ul>
+<h2 id="8.-スケジュール">8. スケジュール</h2>
+<table><thead><tr><th>工程</th><th>時期候補</th><th>主担当候補</th><th>状態</th></tr></thead><tbody>
+<tr><td>テスト計画レビュー</td><td>要件・API確認と並行</td><td>QA Lead / PM / Client</td><td>review_required</td></tr>
+<tr><td>単体・内部結合</td><td>開発期間中</td><td>NSS Dev / QA</td><td>planning</td></tr>
+<tr><td>外部接続・結合</td><td>2027年1月候補</td><td>NSS / 外部ベンダー</td><td>pending_confirmation</td></tr>
+<tr><td>UAT</td><td>2027年1月下旬～2月候補</td><td>京成電鉄 / NSS支援</td><td>review_required</td></tr>
+<tr><td>リリリース前確認</td><td>Ph.1リリース前</td><td>PM / QA / DevOps / Client</td><td>planning</td></tr>
+</tbody></table>
+<p>正式日程、責任者、工数、環境利用期間はWBS-001およびREL-001で連動管理する。</p>
+<h2 id="9.-開始・終了条件">9. 開始・終了条件</h2>
+<p>本章の内容は関係者確認中です。確定後に更新します。(GAP-TST-001-001)</p>
+<h2 id="10.-テストケース">10. テストケース</h2>
+<p>本章の内容は関係者確認中です。確定後に更新します。(GAP-TST-001-002)</p>
+<h2 id="11.-障害管理">11. 障害管理</h2>
+<p>本章の内容は関係者確認中です。確定後に更新します。(GAP-TST-001-003)</p>
+<h2 id="12.-回帰テスト">12. 回帰テスト</h2>
+<p>本章の内容は関係者確認中です。確定後に更新します。(GAP-TST-001-004)</p>
+<h2 id="13.-受入テスト">13. 受入テスト</h2>
+<h3 id="uat目的">UAT目的</h3>
+<p>京成電鉄側の業務シナリオに基づき、利用者の購入からチケット利用、例外・有人対応までが業務上受入可能であることを確認する。</p>
+<h3 id="受入観点候補">受入観点候補</h3>
+<ul>
+<li>Ph.1の対象業務と対象外範囲が合意されていること</li>
+<li>主要な正常・異常シナリオが実施され、証跡が残ること</li>
+<li>高優先度障害の扱いと残存障害基準が合意されること</li>
+<li>外部システム状態と画面・管理情報が整合すること</li>
+<li>個人情報・顔情報・運用・問い合わせの確認が完了すること</li>
+</ul>
+<p>UAT候補時期は2027年1月下旬から2月とする資料があるが、正式日程ではない。不合格時の修正、再試験、延期、scope除外の判断者と手順は確認事項とする。</p>
+<h2 id="14.-品質評価">14. 品質評価</h2>
+<p>本章の内容は関係者確認中です。確定後に更新します。(GAP-TST-001-005)</p>
+<h2 id="15.-結果報告">15. 結果報告</h2>
+<p>本章の内容は関係者確認中です。確定後に更新します。(GAP-TST-001-006)</p>
+<h2 id="未決事項">未決事項</h2>
+<h3 id="リスク・課題">リスク・課題</h3>
+<table><thead><tr><th>リスク / 課題</th><th>影響</th><th>対応方針</th><th>関連ID</th></tr></thead><tbody>
+<tr><td>API仕様・試験環境未確定</td><td>ケース設計・接続開始の遅延</td><td>現行版受領、QA、環境準備を先行</td><td>RISK-005, RISK-008, ISSUE-003, ISSUE-009</td></tr>
+<tr><td>外部ベンダー調整</td><td>結合・UAT期間の圧縮</td><td>窓口、回答期限、接続計画を明確化</td><td>RISK-003, RISK-006, ISSUE-005, ISSUE-007</td></tr>
+<tr><td>顔情報・個人情報</td><td>データ準備・試験方式の見直し</td><td>安全なデータ、同意、保存・削除を定義</td><td>RISK-007, RISK-013, ISSUE-006, ISSUE-017</td></tr>
+<tr><td>WeChat・日中間通信制約</td><td>審査、性能、可用性への影響</td><td>審査・通信条件を早期に検証</td><td>RISK-004, RISK-014</td></tr>
+<tr><td>非機能・受入基準未定義</td><td>合否判断不能、手戻り</td><td>数値目標、優先度、残存障害基準を合意</td><td>RISK-015, ISSUE-018, ISSUE-023</td></tr>
+<tr><td>フェーズ範囲未確定</td><td>ケース数・日程・費用の変動</td><td>Ph.1 / 1.1 / 2の対象を確定</td><td>RISK-018, ISSUE-019, ISSUE-020</td></tr>
+</tbody></table>
+<h3 id="顧客確認事項">顧客確認事項</h3>
+<ul>
+<li>Ph.1、Ph.1.1、Ph.2のテスト・UAT対象範囲</li>
+<li>UAT責任者、シナリオ、期間、受入条件、残存障害、判定者</li>
+<li>取消・返金・有人対応・障害時代替運用の確認範囲</li>
+<li>個人情報・顔情報のテストデータ方針と承認</li>
+</ul>
+<h3 id="外部ベンダー確認事項">外部ベンダー確認事項</h3>
+<ul>
+<li>正式I/F、接続環境、アカウント、証明書、試験データ、利用期間</li>
+<li>正常・異常・timeout・再試行・状態同期の期待結果</li>
+<li>接続支援、障害窓口、修正、再試験、証跡提供の責任分界</li>
+</ul>
+<h3 id="nss内部確認事項">NSS内部確認事項</h3>
+<ul>
+<li>QA Lead、機能・API・画面・非機能・セキュリティ担当</li>
+<li>ケース管理、障害管理、証跡、再試験、完了報告の方法</li>
+<li>自動化対象、テストデータ生成、環境初期化、ログ確認方法</li>
+</ul>
+<h2 id="関連資料">関連資料</h2>
+<ul>
+<li>出典参照: SRC-001, SRC-002, SRC-003, SRC-005, SRC-006, SRC-007, SRC-008, SRC-009</li>
+<li>参考参照: SRC-011</li>
+<li>関連成果物: MGT-001, REQ-001, ARC-001, API-001, WBS-001, SCR-001, REL-001</li>
+</ul>
+<h2 id="付録">付録</h2>
+<p>本書の改訂および差分データは、Artifact Revision Runner v0.2に従い管理される。</p></main></div><script>
+(() => {
+  const links = [...document.querySelectorAll('.toc-sidebar a, .toc-mobile a')];
+  const headings = links.map(link => document.getElementById(decodeURIComponent(link.hash.slice(1)))).filter(Boolean);
+  if (!links.length || !headings.length || !('IntersectionObserver' in window)) return;
+  const byId = new Map(links.map(link => [link.hash.slice(1), link]));
+  const activate = id => {
+    links.forEach(link => link.classList.toggle('is-active', link.hash === '#' + id));
+  };
+  const observer = new IntersectionObserver(entries => {
+    const visible = entries.filter(entry => entry.isIntersecting).sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
+    if (visible[0]) activate(visible[0].target.id);
+  }, { rootMargin: '-12% 0px -70% 0px', threshold: [0, 1] });
+  headings.forEach(heading => observer.observe(heading));
+  if (location.hash && byId.has(location.hash.slice(1))) activate(location.hash.slice(1));
+})();
+</script></body></html>

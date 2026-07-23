@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="artifact-id" content="REQ-001"><meta name="artifact-version" content="v0.2">
+<meta name="source-hash" content="44712481ef27e466225130d405cd0019d4aabd7cd0e650ab102d13311f7a489b"><meta name="source-path" content="artifacts/10_requirements/REQ-001.md">
+<title>REQ-001 要件定義書</title><style>
+:root { color-scheme:light; --ink:#111; --muted:#555; --line:#d5d5d5; --panel:#fff; --bg:#f5f5f5; }
+* { box-sizing:border-box } html { scroll-behavior:smooth } body { margin:0;padding:24px;color:var(--ink);background:var(--bg);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans JP",Arial,sans-serif;line-height:1.65 }
+.artifact-shell { max-width:1440px;margin:auto;display:grid;grid-template-columns:minmax(220px,280px) minmax(0,1120px);gap:20px;align-items:start }
+main { min-width:0;padding:28px 32px;background:var(--panel);border:1px solid var(--line) } h1,h2,h3 { color:#111 } h1[id],h2[id],h3[id],h4[id] { scroll-margin-top:24px }
+.meta { display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:0 0 24px } .meta div { border:1px solid var(--line);padding:8px } .meta span { display:block;color:var(--muted);font-size:12px }
+table { width:100%;border-collapse:collapse;font-size:13px } th,td { border:1px solid var(--line);padding:8px;vertical-align:top;overflow-wrap:anywhere } th { background:#f0f0f0;text-align:left } pre { overflow:auto;padding:14px;background:#171717;color:#eee } code { font-family:Consolas,monospace } blockquote { border-left:4px solid #888;margin-left:0;padding-left:14px;color:#444 }
+.toc-sidebar { position:sticky;top:16px;max-height:calc(100vh - 32px);overflow-y:auto;padding:18px;background:var(--panel);border:1px solid var(--line) }
+.toc-sidebar h2 { margin:0 0 10px;font-size:14px;color:var(--muted);font-weight:600 } .toc-sidebar ul,.toc-mobile ul { list-style:none;margin:0;padding:0 } .toc-sidebar li,.toc-mobile li { margin:0 }
+.toc-sidebar a,.toc-mobile a { display:block;padding:5px 8px;color:var(--ink);text-decoration:none;border-left:3px solid transparent;font-size:13px;line-height:1.35 }
+.toc-sidebar a:hover,.toc-sidebar a.is-active,.toc-mobile a:hover,.toc-mobile a.is-active { background:#f0f0f0;border-left-color:#111 }
+.toc-level-3 a { padding-left:18px } .toc-level-4 a { padding-left:28px } .toc-mobile { display:none;margin:0 0 16px;padding:12px 14px;background:#fff;border:1px solid var(--line) } .toc-mobile summary { cursor:pointer;font-weight:600 }
+@media(max-width:900px) { body{padding:8px} .artifact-shell{display:block;max-width:1120px} .toc-sidebar{display:none} .toc-mobile{display:block} main{padding:16px} .meta{grid-template-columns:1fr} h1[id],h2[id],h3[id],h4[id]{scroll-margin-top:12px} }
+</style></head><body><div class="artifact-shell"><nav class="toc-sidebar" aria-label="目录 / 目次"><h2>目录 / 目次</h2><ul><li class="toc-level-2"><a href="#1.-表紙">1. 表紙</a></li><li class="toc-level-2"><a href="#2.-文書情報">2. 文書情報</a></li><li class="toc-level-2"><a href="#3.-改訂履歴">3. 改訂履歴</a></li><li class="toc-level-2"><a href="#4.-レビュー・承認履歴">4. レビュー・承認履歴</a></li><li class="toc-level-2"><a href="#5.-目次">5. 目次</a></li><li class="toc-level-2"><a href="#6.-本文">6. 本文</a></li><li class="toc-level-3"><a href="#6.1-文書概要">6.1 文書概要</a></li><li class="toc-level-3"><a href="#6.2-プロジェクト背景">6.2 プロジェクト背景</a></li><li class="toc-level-4"><a href="#背景・課題">背景・課題</a></li><li class="toc-level-4"><a href="#目的">目的</a></li><li class="toc-level-4"><a href="#対象ユーザー">対象ユーザー</a></li><li class="toc-level-3"><a href="#6.3-対象スコープ">6.3 対象スコープ</a></li><li class="toc-level-4"><a href="#対象範囲">対象範囲</a></li><li class="toc-level-4"><a href="#対象外範囲">対象外範囲</a></li><li class="toc-level-4"><a href="#pending-scope">Pending scope</a></li><li class="toc-level-4"><a href="#ph.1-ph.1.1-ph.2">Ph.1 / Ph.1.1 / Ph.2</a></li><li class="toc-level-3"><a href="#6.4-業務要件">6.4 業務要件</a></li><li class="toc-level-4"><a href="#顧客・ベンダー確認事項">顧客・ベンダー確認事項</a></li><li class="toc-level-3"><a href="#6.5-機能要件">6.5 機能要件</a></li><li class="toc-level-4"><a href="#wechatミニプログラム機能">WeChatミニプログラム機能</a></li><li class="toc-level-4"><a href="#中間サーバ機能">中間サーバ機能</a></li><li class="toc-level-4"><a href="#管理画面機能">管理画面機能</a></li><li class="toc-level-4"><a href="#外部システム連携・審査対応">外部システム連携・審査対応</a></li><li class="toc-level-3"><a href="#6.6-外部システム連携要件">6.6 外部システム連携要件</a></li><li class="toc-level-4"><a href="#api仕様確認事項">API仕様確認事項</a></li><li class="toc-level-4"><a href="#責任分界">責任分界</a></li><li class="toc-level-3"><a href="#6.7-非機能要件">6.7 非機能要件</a></li><li class="toc-level-3"><a href="#6.8-成果物・関連文書">6.8 成果物・関連文書</a></li><li class="toc-level-3"><a href="#6.9-リスク・課題">6.9 リスク・課題</a></li><li class="toc-level-4"><a href="#主要リスク">主要リスク</a></li><li class="toc-level-4"><a href="#対応方針">対応方針</a></li><li class="toc-level-3"><a href="#6.10-確認事項">6.10 確認事項</a></li><li class="toc-level-4"><a href="#顧客確認事項">顧客確認事項</a></li><li class="toc-level-4"><a href="#他ベンダー確認事項">他ベンダー確認事項</a></li><li class="toc-level-4"><a href="#nss内部確認事項">NSS内部確認事項</a></li><li class="toc-level-2"><a href="#7.-未決事項">7. 未決事項</a></li><li class="toc-level-2"><a href="#8.-関連資料">8. 関連資料</a></li><li class="toc-level-2"><a href="#9.-付録">9. 付録</a></li><li class="toc-level-3"><a href="#9.1-移行注記">9.1 移行注記</a></li></ul></nav><main><details class="toc-mobile"><summary>目录 / 目次</summary><ul><li class="toc-level-2"><a href="#1.-表紙">1. 表紙</a></li><li class="toc-level-2"><a href="#2.-文書情報">2. 文書情報</a></li><li class="toc-level-2"><a href="#3.-改訂履歴">3. 改訂履歴</a></li><li class="toc-level-2"><a href="#4.-レビュー・承認履歴">4. レビュー・承認履歴</a></li><li class="toc-level-2"><a href="#5.-目次">5. 目次</a></li><li class="toc-level-2"><a href="#6.-本文">6. 本文</a></li><li class="toc-level-3"><a href="#6.1-文書概要">6.1 文書概要</a></li><li class="toc-level-3"><a href="#6.2-プロジェクト背景">6.2 プロジェクト背景</a></li><li class="toc-level-4"><a href="#背景・課題">背景・課題</a></li><li class="toc-level-4"><a href="#目的">目的</a></li><li class="toc-level-4"><a href="#対象ユーザー">対象ユーザー</a></li><li class="toc-level-3"><a href="#6.3-対象スコープ">6.3 対象スコープ</a></li><li class="toc-level-4"><a href="#対象範囲">対象範囲</a></li><li class="toc-level-4"><a href="#対象外範囲">対象外範囲</a></li><li class="toc-level-4"><a href="#pending-scope">Pending scope</a></li><li class="toc-level-4"><a href="#ph.1-ph.1.1-ph.2">Ph.1 / Ph.1.1 / Ph.2</a></li><li class="toc-level-3"><a href="#6.4-業務要件">6.4 業務要件</a></li><li class="toc-level-4"><a href="#顧客・ベンダー確認事項">顧客・ベンダー確認事項</a></li><li class="toc-level-3"><a href="#6.5-機能要件">6.5 機能要件</a></li><li class="toc-level-4"><a href="#wechatミニプログラム機能">WeChatミニプログラム機能</a></li><li class="toc-level-4"><a href="#中間サーバ機能">中間サーバ機能</a></li><li class="toc-level-4"><a href="#管理画面機能">管理画面機能</a></li><li class="toc-level-4"><a href="#外部システム連携・審査対応">外部システム連携・審査対応</a></li><li class="toc-level-3"><a href="#6.6-外部システム連携要件">6.6 外部システム連携要件</a></li><li class="toc-level-4"><a href="#api仕様確認事項">API仕様確認事項</a></li><li class="toc-level-4"><a href="#責任分界">責任分界</a></li><li class="toc-level-3"><a href="#6.7-非機能要件">6.7 非機能要件</a></li><li class="toc-level-3"><a href="#6.8-成果物・関連文書">6.8 成果物・関連文書</a></li><li class="toc-level-3"><a href="#6.9-リスク・課題">6.9 リスク・課題</a></li><li class="toc-level-4"><a href="#主要リスク">主要リスク</a></li><li class="toc-level-4"><a href="#対応方針">対応方針</a></li><li class="toc-level-3"><a href="#6.10-確認事項">6.10 確認事項</a></li><li class="toc-level-4"><a href="#顧客確認事項">顧客確認事項</a></li><li class="toc-level-4"><a href="#他ベンダー確認事項">他ベンダー確認事項</a></li><li class="toc-level-4"><a href="#nss内部確認事項">NSS内部確認事項</a></li><li class="toc-level-2"><a href="#7.-未決事項">7. 未決事項</a></li><li class="toc-level-2"><a href="#8.-関連資料">8. 関連資料</a></li><li class="toc-level-2"><a href="#9.-付録">9. 付録</a></li><li class="toc-level-3"><a href="#9.1-移行注記">9.1 移行注記</a></li></ul></details>
+<h1>要件定義書</h1><div class="meta">
+<div><span>成果物ID</span><strong>REQ-001</strong></div><div><span>状態</span><strong>review_required</strong></div><div><span>版</span><strong>v0.2</strong></div>
+<div><span>担当</span><strong>PM</strong></div><div><span>レビュー担当</span><strong>Client</strong></div><div><span>Source SHA-256</span><strong>44712481ef27e466…</strong></div>
+</div><h1 id="req-001-要件定義書">REQ-001 要件定義書</h1>
+<h2 id="1.-表紙">1. 表紙</h2>
+<table><thead><tr><th>項目</th><th>内容</th></tr></thead><tbody>
+<tr><td>文書名</td><td>要件定義書</td></tr>
+<tr><td>成果物ID</td><td>REQ-001</td></tr>
+<tr><td>対象プロジェクト</td><td>KEISEI</td></tr>
+<tr><td>バージョン</td><td>v0.2</td></tr>
+<tr><td>成果物ステータス</td><td>review_required</td></tr>
+<tr><td>作成者</td><td>PM</td></tr>
+<tr><td>レビュー担当</td><td>Client</td></tr>
+</tbody></table>
+<h2 id="2.-文書情報">2. 文書情報</h2>
+<table><thead><tr><th>項目</th><th>内容</th></tr></thead><tbody>
+<tr><td>本文書の目的</td><td>京成電鉄向け WeChat ミニプログラムについて、業務要件、機能要件、外部システム連携、非機能要件および確認事項を整理し、関係者レビューと後続設計の入力とする。</td></tr>
+<tr><td>対象プロジェクト</td><td>訪日中国人利用者が WeChat 上で Skyliner 関連乗車券を購入・決済し、顔認証または将来の乗車用 QR により乗車できるサービスを対象とする。中間サーバ、管理機能および既存システム連携を含む。</td></tr>
+<tr><td>ステータス</td><td>review_required。要件、責任分界、API 仕様、リリース日、UAT 条件には未確定事項があり、approved 文書ではない。</td></tr>
+</tbody></table>
+<h2 id="3.-改訂履歴">3. 改訂履歴</h2>
+<table><thead><tr><th>Version</th><th>Date</th><th>内容</th><th>状態</th></tr></thead><tbody>
+<tr><td>v0.1</td><td>2026-07-10</td><td>source summary、MGT-001、METHOD-004 に基づく初版作成</td><td>review_required</td></tr>
+<tr><td>v0.2</td><td>2026-07-22</td><td>JPAFC-001 形式への移行候補。業務事実は v0.1 と content.yaml の範囲に限定</td><td>review_required</td></tr>
+</tbody></table>
+<h2 id="4.-レビュー・承認履歴">4. レビュー・承認履歴</h2>
+<table><thead><tr><th>レビュー日</th><th>レビュアー</th><th>役割</th><th>レビュー結果</th><th>承認ステータス</th></tr></thead><tbody>
+<tr><td>-</td><td>Client / PM</td><td>承認権限者</td><td>確認中</td><td>pending_confirmation</td></tr>
+</tbody></table>
+<h2 id="5.-目次">5. 目次</h2>
+<ul>
+<li>1. 表紙</li>
+<li>2. 文書情報</li>
+<li>3. 改訂履歴</li>
+<li>4. レビュー・承認履歴</li>
+<li>5. 目次</li>
+<li>6. 本文</li>
+<li>7. 未決事項</li>
+<li>8. 関連資料</li>
+<li>9. 付録</li>
+</ul>
+<h2 id="6.-本文">6. 本文</h2>
+<h3 id="6.1-文書概要">6.1 文書概要</h3>
+<p>本文書は、京成電鉄向け WeChat ミニプログラムについて、業務要件、機能要件、外部システム連携、非機能要件および確認事項を整理し、関係者レビューと後続設計の入力とする。</p>
+<p>対象は、訪日中国人利用者が WeChat 上で Skyliner 関連乗車券を購入・決済し、顔認証または将来の乗車用 QR により乗車できるサービスである。中間サーバ、管理機能および既存システム連携を含む。</p>
+<p>本文書は <code>review_required</code> である。要件、責任分界、API 仕様、リリース日、UAT 条件には未確定事項があり、<code>approved</code> 文書ではない。</p>
+<h3 id="6.2-プロジェクト背景">6.2 プロジェクト背景</h3>
+<h4 id="背景・課題">背景・課題</h4>
+<ul>
+<li>訪日中国人旅行者に対し、追加アプリのインストールを必要としない購入・乗車体験が求められている。</li>
+<li>既存の乗車券管理、顔認証、改札、座席管理等を活用しつつ、WeChat ミニプログラムと中間サーバを新設する想定である。</li>
+<li>外部 I/F の仕様・提供日、データ取扱い、ベンダー責任分界が未確定であり、設計・見積・日程に影響している。</li>
+</ul>
+<h4 id="目的">目的</h4>
+<ul>
+<li>WeChat 内で乗車券の検索、購入、決済、利用状態確認を完結できる導線を整備する。</li>
+<li>顔認証および後続の乗車用 QR に対応可能な業務・システム基盤を段階的に構築する。</li>
+<li>京成電鉄の公式デジタル接点として、運用に必要な注文・状態・異常情報を管理できるようにする。</li>
+</ul>
+<h4 id="対象ユーザー">対象ユーザー</h4>
+<ul>
+<li>簡体字中国語を主に利用する訪日中国人旅行者</li>
+<li>京成電鉄の駅係員、業務管理者、問い合わせ対応担当者</li>
+<li>NSS および外部システムベンダーの運用・保守担当者</li>
+</ul>
+<h3 id="6.3-対象スコープ">6.3 対象スコープ</h3>
+<h4 id="対象範囲">対象範囲</h4>
+<ul>
+<li>WeChat ミニプログラムによる Skyliner 関連乗車券の選択、購入、WeChat Pay 決済</li>
+<li>購入後の顔登録 URL 連携、顔認証結果・注文状態の表示候補</li>
+<li>簡体字中国語 UI、主要画面・画面遷移、利用者向けエラー・案内表示</li>
+<li>中間サーバ、管理機能、開発・検証・本番環境</li>
+<li>乗車券管理、顔認証、検札・印刷等の外部 I/F 整理と結合試験支援</li>
+</ul>
+<h4 id="対象外範囲">対象外範囲</h4>
+<ul>
+<li>QR 改札機による正式な入出場、乗車用 QR の本番発行</li>
+<li>座席指定、座席・列車変更等の座席関連例外処理</li>
+<li>既存システムの大規模改修</li>
+<li>高度な顧客分析、広告、マーケティング自動化</li>
+<li>正式な運用保守契約および簡体字中国語以外の多言語展開</li>
+</ul>
+<h4 id="pending-scope">Pending scope</h4>
+<ul>
+<li>顔認証未完了・失敗・システム故障時の有人対応と通常フローとの境界</li>
+<li>取消・返金の自動処理、状態反映、手数料および駅係員操作</li>
+<li>管理画面の利用者、必要機能、表示データ、マーケティング利用範囲</li>
+<li>乗車用 QR、QR 改札、座席指定の対象フェーズ</li>
+<li>非機能、セキュリティ、監視、運用保守、SLA/SLO</li>
+</ul>
+<h4 id="ph.1-ph.1.1-ph.2">Ph.1 / Ph.1.1 / Ph.2</h4>
+<table><thead><tr><th>フェーズ</th><th>範囲候補</th><th>状態</th></tr></thead><tbody>
+<tr><td>Ph.1</td><td>購入・決済、顔登録、顔認証入場を中心とする主経路</td><td>review_required</td></tr>
+<tr><td>Ph.1.1</td><td>初期提案における顔写真撮影・アップロード追加段階。Ph.1 への統合可否を確認</td><td>candidate</td></tr>
+<tr><td>Ph.2</td><td>乗車用 QR、QR 改札対応、座席指定の一部または全部</td><td>candidate</td></tr>
+</tbody></table>
+<h3 id="6.4-業務要件">6.4 業務要件</h3>
+<table><thead><tr><th>領域</th><th>要件候補</th><th>状態</th></tr></thead><tbody>
+<tr><td>チケット購入</td><td>利用者が対象票券、日付、枚数等を選択し、注文内容を確認できること</td><td>candidate</td></tr>
+<tr><td>決済</td><td>WeChat Pay により支払いを行い、成功・失敗・取消状態を利用者と管理側で識別できること</td><td>candidate</td></tr>
+<tr><td>QR表示 / QR乗車券</td><td>初期段階では購入・状態表示用 QR の扱いを整理し、乗車用 QR は後続範囲として確認すること</td><td>review_required</td></tr>
+<tr><td>顔認証登録</td><td>購入後に顔登録導線へ遷移し、認証成功、失敗、再試行、有人対応を案内できること</td><td>review_required</td></tr>
+<tr><td>座席指定</td><td>Ph.1 の必須要件とせず、既存システム改修・連携方式・日程を確認すること</td><td>candidate</td></tr>
+<tr><td>管理機能</td><td>注文、決済、認証、異常、人工対応に必要な最小情報を検索・参照できること</td><td>review_required</td></tr>
+</tbody></table>
+<h4 id="顧客・ベンダー確認事項">顧客・ベンダー確認事項</h4>
+<ul>
+<li>購入可能票種、販売条件、利用日、人数、価格・手数料</li>
+<li>顔認証を通常経路とする条件および利用者同意・案内文</li>
+<li>取消・返金・交換・有人対応の業務ルールと実装主体</li>
+<li>駅係員が参照・操作する情報と監査記録</li>
+<li>乗車券管理側が提供可能な状態照会・更新 I/F</li>
+</ul>
+<h3 id="6.5-機能要件">6.5 機能要件</h3>
+<h4 id="wechatミニプログラム機能">WeChatミニプログラム機能</h4>
+<ul>
+<li>乗車券情報・購入入口、商品選択、注文確認、決済開始</li>
+<li>WeChat Pay 結果および注文状態の表示</li>
+<li>顔登録 URL への接続、認証状態・エラー・再試行案内</li>
+<li>利用可能なチケット・注文詳細・利用案内の表示</li>
+<li>WeChat 審査に必要な利用規約、プライバシー説明、同意導線</li>
+</ul>
+<h4 id="中間サーバ機能">中間サーバ機能</h4>
+<ul>
+<li>ミニプログラム向け API と外部 I/F の中継</li>
+<li>注文、決済、票券、認証状態の整合管理候補</li>
+<li>API 認証、エラー処理、タイムアウト、再試行、関連 ID 付きログ</li>
+<li>環境別設定および外部接続先の管理</li>
+</ul>
+<h4 id="管理画面機能">管理画面機能</h4>
+<ul>
+<li>注文・決済・票券・顔認証・異常状態の検索と参照</li>
+<li>問い合わせ・人工対応に必要な履歴の確認</li>
+<li>運用監視に必要な最小ステータスおよびエラー情報の表示</li>
+<li>利用者、権限、操作履歴、データ出力の要否は確認事項とする。</li>
+</ul>
+<h4 id="外部システム連携・審査対応">外部システム連携・審査対応</h4>
+<ul>
+<li>乗車券管理、顔認証、WeChat Pay、検札・印刷等との連携</li>
+<li>WeChat ミニプログラムおよび WeChat Pay の審査資料、カテゴリ、外部遷移条件への対応</li>
+<li>顔写真・外部 URL・決済機能に対する審査制約を設計前に確認する。</li>
+</ul>
+<h3 id="6.6-外部システム連携要件">6.6 外部システム連携要件</h3>
+<table><thead><tr><th>対向システム</th><th>連携候補</th><th>主な確認事項</th></tr></thead><tbody>
+<tr><td>乗車券管理</td><td>商品・販売可否、注文作成、購入情報、票券状態、取消・返金</td><td>日立側 I/F が購入情報連携のみに限定されるか</td></tr>
+<tr><td>座席管理</td><td>空席、座席指定・変更</td><td>Ph.1 対象外候補、提供 I/F と改修規模</td></tr>
+<tr><td>顔認証</td><td>登録 URL、認証結果、エラーコード、再試行、障害判定</td><td>URL 生成主体、有効期限、通知方式、顔情報取扱い</td></tr>
+<tr><td>決済</td><td>WeChat Pay 支払・返金・照合</td><td>決済主体、返金 API、金額不整合、審査条件</td></tr>
+<tr><td>検札・印刷</td><td>入場結果、紙媒体、人工確認</td><td>対象駅、印字内容、注文との関連付け</td></tr>
+</tbody></table>
+<h4 id="api仕様確認事項">API仕様確認事項</h4>
+<ul>
+<li>API 一覧、方向、同期・非同期方式、認証、頻度制限、タイムアウト</li>
+<li>リクエスト・レスポンス、状態コード、業務エラー、重複・再送制御</li>
+<li>開発・試験・本番環境、ネットワーク、証明書、接続元制限</li>
+<li>ログ、トレース ID、監視、障害連絡、メンテナンス通知</li>
+</ul>
+<h4 id="責任分界">責任分界</h4>
+<ul>
+<li>NSS はミニプログラムおよび中間サーバ側の実装・試験を担当する候補。</li>
+<li>京成電鉄および既存ベンダーは対向システム改修、仕様提供、接続準備、UAT を主管する候補。</li>
+<li>API の最終責任、障害一次切り分け、データ補正、返金・人工処理は API-001 と ARC-001 で確定する。</li>
+</ul>
+<h3 id="6.7-非機能要件">6.7 非機能要件</h3>
+<table><thead><tr><th>領域</th><th>現時点の要件・確認観点</th><th>状態</th></tr></thead><tbody>
+<tr><td>対応OS / ブラウザ</td><td>WeChat がサポートする主要 iOS / Android。管理画面ブラウザと版は未確定</td><td>review_required</td></tr>
+<tr><td>クラウド / 環境</td><td>AWS 東京リージョン候補。開発・検証・本番の構成と責任分界を確認</td><td>candidate</td></tr>
+<tr><td>セキュリティ</td><td>API 認証、権限、暗号化、秘密情報、脆弱性対応、監査ログを定義</td><td>review_required</td></tr>
+<tr><td>個人情報 / 顔情報</td><td>取得目的、同意、保存場所、保存期間、削除、アクセス権を確認</td><td>review_required</td></tr>
+<tr><td>中国・日本間データ連携</td><td>越境移転、WeChat 規約、通信経路、法務・運用制約を確認</td><td>review_required</td></tr>
+<tr><td>性能 / 可用性</td><td>ピーク利用、API 応答、タイムアウト、冗長化、バックアップ、RTO/RPO、SLO/SLA を定義</td><td>review_required</td></tr>
+<tr><td>運用保守</td><td>監視、障害連絡、問い合わせ、メンテナンス、データ補正、リリース後支援を確認</td><td>review_required</td></tr>
+</tbody></table>
+<p>具体的な数値目標は source で未確定のため、本版では設定しない。</p>
+<h3 id="6.8-成果物・関連文書">6.8 成果物・関連文書</h3>
+<table><thead><tr><th>Artifact</th><th>本書との関係</th><th>状態</th></tr></thead><tbody>
+<tr><td>MGT-001</td><td>目的、体制、フェーズ、推進基準</td><td>review_required</td></tr>
+<tr><td>SCR-001</td><td>利用者・管理画面と画面遷移の詳細化</td><td>draft</td></tr>
+<tr><td>ARC-001</td><td>境界、データフロー、環境、責任分界</td><td>draft</td></tr>
+<tr><td>API-001</td><td>外部 I/F と QA の管理</td><td>draft</td></tr>
+<tr><td>WBS-001</td><td>要件確定、設計、試験、リリース日程</td><td>draft</td></tr>
+<tr><td>TST-001</td><td>結合試験、UAT、非機能・受入条件</td><td>planned</td></tr>
+</tbody></table>
+<h3 id="6.9-リスク・課題">6.9 リスク・課題</h3>
+<h4 id="主要リスク">主要リスク</h4>
+<ul>
+<li>API 仕様・データ定義の不足または提供遅延により、要件・設計・見積・試験日程が変動する。</li>
+<li>顔情報、個人情報、越境データ、WeChat 規約により連携方式が制限される。</li>
+<li>中国-日本間通信、外部 API 応答、ピーク利用により利用体験や駅運用へ影響する。</li>
+<li>性能、セキュリティ、運用要件が未定義のまま後工程へ進む可能性がある。</li>
+<li>Ph.1 / Ph.1.1 / Ph.2 の範囲、概算見積、リリース目標が未確定である。</li>
+</ul>
+<h4 id="対応方針">対応方針</h4>
+<ul>
+<li>現行 I/F 仕様を先行受領し、QA と影響分析を段階的に実施する。</li>
+<li>scope、API、architecture、WBS を連動して更新し、変更履歴を残す。</li>
+<li>個人情報・顔情報は最小化、同意、保存・削除、権限、越境条件をレビューする。</li>
+<li>未確定項目は open / candidate / review_required のまま管理し、確認記録なしに解消済みとしない。</li>
+</ul>
+<h3 id="6.10-確認事項">6.10 確認事項</h3>
+<h4 id="顧客確認事項">顧客確認事項</h4>
+<ul>
+<li>Ph.1 主業務フロー、顔認証の必須条件、例外・有人対応</li>
+<li>Ph.1 / Ph.1.1 / Ph.2、QR、座席指定の正式範囲</li>
+<li>票種、価格、販売条件、取消・返金、手数料、状態遷移</li>
+<li>管理画面、データ利用、個人情報・顔情報、運用保守の範囲</li>
+<li>UAT 担当、受入条件、残存障害基準、リリース判定</li>
+</ul>
+<h4 id="他ベンダー確認事項">他ベンダー確認事項</h4>
+<ul>
+<li>日立製作所 I/F 仕様書の現行版・正式版とシステム概要図</li>
+<li>購入情報以外の状態照会、取消・返金、人工対応状態反映の可否</li>
+<li>顔登録 URL、認証結果、エラーコード、障害判定、紙媒体連携</li>
+<li>接続環境、認証、ネットワーク、監視、障害連絡、試験データ</li>
+</ul>
+<h4 id="nss内部確認事項">NSS内部確認事項</h4>
+<ul>
+<li>ミニプログラム・中間サーバ・管理画面の機能分割と見積前提</li>
+<li>API 不足時の代替運用、状態整合、補正・リカバリ方式</li>
+<li>非機能要件、テスト観点、審査計画、環境・運用設計</li>
+<li>METHOD-004 の詳細業務ルールを正式要件へ採用する条件</li>
+</ul>
+<h2 id="7.-未決事項">7. 未決事項</h2>
+<table><thead><tr><th>GAP ID</th><th>内容</th><th>状態</th></tr></thead><tbody>
+<tr><td>GAP-REQ-001</td><td>Ph.1 / Ph.1.1 / Ph.2、QR、座席指定の正式範囲</td><td>pending_confirmation</td></tr>
+<tr><td>GAP-REQ-002</td><td>票種、価格、販売条件、取消・返金、手数料、状態遷移</td><td>pending_confirmation</td></tr>
+<tr><td>GAP-REQ-003</td><td>顔認証通常経路、例外、有人対応</td><td>pending_confirmation</td></tr>
+<tr><td>GAP-REQ-004</td><td>管理画面、データ利用、個人情報・顔情報、運用保守の範囲</td><td>pending_confirmation</td></tr>
+<tr><td>GAP-REQ-005</td><td>UAT 担当、受入条件、残存障害基準、リリース判定</td><td>pending_confirmation</td></tr>
+</tbody></table>
+<h2 id="8.-関連資料">8. 関連資料</h2>
+<table><thead><tr><th>区分</th><th>参照</th></tr></thead><tbody>
+<tr><td>source_refs</td><td>SRC-001, SRC-002, SRC-003, SRC-004, SRC-005, SRC-007, SRC-008, SRC-009</td></tr>
+<tr><td>reference_refs</td><td>SRC-011</td></tr>
+<tr><td>related_artifacts</td><td>MGT-001, SCR-001, ARC-001, API-001, WBS-001, TST-001</td></tr>
+<tr><td>related_risks</td><td>RISK-001, RISK-002, RISK-005, RISK-007, RISK-013, RISK-014, RISK-015, RISK-018</td></tr>
+<tr><td>related_issues</td><td>ISSUE-001, ISSUE-003, ISSUE-004, ISSUE-005, ISSUE-006, ISSUE-009, ISSUE-016, ISSUE-017, ISSUE-018, ISSUE-019, ISSUE-020, ISSUE-021, ISSUE-022, ISSUE-023</td></tr>
+</tbody></table>
+<h2 id="9.-付録">9. 付録</h2>
+<h3 id="9.1-移行注記">9.1 移行注記</h3>
+<ul>
+<li>本候補は <code>artifacts/source-content/REQ-001.content.yaml</code> の既存内容に基づく形式移行候補である。</li>
+<li>GAP-REQ-* は移行上の未決事項識別子であり、正式な Issue、Risk、Open Item または Decision ではない。</li>
+<li><code>candidate</code>、<code>review_required</code>、<code>pending_confirmation</code> は未確認またはレビュー対象の状態を示す。</li>
+</ul></main></div><script>
+(() => {
+  const links = [...document.querySelectorAll('.toc-sidebar a, .toc-mobile a')];
+  const headings = links.map(link => document.getElementById(decodeURIComponent(link.hash.slice(1)))).filter(Boolean);
+  if (!links.length || !headings.length || !('IntersectionObserver' in window)) return;
+  const byId = new Map(links.map(link => [link.hash.slice(1), link]));
+  const activate = id => {
+    links.forEach(link => link.classList.toggle('is-active', link.hash === '#' + id));
+  };
+  const observer = new IntersectionObserver(entries => {
+    const visible = entries.filter(entry => entry.isIntersecting).sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
+    if (visible[0]) activate(visible[0].target.id);
+  }, { rootMargin: '-12% 0px -70% 0px', threshold: [0, 1] });
+  headings.forEach(heading => observer.observe(heading));
+  if (location.hash && byId.has(location.hash.slice(1))) activate(location.hash.slice(1));
+})();
+</script></body></html>

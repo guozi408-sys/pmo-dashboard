@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="artifact-id" content="REL-001"><meta name="artifact-version" content="v0.2">
+<meta name="source-hash" content="573e00cb5f312183874a4d67e191b7bbb47552e82bcb2abb8434a413064c94a2"><meta name="source-path" content="artifacts/60_release/REL-001.md">
+<title>REL-001 リリース計画</title><style>
+:root { color-scheme:light; --ink:#111; --muted:#555; --line:#d5d5d5; --panel:#fff; --bg:#f5f5f5; }
+* { box-sizing:border-box } html { scroll-behavior:smooth } body { margin:0;padding:24px;color:var(--ink);background:var(--bg);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans JP",Arial,sans-serif;line-height:1.65 }
+.artifact-shell { max-width:1440px;margin:auto;display:grid;grid-template-columns:minmax(220px,280px) minmax(0,1120px);gap:20px;align-items:start }
+main { min-width:0;padding:28px 32px;background:var(--panel);border:1px solid var(--line) } h1,h2,h3 { color:#111 } h1[id],h2[id],h3[id],h4[id] { scroll-margin-top:24px }
+.meta { display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:0 0 24px } .meta div { border:1px solid var(--line);padding:8px } .meta span { display:block;color:var(--muted);font-size:12px }
+table { width:100%;border-collapse:collapse;font-size:13px } th,td { border:1px solid var(--line);padding:8px;vertical-align:top;overflow-wrap:anywhere } th { background:#f0f0f0;text-align:left } pre { overflow:auto;padding:14px;background:#171717;color:#eee } code { font-family:Consolas,monospace } blockquote { border-left:4px solid #888;margin-left:0;padding-left:14px;color:#444 }
+.toc-sidebar { position:sticky;top:16px;max-height:calc(100vh - 32px);overflow-y:auto;padding:18px;background:var(--panel);border:1px solid var(--line) }
+.toc-sidebar h2 { margin:0 0 10px;font-size:14px;color:var(--muted);font-weight:600 } .toc-sidebar ul,.toc-mobile ul { list-style:none;margin:0;padding:0 } .toc-sidebar li,.toc-mobile li { margin:0 }
+.toc-sidebar a,.toc-mobile a { display:block;padding:5px 8px;color:var(--ink);text-decoration:none;border-left:3px solid transparent;font-size:13px;line-height:1.35 }
+.toc-sidebar a:hover,.toc-sidebar a.is-active,.toc-mobile a:hover,.toc-mobile a.is-active { background:#f0f0f0;border-left-color:#111 }
+.toc-level-3 a { padding-left:18px } .toc-level-4 a { padding-left:28px } .toc-mobile { display:none;margin:0 0 16px;padding:12px 14px;background:#fff;border:1px solid var(--line) } .toc-mobile summary { cursor:pointer;font-weight:600 }
+@media(max-width:900px) { body{padding:8px} .artifact-shell{display:block;max-width:1120px} .toc-sidebar{display:none} .toc-mobile{display:block} main{padding:16px} .meta{grid-template-columns:1fr} h1[id],h2[id],h3[id],h4[id]{scroll-margin-top:12px} }
+</style></head><body><div class="artifact-shell"><nav class="toc-sidebar" aria-label="目录 / 目次"><h2>目录 / 目次</h2><ul><li class="toc-level-2"><a href="#1.-文書概要">1. 文書概要</a></li><li class="toc-level-3"><a href="#本文書の目的">本文書の目的</a></li><li class="toc-level-2"><a href="#2.-リリース方針">2. リリース方針</a></li><li class="toc-level-2"><a href="#3.-リリース対象スコープ">3. リリース対象スコープ</a></li><li class="toc-level-2"><a href="#4.-リリース判定条件">4. リリース判定条件</a></li><li class="toc-level-2"><a href="#5.-リリース前チェック">5. リリース前チェック</a></li><li class="toc-level-2"><a href="#6.-リリース作業">6. リリース作業</a></li><li class="toc-level-3"><a href="#事前準備">事前準備</a></li><li class="toc-level-3"><a href="#手順候補">手順候補</a></li><li class="toc-level-2"><a href="#7.-ロールバック-切戻し方針">7. ロールバック / 切戻し方針</a></li><li class="toc-level-2"><a href="#8.-運用引継ぎ">8. 運用引継ぎ</a></li><li class="toc-level-2"><a href="#9.-リスク・課題">9. リスク・課題</a></li><li class="toc-level-2"><a href="#10.-next-actions">10. Next Actions</a></li><li class="toc-level-3"><a href="#顧客確認">顧客確認</a></li><li class="toc-level-3"><a href="#外部ベンダー確認">外部ベンダー確認</a></li><li class="toc-level-3"><a href="#nss内部対応">NSS内部対応</a></li><li class="toc-level-2"><a href="#11.-確認事項">11. 確認事項</a></li><li class="toc-level-3"><a href="#顧客確認事項">顧客確認事項</a></li><li class="toc-level-3"><a href="#外部ベンダー確認事項">外部ベンダー確認事項</a></li><li class="toc-level-3"><a href="#nss内部確認事項">NSS内部確認事項</a></li><li class="toc-level-2"><a href="#12.-変更履歴">12. 変更履歴</a></li></ul></nav><main><details class="toc-mobile"><summary>目录 / 目次</summary><ul><li class="toc-level-2"><a href="#1.-文書概要">1. 文書概要</a></li><li class="toc-level-3"><a href="#本文書の目的">本文書の目的</a></li><li class="toc-level-2"><a href="#2.-リリース方針">2. リリース方針</a></li><li class="toc-level-2"><a href="#3.-リリース対象スコープ">3. リリース対象スコープ</a></li><li class="toc-level-2"><a href="#4.-リリース判定条件">4. リリース判定条件</a></li><li class="toc-level-2"><a href="#5.-リリース前チェック">5. リリース前チェック</a></li><li class="toc-level-2"><a href="#6.-リリース作業">6. リリース作業</a></li><li class="toc-level-3"><a href="#事前準備">事前準備</a></li><li class="toc-level-3"><a href="#手順候補">手順候補</a></li><li class="toc-level-2"><a href="#7.-ロールバック-切戻し方針">7. ロールバック / 切戻し方針</a></li><li class="toc-level-2"><a href="#8.-運用引継ぎ">8. 運用引継ぎ</a></li><li class="toc-level-2"><a href="#9.-リスク・課題">9. リスク・課題</a></li><li class="toc-level-2"><a href="#10.-next-actions">10. Next Actions</a></li><li class="toc-level-3"><a href="#顧客確認">顧客確認</a></li><li class="toc-level-3"><a href="#外部ベンダー確認">外部ベンダー確認</a></li><li class="toc-level-3"><a href="#nss内部対応">NSS内部対応</a></li><li class="toc-level-2"><a href="#11.-確認事項">11. 確認事項</a></li><li class="toc-level-3"><a href="#顧客確認事項">顧客確認事項</a></li><li class="toc-level-3"><a href="#外部ベンダー確認事項">外部ベンダー確認事項</a></li><li class="toc-level-3"><a href="#nss内部確認事項">NSS内部確認事項</a></li><li class="toc-level-2"><a href="#12.-変更履歴">12. 変更履歴</a></li></ul></details>
+<h1>リリース計画</h1><div class="meta">
+<div><span>成果物ID</span><strong>REL-001</strong></div><div><span>状態</span><strong>review_required</strong></div><div><span>版</span><strong>v0.2</strong></div>
+<div><span>担当</span><strong>PM</strong></div><div><span>レビュー担当</span><strong>Client</strong></div><div><span>Source SHA-256</span><strong>573e00cb5f312183…</strong></div>
+</div><h1 id="rel-001-リリース計画">REL-001 リリース計画</h1>
+<h2 id="1.-文書概要">1. 文書概要</h2>
+<h3 id="本文書の目的">本文書の目的</h3>
+<p>本書は、KEISEI WeChatミニプログラムの段階リリースに必要な対象範囲、判定条件、事前確認、作業、切戻し、運用引継ぎおよび確認事項を整理し、顧客・関連ベンダー・NSS間のリリース計画レビューに用いるものである。</p>
+<ul>
+<li>対象プロジェクト: KEISEI WeChat Mini Program Project</li>
+<li>前提資料: MGT-001、REQ-001、ARC-001、API-001、WBS-001、SCR-001、TST-001および登録済みsource summary</li>
+<li>文書ステータス: <code>review_required</code></li>
+<li>SRC-011: 他案件の様式参考であり、KEISEIのリリース事実には使用しない</li>
+</ul>
+<h2 id="2.-リリース方針">2. リリース方針</h2>
+<ul>
+<li><strong>Ph.1</strong>: WeChatミニプログラムによる現行eTicket相当の購入・決済・チケット表示を中心とする候補。</li>
+<li><strong>Ph.1.1</strong>: 顔認証用写真撮影・アップロード等を独立段階とする候補。Ph.1との統合可否は未確定。</li>
+<li><strong>Ph.2</strong>: QR乗車券、座席指定、乗車QR発券等を2027年4月以降の候補として整理する。</li>
+<li>段階リリースとし、各フェーズのscope、外部I/F、試験、審査、運用準備が整った範囲のみを対象候補とする。</li>
+<li>既存システム側の改修実装、正式scope外の周辺サービス、未合意の管理・マーケティング機能は対象外候補とする。</li>
+</ul>
+<p>Ph.1の資料上の候補日は2027年1月から3月中旬まで複数の口径があり、正式日ではない。顧客承認、外部接続、UATおよびWeChat審査を踏まえて確定する。</p>
+<h2 id="3.-リリース対象スコープ">3. リリース対象スコープ</h2>
+<table><thead><tr><th>No</th><th>リリース対象</th><th>対象フェーズ</th><th>関連成果物</th><th>状態</th><th>前提 / 確認事項</th><th>source_refs</th></tr></thead><tbody>
+<tr><td>1</td><td>WeChatミニプログラム基本導線</td><td>Ph.1</td><td>REQ-001, SCR-001</td><td>review_required</td><td>正式画面・言語・審査条件</td><td>SRC-001, SRC-002, SRC-008</td></tr>
+<tr><td>2</td><td>チケット購入</td><td>Ph.1</td><td>REQ-001, SCR-001</td><td>review_required</td><td>商品、販売、取消・返金条件</td><td>SRC-001, SRC-002</td></tr>
+<tr><td>3</td><td>WeChat Pay決済</td><td>Ph.1</td><td>API-001, TST-001</td><td>review_required</td><td>加盟店、通知、照合、異常処理</td><td>SRC-001, SRC-002, SRC-007</td></tr>
+<tr><td>4</td><td>チケット詳細 / QR表示</td><td>Ph.1</td><td>REQ-001, SCR-001</td><td>review_required</td><td>QR用途、有効期限、検札運用</td><td>SRC-001, SRC-008</td></tr>
+<tr><td>5</td><td>中間サーバ / API Hub</td><td>Ph.1</td><td>ARC-001, API-001</td><td>review_required</td><td>本番環境、外部I/F、監視、運用</td><td>SRC-001, SRC-002, SRC-007</td></tr>
+<tr><td>6</td><td>管理機能</td><td>Ph.1候補</td><td>REQ-001, SCR-001</td><td>pending_confirmation</td><td>利用者、権限、機能、保持データ</td><td>SRC-002, SRC-007</td></tr>
+<tr><td>7</td><td>顔認証登録</td><td>Ph.1 / Ph.1.1候補</td><td>REQ-001, API-001, TST-001</td><td>pending_confirmation</td><td>API、同意、顔情報、責任分界</td><td>SRC-001, SRC-002, SRC-008</td></tr>
+<tr><td>8</td><td>座席指定</td><td>Ph.2候補</td><td>REQ-001, API-001</td><td>candidate</td><td>I/F、既存改修、実施時期</td><td>SRC-001, SRC-002, SRC-008</td></tr>
+<tr><td>9</td><td>乗車QR / 改札連携</td><td>Ph.2候補</td><td>REQ-001, API-001, TST-001</td><td>candidate</td><td>対象駅、発券、読取、運用</td><td>SRC-001, SRC-002, SRC-008</td></tr>
+</tbody></table>
+<h2 id="4.-リリース判定条件">4. リリース判定条件</h2>
+<table><thead><tr><th>判定領域</th><th>条件候補</th><th>状態</th></tr></thead><tbody>
+<tr><td>要件定義</td><td>対象scope、対象外、業務ルール、責任分界がレビュー済み</td><td>review_required</td></tr>
+<tr><td>画面</td><td>対象画面、遷移、文言、エラー、権限がレビュー済み</td><td>review_required</td></tr>
+<tr><td>API</td><td>正式I/F、認証、状態、エラー、timeout、再試行が確認済み</td><td>pending_confirmation</td></tr>
+<tr><td>外部接続</td><td>対象外部システムとの正常・異常シナリオを実施</td><td>pending_confirmation</td></tr>
+<tr><td>UAT</td><td>顧客業務シナリオと受入条件候補を満たす</td><td>review_required</td></tr>
+<tr><td>障害</td><td>Go/No-Go対象となる重大度と残存許容条件を合意</td><td>pending_confirmation</td></tr>
+<tr><td>残存課題</td><td>owner、期限、回避策、リリース影響を顧客が確認</td><td>review_required</td></tr>
+<tr><td>顧客承認</td><td>リリース判定者と記録方法を明確化</td><td>pending_confirmation</td></tr>
+</tbody></table>
+<p>Go/No-Goの最終判断者、判断時刻、必須証跡、重大障害基準および例外承認は未確定である。</p>
+<h2 id="5.-リリース前チェック">5. リリース前チェック</h2>
+<ul>
+<li>MGT、REQ、ARC、API、WBS、SCR、TSTおよび本書のレビュー状態を確認する。</li>
+<li>本番環境、ネットワーク、アカウント、証明書、秘密情報、設定差分、監視を確認する。</li>
+<li>外部APIのendpoint、認証、接続元制限、状態・エラー、疎通結果を確認する。</li>
+<li>WeChat Mini Programの審査、公開条件、権限、加盟店、バージョンを確認する。</li>
+<li>個人情報・顔情報の同意、保存、削除、マスキング、監査、越境条件を確認する。</li>
+<li>管理画面の利用者、権限、初期アカウント、操作ログを確認する。</li>
+<li>運用連絡体制、障害窓口、外部ベンダー連絡先、エスカレーションを確認する。</li>
+<li>リリース手順、切戻し手順、データ確認、チェックリスト、証跡保管先をレビューする。</li>
+</ul>
+<h2 id="6.-リリース作業">6. リリース作業</h2>
+<h3 id="事前準備">事前準備</h3>
+<p>対象バージョン、変更一覧、環境差分、設定値、アカウント、証明書、データ、監視、連絡先、作業参加者を確認する。</p>
+<h3 id="手順候補">手順候補</h3>
+<ol>
+<li>Go/No-Go判定と作業開始連絡</li>
+<li>対象環境・外部接続・監視状態の事前確認</li>
+<li>中間サーバ / 管理機能のデプロイ候補</li>
+<li>Mini Programの公開・設定反映候補</li>
+<li>外部API疎通、決済、購入、表示等のスモーク確認</li>
+<li>監視・ログ・状態整合の確認</li>
+<li>顧客確認と作業完了連絡</li>
+</ol>
+<p>具体的なコマンド、順序、作業時間帯、停止有無、担当者、チェックポイントは環境・リリース方式確定後に作成する。上記は確定手順ではない。</p>
+<h2 id="7.-ロールバック-切戻し方針">7. ロールバック / 切戻し方針</h2>
+<ul>
+<li>切戻し判断は重大障害、購入・決済・発券不能、状態不整合、個人情報・顔情報事故、復旧見込み等を基準候補とする。</li>
+<li>アプリケーション、設定、Mini Program公開状態、外部接続、データ変更を分けて切戻し可否を評価する。</li>
+<li>外部システムで既に成立した決済・発券・顔登録等は単純なバージョン切戻しだけでは解消しないため、照合・補正・有人対応を準備する。</li>
+<li>顧客、運用担当、外部ベンダーへの連絡と利用者案内の判断者を事前に確定する。</li>
+<li>切戻し後は状態整合、監視、再開条件、再リリース計画を確認する。</li>
+</ul>
+<p>実際の切戻し手順、復旧目標、データ補正権限、許容停止時間は未確定である。</p>
+<h2 id="8.-運用引継ぎ">8. 運用引継ぎ</h2>
+<table><thead><tr><th>領域</th><th>引継ぎ候補</th><th>確認事項</th></tr></thead><tbody>
+<tr><td>運用対象</td><td>Mini Program、中間サーバ、管理機能、外部I/F</td><td>正式な保守範囲</td></tr>
+<tr><td>監視 / ログ</td><td>可用性、API、エラー、処理状態、操作・監査ログ</td><td>閾値、保持、閲覧権限</td></tr>
+<tr><td>問い合わせ</td><td>利用者、駅係員、顧客窓口、NSS窓口</td><td>一次受付と回答責任</td></tr>
+<tr><td>障害対応</td><td>検知、切り分け、連絡、復旧、事後報告</td><td>SLA/SLO、時間帯、責任分界</td></tr>
+<tr><td>外部ベンダー</td><td>乗車券、顔認証、座席、決済、WeChat</td><td>連絡先、支援時間、変更管理</td></tr>
+<tr><td>NSS内部</td><td>アプリ、API、AWS、監視、保守</td><td>担当、権限、当番、手順</td></tr>
+<tr><td>顧客側</td><td>業務判断、UAT、リリース判定、利用者対応</td><td>承認者、運用部署、窓口</td></tr>
+</tbody></table>
+<p>SharePoint等で最新版、承認記録、手順、連絡先および証跡を管理する候補とし、正式な保管場所とアクセス権を確認する。</p>
+<h2 id="9.-リスク・課題">9. リスク・課題</h2>
+<table><thead><tr><th>リスク / 課題</th><th>リリース影響</th><th>対応方針</th><th>関連ID</th></tr></thead><tbody>
+<tr><td>API仕様・接続環境未確定</td><td>結合・UAT・リリース判定遅延</td><td>仕様、環境、QA、疎通を前倒し</td><td>RISK-005, ISSUE-003, ISSUE-009</td></tr>
+<tr><td>外部ベンダー調整</td><td>作業・障害対応・切戻し不能</td><td>窓口、支援時間、責任を明確化</td><td>RISK-003, RISK-006, ISSUE-005, ISSUE-007</td></tr>
+<tr><td>WeChat審査・仕様制約</td><td>公開遅延または機能制限</td><td>審査条件と再申請余裕をWBSへ反映</td><td>RISK-004</td></tr>
+<tr><td>個人情報・顔情報</td><td>scope変更またはリリース停止</td><td>同意、保存、削除、監査を確認</td><td>RISK-007, RISK-013, ISSUE-006, ISSUE-017</td></tr>
+<tr><td>性能・運用要件未確定</td><td>本番品質・復旧判断が不明確</td><td>目標、監視、運用、障害基準を合意</td><td>RISK-014, RISK-015, ISSUE-004, ISSUE-018</td></tr>
+<tr><td>UAT・判定基準未確定</td><td>Go/No-Go判断不能</td><td>期間、シナリオ、残存障害基準を合意</td><td>ISSUE-023</td></tr>
+<tr><td>フェーズscope未確定</td><td>対象・日程・費用変動</td><td>Ph.1 / 1.1 / 2を明確化</td><td>RISK-018, ISSUE-019, ISSUE-020</td></tr>
+</tbody></table>
+<h2 id="10.-next-actions">10. Next Actions</h2>
+<h3 id="顧客確認">顧客確認</h3>
+<ul>
+<li>Ph.1対象scope、候補日、リリース判定者、UAT・残存障害基準を確認する。</li>
+<li>運用部署、問い合わせ、障害、個人情報・顔情報、切戻し時の業務判断を確認する。</li>
+</ul>
+<h3 id="外部ベンダー確認">外部ベンダー確認</h3>
+<ul>
+<li>本番・試験環境、作業・支援時間、連絡先、変更・切戻し・障害対応を確認する。</li>
+<li>外部I/F、データ状態、補正、再送、照合、リリース前後の凍結条件を確認する。</li>
+</ul>
+<h3 id="nss内部対応">NSS内部対応</h3>
+<ul>
+<li>デプロイ、設定、監視、スモークテスト、証跡、切戻しの詳細手順を作成する。</li>
+<li>PM、Dev、QA、DevOps、Ops、Securityの担当と判断ゲートを割り当てる。</li>
+</ul>
+<h2 id="11.-確認事項">11. 確認事項</h2>
+<h3 id="顧客確認事項">顧客確認事項</h3>
+<ul>
+<li>正式リリース日、作業時間帯、停止可否、対象scope、承認者</li>
+<li>Go/No-Go条件、UAT完了条件、重大・残存障害の扱い</li>
+<li>利用者案内、問い合わせ、障害、返金・補正、切戻し判断</li>
+</ul>
+<h3 id="外部ベンダー確認事項">外部ベンダー確認事項</h3>
+<ul>
+<li>本番接続、作業・凍結期間、連絡先、監視、障害支援、切戻し可否</li>
+<li>決済・発券・顔認証・座席・QRの状態整合とデータ補正方法</li>
+</ul>
+<h3 id="nss内部確認事項">NSS内部確認事項</h3>
+<ul>
+<li>詳細手順、権限、設定、秘密情報、証跡、監視、チェック担当</li>
+<li>切戻し可能範囲、復旧目標、再リリース、運用引継ぎ責任</li>
+</ul>
+<h2 id="12.-変更履歴">12. 変更履歴</h2>
+<table><thead><tr><th>Version</th><th>Date</th><th>内容</th><th>Status</th></tr></thead><tbody>
+<tr><td>v0.1</td><td>2026-07-13</td><td>初版作成。リリースscope、判定条件、事前確認、作業、切戻し、運用引継ぎを整理</td><td>review_required</td></tr>
+</tbody></table></main></div><script>
+(() => {
+  const links = [...document.querySelectorAll('.toc-sidebar a, .toc-mobile a')];
+  const headings = links.map(link => document.getElementById(decodeURIComponent(link.hash.slice(1)))).filter(Boolean);
+  if (!links.length || !headings.length || !('IntersectionObserver' in window)) return;
+  const byId = new Map(links.map(link => [link.hash.slice(1), link]));
+  const activate = id => {
+    links.forEach(link => link.classList.toggle('is-active', link.hash === '#' + id));
+  };
+  const observer = new IntersectionObserver(entries => {
+    const visible = entries.filter(entry => entry.isIntersecting).sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
+    if (visible[0]) activate(visible[0].target.id);
+  }, { rootMargin: '-12% 0px -70% 0px', threshold: [0, 1] });
+  headings.forEach(heading => observer.observe(heading));
+  if (location.hash && byId.has(location.hash.slice(1))) activate(location.hash.slice(1));
+})();
+</script></body></html>

@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="artifact-id" content="TST-001"><meta name="artifact-version" content="v0.2">
+<meta name="source-hash" content="1d25a5303850656f5c759098c67716c7c2ba2102848be8d784139c0ed7ab0378"><meta name="source-path" content="artifacts/generated/zh-CN/TST-001.md">
+<title>TST-001 测试计划与规范书</title><style>
+:root { color-scheme:light; --ink:#111; --muted:#555; --line:#d5d5d5; --panel:#fff; --bg:#f5f5f5; }
+* { box-sizing:border-box } html { scroll-behavior:smooth } body { margin:0;padding:24px;color:var(--ink);background:var(--bg);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans JP",Arial,sans-serif;line-height:1.65 }
+.artifact-shell { max-width:1440px;margin:auto;display:grid;grid-template-columns:minmax(220px,280px) minmax(0,1120px);gap:20px;align-items:start }
+main { min-width:0;padding:28px 32px;background:var(--panel);border:1px solid var(--line) } h1,h2,h3 { color:#111 } h1[id],h2[id],h3[id],h4[id] { scroll-margin-top:24px }
+.meta { display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:0 0 24px } .meta div { border:1px solid var(--line);padding:8px } .meta span { display:block;color:var(--muted);font-size:12px }
+table { width:100%;border-collapse:collapse;font-size:13px } th,td { border:1px solid var(--line);padding:8px;vertical-align:top;overflow-wrap:anywhere } th { background:#f0f0f0;text-align:left } pre { overflow:auto;padding:14px;background:#171717;color:#eee } code { font-family:Consolas,monospace } blockquote { border-left:4px solid #888;margin-left:0;padding-left:14px;color:#444 }
+.toc-sidebar { position:sticky;top:16px;max-height:calc(100vh - 32px);overflow-y:auto;padding:18px;background:var(--panel);border:1px solid var(--line) }
+.toc-sidebar h2 { margin:0 0 10px;font-size:14px;color:var(--muted);font-weight:600 } .toc-sidebar ul,.toc-mobile ul { list-style:none;margin:0;padding:0 } .toc-sidebar li,.toc-mobile li { margin:0 }
+.toc-sidebar a,.toc-mobile a { display:block;padding:5px 8px;color:var(--ink);text-decoration:none;border-left:3px solid transparent;font-size:13px;line-height:1.35 }
+.toc-sidebar a:hover,.toc-sidebar a.is-active,.toc-mobile a:hover,.toc-mobile a.is-active { background:#f0f0f0;border-left-color:#111 }
+.toc-level-3 a { padding-left:18px } .toc-level-4 a { padding-left:28px } .toc-mobile { display:none;margin:0 0 16px;padding:12px 14px;background:#fff;border:1px solid var(--line) } .toc-mobile summary { cursor:pointer;font-weight:600 }
+@media(max-width:900px) { body{padding:8px} .artifact-shell{display:block;max-width:1120px} .toc-sidebar{display:none} .toc-mobile{display:block} main{padding:16px} .meta{grid-template-columns:1fr} h1[id],h2[id],h3[id],h4[id]{scroll-margin-top:12px} }
+</style></head><body><div class="artifact-shell"><nav class="toc-sidebar" aria-label="目录 / 目次"><h2>目录 / 目次</h2><ul><li class="toc-level-2"><a href="#封面">封面</a></li><li class="toc-level-2"><a href="#文档信息">文档信息</a></li><li class="toc-level-3"><a href="#本文档的目的">本文档的目的</a></li><li class="toc-level-2"><a href="#修订履历">修订履历</a></li><li class="toc-level-2"><a href="#评审与审批履历">评审与审批履历</a></li><li class="toc-level-2"><a href="#1.-目的与质量目标">1. 目的与质量目标</a></li><li class="toc-level-3"><a href="#测试的目的">测试的目的</a></li><li class="toc-level-2"><a href="#2.-测试基本方针">2. 测试基本方针</a></li><li class="toc-level-2"><a href="#3.-范围与非范围">3. 范围与非范围</a></li><li class="toc-level-3"><a href="#范围">范围</a></li><li class="toc-level-3"><a href="#非范围">非范围</a></li><li class="toc-level-2"><a href="#4.-测试级别">4. 测试级别</a></li><li class="toc-level-2"><a href="#5.-测试视角">5. 测试视角</a></li><li class="toc-level-3"><a href="#测试对象一览">测试对象一览</a></li><li class="toc-level-3"><a href="#功能测试视角">功能测试视角</a></li><li class="toc-level-3"><a href="#外部对接测试视角">外部对接测试视角</a></li><li class="toc-level-3"><a href="#非功能测试视角">非功能测试视角</a></li><li class="toc-level-2"><a href="#6.-测试环境与数据">6. 测试环境与数据</a></li><li class="toc-level-2"><a href="#7.-体制与职责">7. 体制与职责</a></li><li class="toc-level-2"><a href="#8.-进度计划">8. 进度计划</a></li><li class="toc-level-2"><a href="#9.-准入与准出条件">9. 准入与准出条件</a></li><li class="toc-level-2"><a href="#10.-测试用例">10. 测试用例</a></li><li class="toc-level-2"><a href="#11.-缺陷管理">11. 缺陷管理</a></li><li class="toc-level-2"><a href="#12.-回归测试">12. 回归测试</a></li><li class="toc-level-2"><a href="#13.-验收测试">13. 验收测试</a></li><li class="toc-level-3"><a href="#uat目的">UAT目的</a></li><li class="toc-level-3"><a href="#验收视角候选">验收视角候选</a></li><li class="toc-level-2"><a href="#14.-质量评价">14. 质量评价</a></li><li class="toc-level-2"><a href="#15.-结果报告">15. 结果报告</a></li><li class="toc-level-2"><a href="#待办-保留事项">待办／保留事项</a></li><li class="toc-level-3"><a href="#风险与课题">风险与课题</a></li><li class="toc-level-3"><a href="#客户确认事项">客户确认事项</a></li><li class="toc-level-3"><a href="#外部供应商确认事项">外部供应商确认事项</a></li><li class="toc-level-3"><a href="#nss内部确认事项">NSS内部确认事项</a></li><li class="toc-level-2"><a href="#相关资料">相关资料</a></li><li class="toc-level-2"><a href="#附录">附录</a></li></ul></nav><main><details class="toc-mobile"><summary>目录 / 目次</summary><ul><li class="toc-level-2"><a href="#封面">封面</a></li><li class="toc-level-2"><a href="#文档信息">文档信息</a></li><li class="toc-level-3"><a href="#本文档的目的">本文档的目的</a></li><li class="toc-level-2"><a href="#修订履历">修订履历</a></li><li class="toc-level-2"><a href="#评审与审批履历">评审与审批履历</a></li><li class="toc-level-2"><a href="#1.-目的与质量目标">1. 目的与质量目标</a></li><li class="toc-level-3"><a href="#测试的目的">测试的目的</a></li><li class="toc-level-2"><a href="#2.-测试基本方针">2. 测试基本方针</a></li><li class="toc-level-2"><a href="#3.-范围与非范围">3. 范围与非范围</a></li><li class="toc-level-3"><a href="#范围">范围</a></li><li class="toc-level-3"><a href="#非范围">非范围</a></li><li class="toc-level-2"><a href="#4.-测试级别">4. 测试级别</a></li><li class="toc-level-2"><a href="#5.-测试视角">5. 测试视角</a></li><li class="toc-level-3"><a href="#测试对象一览">测试对象一览</a></li><li class="toc-level-3"><a href="#功能测试视角">功能测试视角</a></li><li class="toc-level-3"><a href="#外部对接测试视角">外部对接测试视角</a></li><li class="toc-level-3"><a href="#非功能测试视角">非功能测试视角</a></li><li class="toc-level-2"><a href="#6.-测试环境与数据">6. 测试环境与数据</a></li><li class="toc-level-2"><a href="#7.-体制与职责">7. 体制与职责</a></li><li class="toc-level-2"><a href="#8.-进度计划">8. 进度计划</a></li><li class="toc-level-2"><a href="#9.-准入与准出条件">9. 准入与准出条件</a></li><li class="toc-level-2"><a href="#10.-测试用例">10. 测试用例</a></li><li class="toc-level-2"><a href="#11.-缺陷管理">11. 缺陷管理</a></li><li class="toc-level-2"><a href="#12.-回归测试">12. 回归测试</a></li><li class="toc-level-2"><a href="#13.-验收测试">13. 验收测试</a></li><li class="toc-level-3"><a href="#uat目的">UAT目的</a></li><li class="toc-level-3"><a href="#验收视角候选">验收视角候选</a></li><li class="toc-level-2"><a href="#14.-质量评价">14. 质量评价</a></li><li class="toc-level-2"><a href="#15.-结果报告">15. 结果报告</a></li><li class="toc-level-2"><a href="#待办-保留事项">待办／保留事项</a></li><li class="toc-level-3"><a href="#风险与课题">风险与课题</a></li><li class="toc-level-3"><a href="#客户确认事项">客户确认事项</a></li><li class="toc-level-3"><a href="#外部供应商确认事项">外部供应商确认事项</a></li><li class="toc-level-3"><a href="#nss内部确认事项">NSS内部确认事项</a></li><li class="toc-level-2"><a href="#相关资料">相关资料</a></li><li class="toc-level-2"><a href="#附录">附录</a></li></ul></details>
+<h1>测试计划与规范书</h1><div class="meta">
+<div><span>成果物ID</span><strong>TST-001</strong></div><div><span>状態</span><strong>review_required</strong></div><div><span>版</span><strong>v0.2</strong></div>
+<div><span>担当</span><strong>QA Lead</strong></div><div><span>レビュー担当</span><strong>Client</strong></div><div><span>Source SHA-256</span><strong>1d25a5303850656f…</strong></div>
+</div><h1 id="tst-001-测试计划与规范书">TST-001 测试计划与规范书</h1>
+<h2 id="封面">封面</h2>
+<ul>
+<li>文档名称: 测试计划与规范书</li>
+<li>目标项目: KEISEI WeChat Mini Program Project</li>
+<li>成果物ID: TST-001</li>
+<li>版本: v0.2</li>
+<li>组织: NSS / KEISEI PMO</li>
+</ul>
+<h2 id="文档信息">文档信息</h2>
+<h3 id="本文档的目的">本文档的目的</h3>
+<p>本文档整理了KEISEI WeChat小程序质量确认所需的测试类别、对象、环境、体制、候选日程及验收确认事项，用于客户、相关供应商与NSS之间的测试计划评审。</p>
+<ul>
+<li>目标项目: KEISEI WeChat Mini Program Project</li>
+<li>前提资料: MGT-001、REQ-001、ARC-001、API-001、WBS-001、SCR-001及已注册的source summary</li>
+<li>文档状态: <code>review_required</code></li>
+<li>SRC-011: 仅作为其他项目的样式参考，不作为指示KEISEI测试条件的事实资料使用。</li>
+</ul>
+<h2 id="修订履历">修订履历</h2>
+<table><thead><tr><th>Version</th><th>Date</th><th>内容</th><th>Status</th></tr></thead><tbody>
+<tr><td>v0.1</td><td>2026-07-13</td><td>初版作成。整理测试类别、对象、UAT、环境、体制、风险及确认事项</td><td>review_required</td></tr>
+<tr><td>v0.2</td><td>2026-07-22</td><td>创建基于JPAFC-001契约的日中双语结构化模型迁移候选</td><td>review_required</td></tr>
+</tbody></table>
+<h2 id="评审与审批履历">评审与审批履历</h2>
+<table><thead><tr><th>职责</th><th>姓名/组织</th><th>日期</th><th>状态</th></tr></thead><tbody>
+<tr><td>作成者 (QA Lead)</td><td>NSS QA Lead</td><td>2026-07-13</td><td>完成</td></tr>
+<tr><td>评审担当 (PMO)</td><td>NSS PMO</td><td>2026-07-13</td><td>完成</td></tr>
+<tr><td>审批者 (Client)</td><td>京成电铁</td><td>pending</td><td>review_required</td></tr>
+</tbody></table>
+<h2 id="1.-目的与质量目标">1. 目的与质量目标</h2>
+<h3 id="测试的目的">测试的目的</h3>
+<ul>
+<li>确认面向用户的购买、支付、车票显示等业务按预期成立。</li>
+<li>确认小程序、中间服务器、管理功能及外部系统之间的状态一致性。</li>
+<li>确认包含异常、超时、重试、重复操作、人工介入在内的可运维性。</li>
+<li>准备客户UAT与发布判定所需的痕迹与凭证。</li>
+</ul>
+<h2 id="2.-测试基本方针">2. 测试基本方针</h2>
+<p>在确保验证Ph.1基本功能的同时，逐步实施向外部连接及UAT的过渡。</p>
+<h2 id="3.-范围与非范围">3. 范围与非范围</h2>
+<h3 id="范围">范围</h3>
+<p>以Ph.1的购买、支付、车票显示、候选人脸识别对接、管理功能、相关API、外部连接及UAT为中心进行计划。Ph.1.1的人脸照片拍摄与上传、Ph.2的指定座位与乘车QR，将在正式scope确定后更新覆盖范围。</p>
+<h3 id="非范围">非范围</h3>
+<p>外部供应商内部的单体测试、现有系统整体的回归测试、正式scope之外的周边服务目前作为非范围候选。但为保证连接质量所需的凭证与结果共享属于确认事项。</p>
+<h2 id="4.-测试级别">4. 测试级别</h2>
+<table><thead><tr><th>测试类别</th><th>主目的</th><th>主担当候选</th><th>状态</th></tr></thead><tbody>
+<tr><td>单体测试</td><td>确认各模块、画面、API处理的基本质量</td><td>NSS Dev</td><td>planning</td></tr>
+<tr><td>内部集成测试</td><td>确认小程序、中间服务器、管理功能的联动</td><td>NSS Dev / QA</td><td>planning</td></tr>
+<tr><td>外部系统连接测试</td><td>确认与乘车券、人脸识别、座位、支付等的连接</td><td>NSS / 外部供应商</td><td>pending_confirmation</td></tr>
+<tr><td>画面测试</td><td>确认显示、输入、跳转、语言、错误及终端差异</td><td>NSS QA / UIUX</td><td>planning</td></tr>
+<tr><td>API测试</td><td>确认正常、异常、认证、状态、重试及幂等性</td><td>NSS QA / Vendor</td><td>review_required</td></tr>
+<tr><td>支付测试</td><td>确认成功、失败、取消、退款及对账</td><td>NSS / WeChat Pay相关方</td><td>pending_confirmation</td></tr>
+<tr><td>人脸识别对接测试</td><td>确认注册、结果、再次注册、错误及个人信息处理</td><td>NSS / 人脸识别方</td><td>pending_confirmation</td></tr>
+<tr><td>指定座位相关测试</td><td>确认空座、锁定、确定、冲突及变更</td><td>NSS / 座位管理方</td><td>candidate</td></tr>
+<tr><td>UAT</td><td>确认客户业务场景与验收条件</td><td>京成电铁 / NSS支援</td><td>review_required</td></tr>
+<tr><td>发布前确认</td><td>确认审核、环境、配置、数据、监控及步骤</td><td>PM / QA / DevOps / Client</td><td>planning</td></tr>
+</tbody></table>
+<h2 id="5.-测试视角">5. 测试视角</h2>
+<h3 id="测试对象一览">测试对象一览</h3>
+<table><thead><tr><th>No</th><th>测试对象</th><th>目标阶段</th><th>相关成果物</th><th>测试视角</th><th>状态</th><th>确认事项</th><th>source_refs</th></tr></thead><tbody>
+<tr><td>1</td><td>购买车票</td><td>Ph.1</td><td>REQ-001, SCR-001</td><td>商品选择、输入、确认、完成购买、重复操作</td><td>planning</td><td>销售条件、取消与退款</td><td>SRC-001, SRC-002</td></tr>
+<tr><td>2</td><td>WeChat Pay支付</td><td>Ph.1</td><td>API-001, SCR-001</td><td>成功、失败、timeout、重试、状态对账</td><td>review_required</td><td>sandbox、退款、通知规范</td><td>SRC-001, SRC-002, SRC-007</td></tr>
+<tr><td>3</td><td>车票详情 / QR显示</td><td>Ph.1</td><td>REQ-001, SCR-001</td><td>显示内容、有效期、再次显示、无效状态</td><td>review_required</td><td>QR用途、检票方式</td><td>SRC-001, SRC-008</td></tr>
+<tr><td>4</td><td>购买历史</td><td>Ph.1</td><td>REQ-001, SCR-001</td><td>显示期间、状态、明细、再次显示</td><td>candidate</td><td>保存期间、显示项目</td><td>SRC-001, SRC-008</td></tr>
+<tr><td>5</td><td>人脸识别注册</td><td>Ph.1 / Ph.1.1候选</td><td>REQ-001, API-001, SCR-001</td><td>同意、拍摄、注册、结果、再次注册、删除</td><td>pending_confirmation</td><td>API、数据、责任界面</td><td>SRC-001, SRC-002, SRC-008</td></tr>
+<tr><td>6</td><td>指定座位</td><td>Ph.2候选</td><td>REQ-001, API-001, SCR-001</td><td>空座、锁定、确定、冲突、变更</td><td>candidate</td><td>I/F、改造范围、实施时期</td><td>SRC-001, SRC-002, SRC-008</td></tr>
+<tr><td>7</td><td>乘车QR</td><td>Ph.2候选</td><td>REQ-001, API-001, SCR-001</td><td>发行、显示、读取、再发行、无效化</td><td>pending_confirmation</td><td>目标车站、闸机、打印联动</td><td>SRC-001, SRC-002</td></tr>
+<tr><td>8</td><td>管理界面</td><td>共通</td><td>REQ-001, SCR-001</td><td>认证、查询、状态、权限、审计日志</td><td>pending_confirmation</td><td>用户、功能、浏览器</td><td>SRC-002, SRC-007</td></tr>
+<tr><td>9</td><td>中间服务器 / API Hub</td><td>Ph.1</td><td>ARC-001, API-001</td><td>认证、转换、状态、幂等性、监控</td><td>review_required</td><td>正式I/F、环境、SLO</td><td>SRC-001, SRC-002, SRC-007</td></tr>
+<tr><td>10</td><td>中日间通信</td><td>共通</td><td>ARC-001</td><td>延迟、timeout、重试、可用性</td><td>candidate</td><td>性能目标、测量条件</td><td>SRC-007</td></tr>
+<tr><td>11</td><td>UAT业务场景</td><td>Ph.1</td><td>MGT-001, REQ-001, WBS-001</td><td>从购买到使用、例外及人工应对</td><td>review_required</td><td>验收条件、责任人、期间</td><td>SRC-001, SRC-002, SRC-003</td></tr>
+</tbody></table>
+<h3 id="功能测试视角">功能测试视角</h3>
+<ul>
+<li><strong>购买车票</strong>: 必填输入、销售条件、金额、重复购买、中途退出、完成后的状态。</li>
+<li><strong>支付</strong>: 成功、失败、取消、退款候选、timeout、异步通知、状态不一致。</li>
+<li><strong>QR显示 / QR乘车券</strong>: 显示对象、有效期、再次显示、无效化、截屏等的处理。</li>
+<li><strong>人脸识别注册</strong>: 同意、拍摄质量、上传、注册结果、再次注册、删除、错误。</li>
+<li><strong>指定座位</strong>: 查询空座、锁定、确定、冲突、变更、取消。Ph.2 scope确定后详细化。</li>
+<li><strong>购买历史</strong>: 显示期间、排序、交易与车票状态、详情跳转。</li>
+<li><strong>管理界面</strong>: 认证、查询、参照、权限、脱敏、日志。正式scope未确定。</li>
+<li><strong>错误显示</strong>: 面向用户的文案、是否可重试、咨询入口、运维侧代码。</li>
+</ul>
+<h3 id="外部对接测试视角">外部对接测试视角</h3>
+<table><thead><tr><th>对手</th><th>主要确认</th><th>前提与依赖</th></tr></thead><tbody>
+<tr><td>乘车券管理</td><td>购买、订单、票券、状态、取消与退款候选</td><td>正式I/F、测试环境、数据</td></tr>
+<tr><td>座位管理</td><td>空座、锁定、确定、冲突、变更</td><td>Ph.2 scope、改造计划</td></tr>
+<tr><td>人脸识别</td><td>注册URL、注册、结果、再次注册、错误</td><td>人脸信息条件、责任界面</td></tr>
+<tr><td>WeChat Pay</td><td>开始支付、结果、通知、对账、退款候选</td><td>sandbox、商户、规范</td></tr>
+<tr><td>WeChat / Tencent</td><td>Mini Program规范、权限、审核、通信限制</td><td>审核要件、目标版本</td></tr>
+</tbody></table>
+<p>在API状态同步中，不仅将正常情况，也将重复、顺序颠倒、延迟、timeout、部分成功、重发、恢复后对账作为候选对象。具体期待值在API-001答复后确定。</p>
+<h3 id="非功能测试视角">非功能测试视角</h3>
+<ul>
+<li>兼容OS、WeChat版本、管理界面浏览器的兼容性</li>
+<li>认证、鉴权、加密、敏感信息、漏洞、权限隔离</li>
+<li>个人信息及人脸信息的最小化、脱敏、保存、删除、审计</li>
+<li>中日间通信的延迟、timeout、重试、高峰期性能</li>
+<li>API与画面的响应时间、并发使用、处理量的目标候选</li>
+<li>故障时的可用性、恢复、数据一致性、替代运维</li>
+<li>操作日志、审计日志、相关性ID、保存期限、查阅权限</li>
+<li>监控、告警、咨询、故障排查、运维交接</li>
+</ul>
+<p>数值目标、负载条件、测试时长、合格标准尚未确定，将在REQ-001与ARC-001的非功能要件确定后更新。</p>
+<h2 id="6.-测试环境与数据">6. 测试环境与数据</h2>
+<table><thead><tr><th>项目</th><th>计划候选</th><th>状态</th></tr></thead><tbody>
+<tr><td>开发环境</td><td>NSS内部开发与单体确认环境</td><td>planning</td></tr>
+<tr><td>验证环境</td><td>小程序、中间服务器、管理功能的集成环境</td><td>review_required</td></tr>
+<tr><td>外部连接环境</td><td>乘车券、人脸识别、支付、座位等的测试环境</td><td>pending_confirmation</td></tr>
+<tr><td>准生产确认</td><td>生产配置、网络、权限、监控的确认</td><td>candidate</td></tr>
+<tr><td>测试数据</td><td>乘车券、车次、座位、交易、用户、异常数据</td><td>pending_confirmation</td></tr>
+<tr><td>人脸信息测试数据</td><td>已同意的专用数据或安全替代数据</td><td>pending_confirmation</td></tr>
+</tbody></table>
+<p>环境URL、账号、证书、连接源限制、数据准备者、初始化、保存与删除、使用结束后的处理需在外部连接开始前确定。</p>
+<h2 id="7.-体制与职责">7. 体制与职责</h2>
+<ul>
+<li>京成电铁侧: 业务场景、验收判断、现有供应商协调、UAT主管候选。</li>
+<li>NSS侧: 本公司范围单体与集成、QA、痕迹凭证、故障应对、UAT支援候选。</li>
+<li>外部供应商: I/F、环境、数据、本公司改造、连接支援、故障排查候选。</li>
+</ul>
+<h2 id="8.-进度计划">8. 进度计划</h2>
+<table><thead><tr><th>工程</th><th>时期候选</th><th>主担当候选</th><th>状态</th></tr></thead><tbody>
+<tr><td>测试计划评审</td><td>与需求、API确认并行</td><td>QA Lead / PM / Client</td><td>review_required</td></tr>
+<tr><td>单体与内部集成</td><td>开发期间</td><td>NSS Dev / QA</td><td>planning</td></tr>
+<tr><td>外部连接与集成</td><td>2027年1月候选</td><td>NSS / 外部供应商</td><td>pending_confirmation</td></tr>
+<tr><td>UAT</td><td>2027年1月下旬～2月候选</td><td>京成电铁 / NSS支援</td><td>review_required</td></tr>
+<tr><td>发布前确认</td><td>Ph.1发布前</td><td>PM / QA / DevOps / Client</td><td>planning</td></tr>
+</tbody></table>
+<p>正式日程、责任人、工时、环境使用期间由WBS-001及REL-001联动管理。</p>
+<h2 id="9.-准入与准出条件">9. 准入与准出条件</h2>
+<p>本章内容正在相关方确认中。确定后更新。(GAP-TST-001-001)</p>
+<h2 id="10.-测试用例">10. 测试用例</h2>
+<p>本章内容正在相关方确认中。确定后更新。(GAP-TST-001-002)</p>
+<h2 id="11.-缺陷管理">11. 缺陷管理</h2>
+<p>本章内容正在相关方确认中。确定后更新。(GAP-TST-001-003)</p>
+<h2 id="12.-回归测试">12. 回归测试</h2>
+<p>本章内容正在相关方确认中。确定后更新。(GAP-TST-001-004)</p>
+<h2 id="13.-验收测试">13. 验收测试</h2>
+<h3 id="uat目的">UAT目的</h3>
+<p>基于京成电铁侧的业务场景，确认从用户购买到车票使用、例外及人工应对在业务上可被接收。</p>
+<h3 id="验收视角候选">验收视角候选</h3>
+<ul>
+<li>Ph.1的目标业务与非范围已达成一致</li>
+<li>已实施主要正常与异常场景并留存痕迹</li>
+<li>高优先级缺陷的处理与残存缺陷标准已达成一致</li>
+<li>外部系统状态与画面及管理信息保持一致</li>
+<li>个人信息、人脸信息、运维与咨询的确认已完成</li>
+</ul>
+<p>虽然有资料列出UAT候选时期为2027年1月下旬至2月，但非正式日程。不合格时的修改、再测试、延期及scope排除的判断者与步骤属于确认事项。</p>
+<h2 id="14.-质量评价">14. 质量评价</h2>
+<p>本章内容正在相关方确认中。确定后更新。(GAP-TST-001-005)</p>
+<h2 id="15.-结果报告">15. 结果报告</h2>
+<p>本章内容正在相关方确认中。确定后更新。(GAP-TST-001-006)</p>
+<h2 id="待办-保留事项">待办／保留事项</h2>
+<h3 id="风险与课题">风险与课题</h3>
+<table><thead><tr><th>风险 / 课题</th><th>影响</th><th>应对方针</th><th>相关ID</th></tr></thead><tbody>
+<tr><td>API规范与测试环境未确定</td><td>用例设计与连接开始延误</td><td>先行接收现行版、QA及环境准备</td><td>RISK-005, RISK-008, ISSUE-003, ISSUE-009</td></tr>
+<tr><td>外部供应商协调</td><td>集成与UAT期间压缩</td><td>明确窗口、答复期限及连接计划</td><td>RISK-003, RISK-006, ISSUE-005, ISSUE-007</td></tr>
+<tr><td>人脸信息与个人信息</td><td>重审数据准备与测试方式</td><td>定义安全数据、同意、保存与删除</td><td>RISK-007, RISK-013, ISSUE-006, ISSUE-017</td></tr>
+<tr><td>WeChat与中日间通信限制</td><td>对审核、性能与可用性的影响</td><td>早期验证审核与通信条件</td><td>RISK-004, RISK-014</td></tr>
+<tr><td>非功能与验收标准未定义</td><td>无法判断合格与否、造成返工</td><td>就数值目标、优先级及残存缺陷标准达成一致</td><td>RISK-015, ISSUE-018, ISSUE-023</td></tr>
+<tr><td>阶段范围未确定</td><td>用例数、日程及费用的变动</td><td>确定Ph.1 / 1.1 / 2的目标范围</td><td>RISK-018, ISSUE-019, ISSUE-020</td></tr>
+</tbody></table>
+<h3 id="客户确认事项">客户确认事项</h3>
+<ul>
+<li>Ph.1、Ph.1.1、Ph.2的测试与UAT目标范围</li>
+<li>UAT责任人、场景、期间、验收条件、残存缺陷、判定者</li>
+<li>取消、退款、人工应对、故障时替代运维的确认范围</li>
+<li>个人信息与人脸信息的测试数据方针及批准</li>
+</ul>
+<h3 id="外部供应商确认事项">外部供应商确认事项</h3>
+<ul>
+<li>正式I/F、连接环境、账号、证书、测试数据、使用期间</li>
+<li>正常、异常、timeout、重试、状态同步的预期结果</li>
+<li>连接支援、故障窗口、修复、再测试、凭证提供的责任界面</li>
+</ul>
+<h3 id="nss内部确认事项">NSS内部确认事项</h3>
+<ul>
+<li>QA Lead、功能、API、画面、非功能、安全担当</li>
+<li>用例管理、缺陷管理、凭证、再测试、完成报告的方法</li>
+<li>自动化对象、测试数据生成、环境初始化、日志确认方法</li>
+</ul>
+<h2 id="相关资料">相关资料</h2>
+<ul>
+<li>出处参照: SRC-001, SRC-002, SRC-003, SRC-005, SRC-006, SRC-007, SRC-008, SRC-009</li>
+<li>参考参照: SRC-011</li>
+<li>相关成果物: MGT-001, REQ-001, ARC-001, API-001, WBS-001, SCR-001, REL-001</li>
+</ul>
+<h2 id="附录">附录</h2>
+<p>本书的修订与差异数据按照Artifact Revision Runner v0.2统一管理。</p></main></div><script>
+(() => {
+  const links = [...document.querySelectorAll('.toc-sidebar a, .toc-mobile a')];
+  const headings = links.map(link => document.getElementById(decodeURIComponent(link.hash.slice(1)))).filter(Boolean);
+  if (!links.length || !headings.length || !('IntersectionObserver' in window)) return;
+  const byId = new Map(links.map(link => [link.hash.slice(1), link]));
+  const activate = id => {
+    links.forEach(link => link.classList.toggle('is-active', link.hash === '#' + id));
+  };
+  const observer = new IntersectionObserver(entries => {
+    const visible = entries.filter(entry => entry.isIntersecting).sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
+    if (visible[0]) activate(visible[0].target.id);
+  }, { rootMargin: '-12% 0px -70% 0px', threshold: [0, 1] });
+  headings.forEach(heading => observer.observe(heading));
+  if (location.hash && byId.has(location.hash.slice(1))) activate(location.hash.slice(1));
+})();
+</script></body></html>

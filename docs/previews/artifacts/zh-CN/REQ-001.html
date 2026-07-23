@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="artifact-id" content="REQ-001"><meta name="artifact-version" content="v0.2">
+<meta name="source-hash" content="511cbc75a711d0f74f27de685ef4556037478dc6354da468dd5a4eea42846961"><meta name="source-path" content="artifacts/generated/zh-CN/REQ-001.md">
+<title>REQ-001 需求定义书</title><style>
+:root { color-scheme:light; --ink:#111; --muted:#555; --line:#d5d5d5; --panel:#fff; --bg:#f5f5f5; }
+* { box-sizing:border-box } html { scroll-behavior:smooth } body { margin:0;padding:24px;color:var(--ink);background:var(--bg);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans JP",Arial,sans-serif;line-height:1.65 }
+.artifact-shell { max-width:1440px;margin:auto;display:grid;grid-template-columns:minmax(220px,280px) minmax(0,1120px);gap:20px;align-items:start }
+main { min-width:0;padding:28px 32px;background:var(--panel);border:1px solid var(--line) } h1,h2,h3 { color:#111 } h1[id],h2[id],h3[id],h4[id] { scroll-margin-top:24px }
+.meta { display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:0 0 24px } .meta div { border:1px solid var(--line);padding:8px } .meta span { display:block;color:var(--muted);font-size:12px }
+table { width:100%;border-collapse:collapse;font-size:13px } th,td { border:1px solid var(--line);padding:8px;vertical-align:top;overflow-wrap:anywhere } th { background:#f0f0f0;text-align:left } pre { overflow:auto;padding:14px;background:#171717;color:#eee } code { font-family:Consolas,monospace } blockquote { border-left:4px solid #888;margin-left:0;padding-left:14px;color:#444 }
+.toc-sidebar { position:sticky;top:16px;max-height:calc(100vh - 32px);overflow-y:auto;padding:18px;background:var(--panel);border:1px solid var(--line) }
+.toc-sidebar h2 { margin:0 0 10px;font-size:14px;color:var(--muted);font-weight:600 } .toc-sidebar ul,.toc-mobile ul { list-style:none;margin:0;padding:0 } .toc-sidebar li,.toc-mobile li { margin:0 }
+.toc-sidebar a,.toc-mobile a { display:block;padding:5px 8px;color:var(--ink);text-decoration:none;border-left:3px solid transparent;font-size:13px;line-height:1.35 }
+.toc-sidebar a:hover,.toc-sidebar a.is-active,.toc-mobile a:hover,.toc-mobile a.is-active { background:#f0f0f0;border-left-color:#111 }
+.toc-level-3 a { padding-left:18px } .toc-level-4 a { padding-left:28px } .toc-mobile { display:none;margin:0 0 16px;padding:12px 14px;background:#fff;border:1px solid var(--line) } .toc-mobile summary { cursor:pointer;font-weight:600 }
+@media(max-width:900px) { body{padding:8px} .artifact-shell{display:block;max-width:1120px} .toc-sidebar{display:none} .toc-mobile{display:block} main{padding:16px} .meta{grid-template-columns:1fr} h1[id],h2[id],h3[id],h4[id]{scroll-margin-top:12px} }
+</style></head><body><div class="artifact-shell"><nav class="toc-sidebar" aria-label="目录 / 目次"><h2>目录 / 目次</h2><ul><li class="toc-level-2"><a href="#1.-封面">1. 封面</a></li><li class="toc-level-2"><a href="#2.-文档信息">2. 文档信息</a></li><li class="toc-level-2"><a href="#3.-修订履历">3. 修订履历</a></li><li class="toc-level-2"><a href="#4.-评审与批准履历">4. 评审与批准履历</a></li><li class="toc-level-2"><a href="#5.-目录">5. 目录</a></li><li class="toc-level-2"><a href="#6.-正文">6. 正文</a></li><li class="toc-level-3"><a href="#6.1-文档概要">6.1 文档概要</a></li><li class="toc-level-3"><a href="#6.2-项目背景">6.2 项目背景</a></li><li class="toc-level-4"><a href="#背景与课题">背景与课题</a></li><li class="toc-level-4"><a href="#目的">目的</a></li><li class="toc-level-4"><a href="#对象用户">对象用户</a></li><li class="toc-level-3"><a href="#6.3-对象范围">6.3 对象范围</a></li><li class="toc-level-4"><a href="#范围内">范围内</a></li><li class="toc-level-4"><a href="#范围外">范围外</a></li><li class="toc-level-4"><a href="#pending-scope">Pending scope</a></li><li class="toc-level-4"><a href="#ph.1-ph.1.1-ph.2">Ph.1 / Ph.1.1 / Ph.2</a></li><li class="toc-level-3"><a href="#6.4-业务需求">6.4 业务需求</a></li><li class="toc-level-4"><a href="#客户和供应商确认事项">客户和供应商确认事项</a></li><li class="toc-level-3"><a href="#6.5-功能需求">6.5 功能需求</a></li><li class="toc-level-4"><a href="#wechat-mini-program-功能">WeChat Mini Program 功能</a></li><li class="toc-level-4"><a href="#中间服务器功能">中间服务器功能</a></li><li class="toc-level-4"><a href="#管理画面功能">管理画面功能</a></li><li class="toc-level-4"><a href="#外部系统联动和审核对应">外部系统联动和审核对应</a></li><li class="toc-level-3"><a href="#6.6-外部系统联动需求">6.6 外部系统联动需求</a></li><li class="toc-level-4"><a href="#api-规格确认事项">API 规格确认事项</a></li><li class="toc-level-4"><a href="#责任边界">责任边界</a></li><li class="toc-level-3"><a href="#6.7-非功能需求">6.7 非功能需求</a></li><li class="toc-level-3"><a href="#6.8-成果物和相关文档">6.8 成果物和相关文档</a></li><li class="toc-level-3"><a href="#6.9-风险和课题">6.9 风险和课题</a></li><li class="toc-level-4"><a href="#主要风险">主要风险</a></li><li class="toc-level-4"><a href="#应对方针">应对方针</a></li><li class="toc-level-3"><a href="#6.10-确认事项">6.10 确认事项</a></li><li class="toc-level-4"><a href="#客户确认事项">客户确认事项</a></li><li class="toc-level-4"><a href="#其他供应商确认事项">其他供应商确认事项</a></li><li class="toc-level-4"><a href="#nss-内部确认事项">NSS 内部确认事项</a></li><li class="toc-level-2"><a href="#7.-待确认事项">7. 待确认事项</a></li><li class="toc-level-2"><a href="#8.-相关资料">8. 相关资料</a></li><li class="toc-level-2"><a href="#9.-附录">9. 附录</a></li><li class="toc-level-3"><a href="#9.1-迁移注记">9.1 迁移注记</a></li></ul></nav><main><details class="toc-mobile"><summary>目录 / 目次</summary><ul><li class="toc-level-2"><a href="#1.-封面">1. 封面</a></li><li class="toc-level-2"><a href="#2.-文档信息">2. 文档信息</a></li><li class="toc-level-2"><a href="#3.-修订履历">3. 修订履历</a></li><li class="toc-level-2"><a href="#4.-评审与批准履历">4. 评审与批准履历</a></li><li class="toc-level-2"><a href="#5.-目录">5. 目录</a></li><li class="toc-level-2"><a href="#6.-正文">6. 正文</a></li><li class="toc-level-3"><a href="#6.1-文档概要">6.1 文档概要</a></li><li class="toc-level-3"><a href="#6.2-项目背景">6.2 项目背景</a></li><li class="toc-level-4"><a href="#背景与课题">背景与课题</a></li><li class="toc-level-4"><a href="#目的">目的</a></li><li class="toc-level-4"><a href="#对象用户">对象用户</a></li><li class="toc-level-3"><a href="#6.3-对象范围">6.3 对象范围</a></li><li class="toc-level-4"><a href="#范围内">范围内</a></li><li class="toc-level-4"><a href="#范围外">范围外</a></li><li class="toc-level-4"><a href="#pending-scope">Pending scope</a></li><li class="toc-level-4"><a href="#ph.1-ph.1.1-ph.2">Ph.1 / Ph.1.1 / Ph.2</a></li><li class="toc-level-3"><a href="#6.4-业务需求">6.4 业务需求</a></li><li class="toc-level-4"><a href="#客户和供应商确认事项">客户和供应商确认事项</a></li><li class="toc-level-3"><a href="#6.5-功能需求">6.5 功能需求</a></li><li class="toc-level-4"><a href="#wechat-mini-program-功能">WeChat Mini Program 功能</a></li><li class="toc-level-4"><a href="#中间服务器功能">中间服务器功能</a></li><li class="toc-level-4"><a href="#管理画面功能">管理画面功能</a></li><li class="toc-level-4"><a href="#外部系统联动和审核对应">外部系统联动和审核对应</a></li><li class="toc-level-3"><a href="#6.6-外部系统联动需求">6.6 外部系统联动需求</a></li><li class="toc-level-4"><a href="#api-规格确认事项">API 规格确认事项</a></li><li class="toc-level-4"><a href="#责任边界">责任边界</a></li><li class="toc-level-3"><a href="#6.7-非功能需求">6.7 非功能需求</a></li><li class="toc-level-3"><a href="#6.8-成果物和相关文档">6.8 成果物和相关文档</a></li><li class="toc-level-3"><a href="#6.9-风险和课题">6.9 风险和课题</a></li><li class="toc-level-4"><a href="#主要风险">主要风险</a></li><li class="toc-level-4"><a href="#应对方针">应对方针</a></li><li class="toc-level-3"><a href="#6.10-确认事项">6.10 确认事项</a></li><li class="toc-level-4"><a href="#客户确认事项">客户确认事项</a></li><li class="toc-level-4"><a href="#其他供应商确认事项">其他供应商确认事项</a></li><li class="toc-level-4"><a href="#nss-内部确认事项">NSS 内部确认事项</a></li><li class="toc-level-2"><a href="#7.-待确认事项">7. 待确认事项</a></li><li class="toc-level-2"><a href="#8.-相关资料">8. 相关资料</a></li><li class="toc-level-2"><a href="#9.-附录">9. 附录</a></li><li class="toc-level-3"><a href="#9.1-迁移注记">9.1 迁移注记</a></li></ul></details>
+<h1>需求定义书</h1><div class="meta">
+<div><span>成果物ID</span><strong>REQ-001</strong></div><div><span>状態</span><strong>review_required</strong></div><div><span>版</span><strong>v0.2</strong></div>
+<div><span>担当</span><strong>PM</strong></div><div><span>レビュー担当</span><strong>Client</strong></div><div><span>Source SHA-256</span><strong>511cbc75a711d0f7…</strong></div>
+</div><h1 id="req-001-需求定义书">REQ-001 需求定义书</h1>
+<h2 id="1.-封面">1. 封面</h2>
+<table><thead><tr><th>项目</th><th>内容</th></tr></thead><tbody>
+<tr><td>文档名称</td><td>需求定义书</td></tr>
+<tr><td>成果物ID</td><td>REQ-001</td></tr>
+<tr><td>对象项目</td><td>KEISEI</td></tr>
+<tr><td>版本</td><td>v0.2</td></tr>
+<tr><td>成果物状态</td><td>review_required</td></tr>
+<tr><td>编写者</td><td>PM</td></tr>
+<tr><td>评审负责人</td><td>Client</td></tr>
+</tbody></table>
+<h2 id="2.-文档信息">2. 文档信息</h2>
+<table><thead><tr><th>项目</th><th>内容</th></tr></thead><tbody>
+<tr><td>本文档目的</td><td>针对京成电铁 WeChat Mini Program，整理业务需求、功能需求、外部系统联动、非功能需求以及确认事项，作为相关方评审和后续设计的输入。</td></tr>
+<tr><td>对象项目</td><td>以访日中国游客在 WeChat 上购买和支付 Skyliner 相关乘车券，并通过人脸认证或未来的乘车用 QR 乘车的服务为对象。包含中间服务器、管理功能以及既有系统联动。</td></tr>
+<tr><td>状态</td><td>review_required。需求、责任边界、API 规格、上线日期、UAT 条件仍有未确定事项，并非 approved 文档。</td></tr>
+</tbody></table>
+<h2 id="3.-修订履历">3. 修订履历</h2>
+<table><thead><tr><th>Version</th><th>Date</th><th>内容</th><th>状态</th></tr></thead><tbody>
+<tr><td>v0.1</td><td>2026-07-10</td><td>基于 source summary、MGT-001、METHOD-004 创建初版</td><td>review_required</td></tr>
+<tr><td>v0.2</td><td>2026-07-22</td><td>迁移到 JPAFC-001 形式的候选。业务事实限定在 v0.1 与 content.yaml 范围内</td><td>review_required</td></tr>
+</tbody></table>
+<h2 id="4.-评审与批准履历">4. 评审与批准履历</h2>
+<table><thead><tr><th>评审日</th><th>评审人</th><th>角色</th><th>评审结果</th><th>批准状态</th></tr></thead><tbody>
+<tr><td>-</td><td>Client / PM</td><td>批准权限者</td><td>确认中</td><td>pending_confirmation</td></tr>
+</tbody></table>
+<h2 id="5.-目录">5. 目录</h2>
+<ul>
+<li>1. 封面</li>
+<li>2. 文档信息</li>
+<li>3. 修订履历</li>
+<li>4. 评审与批准履历</li>
+<li>5. 目录</li>
+<li>6. 正文</li>
+<li>7. 待确认事项</li>
+<li>8. 相关资料</li>
+<li>9. 附录</li>
+</ul>
+<h2 id="6.-正文">6. 正文</h2>
+<h3 id="6.1-文档概要">6.1 文档概要</h3>
+<p>本文档针对京成电铁 WeChat Mini Program，整理业务需求、功能需求、外部系统联动、非功能需求以及确认事项，作为相关方评审和后续设计的输入。</p>
+<p>对象是访日中国游客在 WeChat 上购买和支付 Skyliner 相关乘车券，并通过人脸认证或未来的乘车用 QR 乘车的服务。包含中间服务器、管理功能以及既有系统联动。</p>
+<p>本文档状态为 <code>review_required</code>。需求、责任边界、API 规格、上线日期、UAT 条件仍有未确定事项，并非 <code>approved</code> 文档。</p>
+<h3 id="6.2-项目背景">6.2 项目背景</h3>
+<h4 id="背景与课题">背景与课题</h4>
+<ul>
+<li>面向访日中国游客，需要无需安装额外 App 的购买和乘车体验。</li>
+<li>设想在利用既有乘车券管理、人脸认证、检票、座席管理等的同时，新建 WeChat Mini Program 和中间服务器。</li>
+<li>外部 I/F 的规格和提供日期、数据处理、供应商责任边界尚未确定，对设计、估算和日程产生影响。</li>
+</ul>
+<h4 id="目的">目的</h4>
+<ul>
+<li>建立可在 WeChat 内完成乘车券检索、购买、支付、使用状态确认的流程。</li>
+<li>分阶段构建可支持人脸认证以及后续乘车用 QR 的业务和系统基础。</li>
+<li>作为京成电铁的官方数字触点，使其能够管理运营所需的订单、状态和异常信息。</li>
+</ul>
+<h4 id="对象用户">对象用户</h4>
+<ul>
+<li>主要使用简体中文的访日中国游客</li>
+<li>京成电铁的车站工作人员、业务管理员、咨询应对负责人</li>
+<li>NSS 以及外部系统供应商的运营和维护负责人</li>
+</ul>
+<h3 id="6.3-对象范围">6.3 对象范围</h3>
+<h4 id="范围内">范围内</h4>
+<ul>
+<li>通过 WeChat Mini Program 选择、购买 Skyliner 相关乘车券并进行 WeChat Pay 支付</li>
+<li>购买后的人脸注册链接联动、人脸认证结果和订单状态显示候选</li>
+<li>简体中文 UI、主要画面和画面跳转、面向用户的错误和提示显示</li>
+<li>中间服务器、管理功能、开发/验证/生产环境</li>
+<li>乘车券管理、人脸认证、检票/打印等外部 I/F 整理和集成测试支援</li>
+</ul>
+<h4 id="范围外">范围外</h4>
+<ul>
+<li>通过 QR 检票机正式进出站、正式发行乘车用 QR</li>
+<li>座席指定、座席/列车变更等座席相关例外处理</li>
+<li>既有系统的大规模改修</li>
+<li>高级客户分析、广告、营销自动化</li>
+<li>正式运营维护合同以及简体中文以外的多语言展开</li>
+</ul>
+<h4 id="pending-scope">Pending scope</h4>
+<ul>
+<li>人脸认证未完成、失败、系统故障时的人工应对与通常流程边界</li>
+<li>取消/退款的自动处理、状态反映、手续费以及车站工作人员操作</li>
+<li>管理画面的使用者、必要功能、显示数据、营销使用范围</li>
+<li>乘车用 QR、QR 检票、座席指定的对象阶段</li>
+<li>非功能、安全、监控、运营维护、SLA/SLO</li>
+</ul>
+<h4 id="ph.1-ph.1.1-ph.2">Ph.1 / Ph.1.1 / Ph.2</h4>
+<table><thead><tr><th>阶段</th><th>范围候选</th><th>状态</th></tr></thead><tbody>
+<tr><td>Ph.1</td><td>以购买/支付、人脸注册、人脸认证进站为中心的主路径</td><td>review_required</td></tr>
+<tr><td>Ph.1.1</td><td>初期提案中的人脸照片拍摄/上传追加阶段。确认是否并入 Ph.1</td><td>candidate</td></tr>
+<tr><td>Ph.2</td><td>乘车用 QR、QR 检票对应、座席指定的一部分或全部</td><td>candidate</td></tr>
+</tbody></table>
+<h3 id="6.4-业务需求">6.4 业务需求</h3>
+<table><thead><tr><th>领域</th><th>需求候选</th><th>状态</th></tr></thead><tbody>
+<tr><td>车票购买</td><td>用户能够选择对象票券、日期、张数等，并确认订单内容</td><td>candidate</td></tr>
+<tr><td>支付</td><td>通过 WeChat Pay 进行支付，并能够在用户侧和管理侧识别成功、失败、取消状态</td><td>candidate</td></tr>
+<tr><td>QR显示 / QR乘车券</td><td>初期阶段整理购买/状态显示用 QR 的处理方式，乘车用 QR 作为后续范围确认</td><td>review_required</td></tr>
+<tr><td>人脸认证注册</td><td>购买后跳转到人脸注册流程，并能够提示认证成功、失败、重试、人工应对</td><td>review_required</td></tr>
+<tr><td>座席指定</td><td>不作为 Ph.1 必须需求，确认既有系统改修、联动方式和日程</td><td>candidate</td></tr>
+<tr><td>管理功能</td><td>能够检索和参照订单、支付、认证、异常、人工应对所需的最小信息</td><td>review_required</td></tr>
+</tbody></table>
+<h4 id="客户和供应商确认事项">客户和供应商确认事项</h4>
+<ul>
+<li>可购买票种、销售条件、使用日期、人数、价格和手续费</li>
+<li>将人脸认证作为通常路径的条件以及用户同意和提示文案</li>
+<li>取消、退款、交换、人工应对的业务规则和实施主体</li>
+<li>车站工作人员参照/操作的信息和审计记录</li>
+<li>乘车券管理侧可提供的状态查询/更新 I/F</li>
+</ul>
+<h3 id="6.5-功能需求">6.5 功能需求</h3>
+<h4 id="wechat-mini-program-功能">WeChat Mini Program 功能</h4>
+<ul>
+<li>乘车券信息/购买入口、商品选择、订单确认、支付开始</li>
+<li>WeChat Pay 结果以及订单状态显示</li>
+<li>连接到人脸注册 URL，认证状态、错误、重试提示</li>
+<li>可使用的车票、订单详情、使用提示的显示</li>
+<li>WeChat 审核所需的使用条款、隐私说明、同意流程</li>
+</ul>
+<h4 id="中间服务器功能">中间服务器功能</h4>
+<ul>
+<li>面向 Mini Program 的 API 与外部 I/F 的中继</li>
+<li>订单、支付、票券、认证状态的一致性管理候选</li>
+<li>API 认证、错误处理、超时、重试、带关联 ID 的日志</li>
+<li>按环境管理设置以及外部连接目标</li>
+</ul>
+<h4 id="管理画面功能">管理画面功能</h4>
+<ul>
+<li>订单、支付、票券、人脸认证、异常状态的检索和参照</li>
+<li>确认咨询和人工应对所需的履历</li>
+<li>显示运营监控所需的最小状态和错误信息</li>
+<li>使用者、权限、操作履历、是否需要数据导出作为确认事项。</li>
+</ul>
+<h4 id="外部系统联动和审核对应">外部系统联动和审核对应</h4>
+<ul>
+<li>与乘车券管理、人脸认证、WeChat Pay、检票/打印等的联动</li>
+<li>对 WeChat Mini Program 以及 WeChat Pay 的审核资料、类别、外部跳转条件的对应</li>
+<li>在设计前确认人脸照片、外部 URL、支付功能相关审核限制。</li>
+</ul>
+<h3 id="6.6-外部系统联动需求">6.6 外部系统联动需求</h3>
+<table><thead><tr><th>对接系统</th><th>联动候选</th><th>主要确认事项</th></tr></thead><tbody>
+<tr><td>乘车券管理</td><td>商品/销售可否、订单创建、购买信息、票券状态、取消/退款</td><td>日立侧 I/F 是否限定为购买信息联动</td></tr>
+<tr><td>座席管理</td><td>空席、座席指定/变更</td><td>Ph.1 范围外候选、提供 I/F 和改修规模</td></tr>
+<tr><td>人脸认证</td><td>注册 URL、认证结果、错误代码、重试、故障判定</td><td>URL 生成主体、有效期、通知方式、人脸信息处理</td></tr>
+<tr><td>支付</td><td>WeChat Pay 支付、退款、对账</td><td>支付主体、退款 API、金额不一致、审核条件</td></tr>
+<tr><td>检票/打印</td><td>进站结果、纸质介质、人工确认</td><td>对象车站、打印内容、与订单的关联</td></tr>
+</tbody></table>
+<h4 id="api-规格确认事项">API 规格确认事项</h4>
+<ul>
+<li>API 一览、方向、同步/异步方式、认证、频率限制、超时</li>
+<li>请求/响应、状态代码、业务错误、重复/重发控制</li>
+<li>开发/测试/生产环境、网络、证书、连接源限制</li>
+<li>日志、Trace ID、监控、故障联络、维护通知</li>
+</ul>
+<h4 id="责任边界">责任边界</h4>
+<ul>
+<li>NSS 作为 Mini Program 和中间服务器侧实施/测试的负责候选。</li>
+<li>京成电铁以及既有供应商作为对接系统改修、规格提供、连接准备、UAT 的主管候选。</li>
+<li>API 的最终责任、故障一次切分、数据修正、退款/人工处理在 API-001 和 ARC-001 中确定。</li>
+</ul>
+<h3 id="6.7-非功能需求">6.7 非功能需求</h3>
+<table><thead><tr><th>领域</th><th>当前需求/确认观点</th><th>状态</th></tr></thead><tbody>
+<tr><td>对应OS / 浏览器</td><td>WeChat 支持的主要 iOS / Android。管理画面浏览器和版本未确定</td><td>review_required</td></tr>
+<tr><td>云 / 环境</td><td>AWS 东京 Region 候选。确认开发/验证/生产构成和责任边界</td><td>candidate</td></tr>
+<tr><td>安全</td><td>定义 API 认证、权限、加密、秘密信息、漏洞应对、审计日志</td><td>review_required</td></tr>
+<tr><td>个人信息 / 人脸信息</td><td>确认取得目的、同意、保存位置、保存期限、删除、访问权限</td><td>review_required</td></tr>
+<tr><td>中日间数据联动</td><td>确认跨境转移、WeChat 规则、通信路径、法务/运营限制</td><td>review_required</td></tr>
+<tr><td>性能 / 可用性</td><td>定义峰值使用、API 响应、超时、冗余、备份、RTO/RPO、SLO/SLA</td><td>review_required</td></tr>
+<tr><td>运营维护</td><td>确认监控、故障联络、咨询、维护、数据修正、上线后支援</td><td>review_required</td></tr>
+</tbody></table>
+<p>具体数值目标在 source 中未确定，因此本版不设定。</p>
+<h3 id="6.8-成果物和相关文档">6.8 成果物和相关文档</h3>
+<table><thead><tr><th>Artifact</th><th>与本文档的关系</th><th>状态</th></tr></thead><tbody>
+<tr><td>MGT-001</td><td>目的、体制、阶段、推进基准</td><td>review_required</td></tr>
+<tr><td>SCR-001</td><td>用户/管理画面和画面跳转的详细化</td><td>draft</td></tr>
+<tr><td>ARC-001</td><td>边界、数据流、环境、责任边界</td><td>draft</td></tr>
+<tr><td>API-001</td><td>外部 I/F 和 QA 管理</td><td>draft</td></tr>
+<tr><td>WBS-001</td><td>需求确定、设计、测试、上线日程</td><td>draft</td></tr>
+<tr><td>TST-001</td><td>集成测试、UAT、非功能/验收条件</td><td>planned</td></tr>
+</tbody></table>
+<h3 id="6.9-风险和课题">6.9 风险和课题</h3>
+<h4 id="主要风险">主要风险</h4>
+<ul>
+<li>API 规格和数据定义不足或提供延迟，导致需求、设计、估算、测试日程变动。</li>
+<li>人脸信息、个人信息、跨境数据、WeChat 规则可能限制联动方式。</li>
+<li>中日间通信、外部 API 响应、峰值使用可能影响用户体验和车站运营。</li>
+<li>性能、安全、运营需求未定义就进入后续工程的可能性。</li>
+<li>Ph.1 / Ph.1.1 / Ph.2 的范围、概算估算、上线目标未确定。</li>
+</ul>
+<h4 id="应对方针">应对方针</h4>
+<ul>
+<li>优先接收现行 I/F 规格，分阶段实施 QA 和影响分析。</li>
+<li>联动更新 scope、API、architecture、WBS，并保留变更履历。</li>
+<li>对个人信息和人脸信息进行最小化、同意、保存/删除、权限、跨境条件评审。</li>
+<li>未确定项目保持 open / candidate / review_required，不在没有确认记录的情况下视为已解决。</li>
+</ul>
+<h3 id="6.10-确认事项">6.10 确认事项</h3>
+<h4 id="客户确认事项">客户确认事项</h4>
+<ul>
+<li>Ph.1 主业务流程、人脸认证的必要条件、例外/人工应对</li>
+<li>Ph.1 / Ph.1.1 / Ph.2、QR、座席指定的正式范围</li>
+<li>票种、价格、销售条件、取消/退款、手续费、状态迁移</li>
+<li>管理画面、数据使用、个人信息/人脸信息、运营维护范围</li>
+<li>UAT 负责人、验收条件、残留故障基准、上线判定</li>
+</ul>
+<h4 id="其他供应商确认事项">其他供应商确认事项</h4>
+<ul>
+<li>日立制作所 I/F 规格书的现行版/正式版和系统概要图</li>
+<li>购买信息以外的状态查询、取消/退款、人工应对状态反映可否</li>
+<li>人脸注册 URL、认证结果、错误代码、故障判定、纸质介质联动</li>
+<li>连接环境、认证、网络、监控、故障联络、测试数据</li>
+</ul>
+<h4 id="nss-内部确认事项">NSS 内部确认事项</h4>
+<ul>
+<li>Mini Program、中间服务器、管理画面的功能划分和估算前提</li>
+<li>API 不足时的替代运营、状态一致性、修正/恢复方式</li>
+<li>非功能需求、测试观点、审核计划、环境/运营设计</li>
+<li>采用 METHOD-004 详细业务规则作为正式需求的条件</li>
+</ul>
+<h2 id="7.-待确认事项">7. 待确认事项</h2>
+<table><thead><tr><th>GAP ID</th><th>内容</th><th>状态</th></tr></thead><tbody>
+<tr><td>GAP-REQ-001</td><td>Ph.1 / Ph.1.1 / Ph.2、QR、座席指定的正式范围</td><td>pending_confirmation</td></tr>
+<tr><td>GAP-REQ-002</td><td>票种、价格、销售条件、取消/退款、手续费、状态迁移</td><td>pending_confirmation</td></tr>
+<tr><td>GAP-REQ-003</td><td>人脸认证通常路径、例外、人工应对</td><td>pending_confirmation</td></tr>
+<tr><td>GAP-REQ-004</td><td>管理画面、数据使用、个人信息/人脸信息、运营维护范围</td><td>pending_confirmation</td></tr>
+<tr><td>GAP-REQ-005</td><td>UAT 负责人、验收条件、残留故障基准、上线判定</td><td>pending_confirmation</td></tr>
+</tbody></table>
+<h2 id="8.-相关资料">8. 相关资料</h2>
+<table><thead><tr><th>区分</th><th>参照</th></tr></thead><tbody>
+<tr><td>source_refs</td><td>SRC-001, SRC-002, SRC-003, SRC-004, SRC-005, SRC-007, SRC-008, SRC-009</td></tr>
+<tr><td>reference_refs</td><td>SRC-011</td></tr>
+<tr><td>related_artifacts</td><td>MGT-001, SCR-001, ARC-001, API-001, WBS-001, TST-001</td></tr>
+<tr><td>related_risks</td><td>RISK-001, RISK-002, RISK-005, RISK-007, RISK-013, RISK-014, RISK-015, RISK-018</td></tr>
+<tr><td>related_issues</td><td>ISSUE-001, ISSUE-003, ISSUE-004, ISSUE-005, ISSUE-006, ISSUE-009, ISSUE-016, ISSUE-017, ISSUE-018, ISSUE-019, ISSUE-020, ISSUE-021, ISSUE-022, ISSUE-023</td></tr>
+</tbody></table>
+<h2 id="9.-附录">9. 附录</h2>
+<h3 id="9.1-迁移注记">9.1 迁移注记</h3>
+<ul>
+<li>本候选基于 <code>artifacts/source-content/REQ-001.content.yaml</code> 的既有内容，是形式迁移候选。</li>
+<li>GAP-REQ-* 是迁移上的待确认事项标识符，并非正式的 Issue、Risk、Open Item 或 Decision。</li>
+<li><code>candidate</code>、<code>review_required</code>、<code>pending_confirmation</code> 表示未确认或评审对象状态。</li>
+</ul></main></div><script>
+(() => {
+  const links = [...document.querySelectorAll('.toc-sidebar a, .toc-mobile a')];
+  const headings = links.map(link => document.getElementById(decodeURIComponent(link.hash.slice(1)))).filter(Boolean);
+  if (!links.length || !headings.length || !('IntersectionObserver' in window)) return;
+  const byId = new Map(links.map(link => [link.hash.slice(1), link]));
+  const activate = id => {
+    links.forEach(link => link.classList.toggle('is-active', link.hash === '#' + id));
+  };
+  const observer = new IntersectionObserver(entries => {
+    const visible = entries.filter(entry => entry.isIntersecting).sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
+    if (visible[0]) activate(visible[0].target.id);
+  }, { rootMargin: '-12% 0px -70% 0px', threshold: [0, 1] });
+  headings.forEach(heading => observer.observe(heading));
+  if (location.hash && byId.has(location.hash.slice(1))) activate(location.hash.slice(1));
+})();
+</script></body></html>

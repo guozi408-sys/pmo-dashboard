@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="artifact-id" content="SCR-001"><meta name="artifact-version" content="v0.2">
+<meta name="source-hash" content="446c326820c534fc337e65453841b8283836f6339ff0762ab019ff0db0064701"><meta name="source-path" content="artifacts/10_requirements/SCR-001.md">
+<title>SCR-001 画面・帳票設計書</title><style>
+:root { color-scheme:light; --ink:#111; --muted:#555; --line:#d5d5d5; --panel:#fff; --bg:#f5f5f5; }
+* { box-sizing:border-box } html { scroll-behavior:smooth } body { margin:0;padding:24px;color:var(--ink);background:var(--bg);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans JP",Arial,sans-serif;line-height:1.65 }
+.artifact-shell { max-width:1440px;margin:auto;display:grid;grid-template-columns:minmax(220px,280px) minmax(0,1120px);gap:20px;align-items:start }
+main { min-width:0;padding:28px 32px;background:var(--panel);border:1px solid var(--line) } h1,h2,h3 { color:#111 } h1[id],h2[id],h3[id],h4[id] { scroll-margin-top:24px }
+.meta { display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:0 0 24px } .meta div { border:1px solid var(--line);padding:8px } .meta span { display:block;color:var(--muted);font-size:12px }
+table { width:100%;border-collapse:collapse;font-size:13px } th,td { border:1px solid var(--line);padding:8px;vertical-align:top;overflow-wrap:anywhere } th { background:#f0f0f0;text-align:left } pre { overflow:auto;padding:14px;background:#171717;color:#eee } code { font-family:Consolas,monospace } blockquote { border-left:4px solid #888;margin-left:0;padding-left:14px;color:#444 }
+.toc-sidebar { position:sticky;top:16px;max-height:calc(100vh - 32px);overflow-y:auto;padding:18px;background:var(--panel);border:1px solid var(--line) }
+.toc-sidebar h2 { margin:0 0 10px;font-size:14px;color:var(--muted);font-weight:600 } .toc-sidebar ul,.toc-mobile ul { list-style:none;margin:0;padding:0 } .toc-sidebar li,.toc-mobile li { margin:0 }
+.toc-sidebar a,.toc-mobile a { display:block;padding:5px 8px;color:var(--ink);text-decoration:none;border-left:3px solid transparent;font-size:13px;line-height:1.35 }
+.toc-sidebar a:hover,.toc-sidebar a.is-active,.toc-mobile a:hover,.toc-mobile a.is-active { background:#f0f0f0;border-left-color:#111 }
+.toc-level-3 a { padding-left:18px } .toc-level-4 a { padding-left:28px } .toc-mobile { display:none;margin:0 0 16px;padding:12px 14px;background:#fff;border:1px solid var(--line) } .toc-mobile summary { cursor:pointer;font-weight:600 }
+@media(max-width:900px) { body{padding:8px} .artifact-shell{display:block;max-width:1120px} .toc-sidebar{display:none} .toc-mobile{display:block} main{padding:16px} .meta{grid-template-columns:1fr} h1[id],h2[id],h3[id],h4[id]{scroll-margin-top:12px} }
+</style></head><body><div class="artifact-shell"><nav class="toc-sidebar" aria-label="目录 / 目次"><h2>目录 / 目次</h2><ul><li class="toc-level-2"><a href="#1.-表紙">1. 表紙</a></li><li class="toc-level-2"><a href="#2.-文書情報">2. 文書情報</a></li><li class="toc-level-2"><a href="#3.-改訂履歴">3. 改訂履歴</a></li><li class="toc-level-2"><a href="#4.-レビュー・承認履歴">4. レビュー・承認履歴</a></li><li class="toc-level-2"><a href="#5.-目次">5. 目次</a></li><li class="toc-level-2"><a href="#6.-本文">6. 本文</a></li><li class="toc-level-3"><a href="#6.1-設計方針">6.1 設計方針</a></li><li class="toc-level-4"><a href="#画面定義の前提条件">画面定義の前提条件</a></li><li class="toc-level-3"><a href="#6.2-画面体系・画面一覧">6.2 画面体系・画面一覧</a></li><li class="toc-level-4"><a href="#画面一覧表-全20画面">画面一覧表（全20画面）</a></li><li class="toc-level-4"><a href="#フェーズ別整理サマリー">フェーズ別整理サマリー</a></li><li class="toc-level-3"><a href="#6.3-画面遷移">6.3 画面遷移</a></li><li class="toc-level-4"><a href="#画面遷移フロー">画面遷移フロー</a></li><li class="toc-level-3"><a href="#6.4-画面共通仕様">6.4 画面共通仕様</a></li><li class="toc-level-3"><a href="#6.5-画面個別仕様">6.5 画面個別仕様</a></li><li class="toc-level-3"><a href="#6.6-入力チェック・メッセージ">6.6 入力チェック・メッセージ</a></li><li class="toc-level-3"><a href="#6.7-権限制御">6.7 権限制御</a></li><li class="toc-level-3"><a href="#6.8-帳票一覧">6.8 帳票一覧</a></li><li class="toc-level-3"><a href="#6.9-帳票個別仕様">6.9 帳票個別仕様</a></li><li class="toc-level-3"><a href="#6.10-未決事項">6.10 未決事項</a></li><li class="toc-level-4"><a href="#未決事項一覧-正本">未決事項一覧（正本）</a></li><li class="toc-level-4"><a href="#移行ギャップ一覧-参考">移行ギャップ一覧（参考）</a></li><li class="toc-level-2"><a href="#7.-未決事項-固定外枠投影">7. 未決事項（固定外枠投影）</a></li><li class="toc-level-2"><a href="#8.-関連資料">8. 関連資料</a></li><li class="toc-level-2"><a href="#9.-付録">9. 付録</a></li></ul></nav><main><details class="toc-mobile"><summary>目录 / 目次</summary><ul><li class="toc-level-2"><a href="#1.-表紙">1. 表紙</a></li><li class="toc-level-2"><a href="#2.-文書情報">2. 文書情報</a></li><li class="toc-level-2"><a href="#3.-改訂履歴">3. 改訂履歴</a></li><li class="toc-level-2"><a href="#4.-レビュー・承認履歴">4. レビュー・承認履歴</a></li><li class="toc-level-2"><a href="#5.-目次">5. 目次</a></li><li class="toc-level-2"><a href="#6.-本文">6. 本文</a></li><li class="toc-level-3"><a href="#6.1-設計方針">6.1 設計方針</a></li><li class="toc-level-4"><a href="#画面定義の前提条件">画面定義の前提条件</a></li><li class="toc-level-3"><a href="#6.2-画面体系・画面一覧">6.2 画面体系・画面一覧</a></li><li class="toc-level-4"><a href="#画面一覧表-全20画面">画面一覧表（全20画面）</a></li><li class="toc-level-4"><a href="#フェーズ別整理サマリー">フェーズ別整理サマリー</a></li><li class="toc-level-3"><a href="#6.3-画面遷移">6.3 画面遷移</a></li><li class="toc-level-4"><a href="#画面遷移フロー">画面遷移フロー</a></li><li class="toc-level-3"><a href="#6.4-画面共通仕様">6.4 画面共通仕様</a></li><li class="toc-level-3"><a href="#6.5-画面個別仕様">6.5 画面個別仕様</a></li><li class="toc-level-3"><a href="#6.6-入力チェック・メッセージ">6.6 入力チェック・メッセージ</a></li><li class="toc-level-3"><a href="#6.7-権限制御">6.7 権限制御</a></li><li class="toc-level-3"><a href="#6.8-帳票一覧">6.8 帳票一覧</a></li><li class="toc-level-3"><a href="#6.9-帳票個別仕様">6.9 帳票個別仕様</a></li><li class="toc-level-3"><a href="#6.10-未決事項">6.10 未決事項</a></li><li class="toc-level-4"><a href="#未決事項一覧-正本">未決事項一覧（正本）</a></li><li class="toc-level-4"><a href="#移行ギャップ一覧-参考">移行ギャップ一覧（参考）</a></li><li class="toc-level-2"><a href="#7.-未決事項-固定外枠投影">7. 未決事項（固定外枠投影）</a></li><li class="toc-level-2"><a href="#8.-関連資料">8. 関連資料</a></li><li class="toc-level-2"><a href="#9.-付録">9. 付録</a></li></ul></details>
+<h1>画面・帳票設計書</h1><div class="meta">
+<div><span>成果物ID</span><strong>SCR-001</strong></div><div><span>状態</span><strong>review_required</strong></div><div><span>版</span><strong>v0.2</strong></div>
+<div><span>担当</span><strong>PM</strong></div><div><span>レビュー担当</span><strong>Client</strong></div><div><span>Source SHA-256</span><strong>446c326820c534fc…</strong></div>
+</div><h1 id="scr-001-画面・帳票設計書">SCR-001 画面・帳票設計書</h1>
+<p>---</p>
+<h2 id="1.-表紙">1. 表紙</h2>
+<ul>
+<li><strong>文書名</strong>: 画面・帳票設計書</li>
+<li><strong>成果物ID</strong>: SCR-001</li>
+<li><strong>対象プロジェクト</strong>: KEISEI WeChat Mini Program Project</li>
+<li><strong>バージョン</strong>: v0.2</li>
+<li><strong>契約標準</strong>: JPAFC-001 v1.0</li>
+<li><strong>作成主体</strong>: NSS / KEISEI PMO</li>
+</ul>
+<p>---</p>
+<h2 id="2.-文書情報">2. 文書情報</h2>
+<table><thead><tr><th>項目</th><th>内容</th></tr></thead><tbody>
+<tr><td>本文書の目的</td><td>KEISEI WeChatミニプログラムにおける利用者向け画面および管理画面の候補を、要件レビューに利用できる粒度で整理する。</td></tr>
+<tr><td>対象チャネル</td><td>WeChatミニプログラム、Web管理画面</td></tr>
+<tr><td>成果物ステータス</td><td>review_required</td></tr>
+<tr><td>主言語</td><td>ja（日本語）</td></tr>
+<tr><td>副言語</td><td>zh-CN（中国語・簡体字）</td></tr>
+<tr><td>作成者</td><td>PM</td></tr>
+<tr><td>レビュー担当</td><td>Client</td></tr>
+</tbody></table>
+<p>---</p>
+<h2 id="3.-改訂履歴">3. 改訂履歴</h2>
+<table><thead><tr><th>バージョン</th><th>日付</th><th>作成／変更者</th><th>変更内容・要約</th><th>ステータス</th></tr></thead><tbody>
+<tr><td>v0.1</td><td>2026-07-13</td><td>PM</td><td>初版作成。候補画面、フェーズ差分、外部連携および確認事項を整理</td><td>review_required</td></tr>
+<tr><td>v0.2</td><td>2026-07-21</td><td>PM / AI Assistant</td><td>JPAFC-001契約準拠のためのフォーマット移行および九部外枠構造への移行</td><td>review_required</td></tr>
+</tbody></table>
+<p>---</p>
+<h2 id="4.-レビュー・承認履歴">4. レビュー・承認履歴</h2>
+<table><thead><tr><th>レビュー日</th><th>レビュアー</th><th>役割</th><th>レビュー結果</th><th>承認ステータス</th></tr></thead><tbody>
+<tr><td>-</td><td>Client / PM</td><td>承認権限者</td><td>確認中</td><td>pending_confirmation</td></tr>
+</tbody></table>
+<blockquote>本章の内容は関係者確認中である。確定後に更新する。</blockquote>
+<p>---</p>
+<h2 id="5.-目次">5. 目次</h2>
+<ul>
+<li>1. 表紙</li>
+<li>2. 文書情報</li>
+<li>3. 改訂履歴</li>
+<li>4. レビュー・承認履歴</li>
+<li>5. 目次</li>
+<li>6. 本文</li>
+<li>6.1 設計方針</li>
+<li>6.2 画面体系・画面一覧</li>
+<li>6.3 画面遷移</li>
+<li>6.4 画面共通仕様</li>
+<li>6.5 画面個別仕様</li>
+<li>6.6 入力チェック・メッセージ</li>
+<li>6.7 権限制御</li>
+<li>6.8 帳票一覧</li>
+<li>6.9 帳票個別仕様</li>
+<li>6.10 未決事項</li>
+<li>7. 未決事項（固定外枠投影）</li>
+<li>8. 関連資料</li>
+<li>9. 付録</li>
+</ul>
+<p>---</p>
+<h2 id="6.-本文">6. 本文</h2>
+<h3 id="6.1-設計方針">6.1 設計方針</h3>
+<p>本設計書は、KEISEI WeChatミニプログラムにおける利用者向け画面および管理画面の候補を整理するものである。画面ID、画面名、利用フェーズおよび遷移は現時点の資料に基づく候補であり、顧客・関連ベンダーとの確認後に確定する。</p>
+<h4 id="画面定義の前提条件">画面定義の前提条件</h4>
+<table><thead><tr><th>観点</th><th>現時点の整理</th><th>状態</th></tr></thead><tbody>
+<tr><td>対象ユーザー</td><td>訪日中国人利用者、京成電鉄側または運用担当者</td><td>review_required</td></tr>
+<tr><td>対象チャネル</td><td>WeChatミニプログラム、管理画面</td><td>review_required</td></tr>
+<tr><td>表示言語</td><td>利用者向けは中国語（簡体字）を中心に検討</td><td>candidate</td></tr>
+<tr><td>Ph.1</td><td>現行eTicket相当の購入・表示を中心に整理</td><td>candidate</td></tr>
+<tr><td>Ph.1.1</td><td>顔認証用写真撮影・アップロード等を整理</td><td>candidate</td></tr>
+<tr><td>Ph.2</td><td>QR乗車券、座席指定、乗車QR発券を候補として整理</td><td>candidate</td></tr>
+<tr><td>管理画面</td><td>利用者、取引、チケット、エラー等の確認用途を想定</td><td>pending_confirmation</td></tr>
+</tbody></table>
+<p>*追溯注記: SRC-011は他案件の様式参考であり、KEISEIの画面要件を示す事実資料としては使用しない。*</p>
+<p>---</p>
+<h3 id="6.2-画面体系・画面一覧">6.2 画面体系・画面一覧</h3>
+<h4 id="画面一覧表-全20画面">画面一覧表（全20画面）</h4>
+<table><thead><tr><th>No</th><th>画面ID</th><th>画面名</th><th>対象</th><th>利用フェーズ</th><th>目的</th><th>状態</th><th>関連要件</th><th>source_refs</th></tr></thead><tbody>
+<tr><td>1</td><td>MP-001</td><td>トップ / サービス導線</td><td>利用者</td><td>Ph.1</td><td>購入、履歴、案内等への入口</td><td>candidate</td><td>REQ-001 利用者導線</td><td>SRC-001, SRC-008</td></tr>
+<tr><td>2</td><td>MP-002</td><td>商品・乗車券選択</td><td>利用者</td><td>Ph.1</td><td>対象乗車券・条件の選択</td><td>candidate</td><td>REQ-001 購入</td><td>SRC-001, SRC-008</td></tr>
+<tr><td>3</td><td>MP-003</td><td>購入内容入力・確認</td><td>利用者</td><td>Ph.1</td><td>購入条件と入力内容の確認</td><td>candidate</td><td>REQ-001 購入</td><td>SRC-001, SRC-002</td></tr>
+<tr><td>4</td><td>MP-004</td><td>WeChat Pay決済遷移</td><td>利用者</td><td>Ph.1</td><td>決済開始と結果確認</td><td>candidate</td><td>REQ-001 決済 / API-001</td><td>SRC-001, SRC-002</td></tr>
+<tr><td>5</td><td>MP-005</td><td>購入完了</td><td>利用者</td><td>Ph.1</td><td>購入結果と次操作の案内</td><td>candidate</td><td>REQ-001 購入結果</td><td>SRC-001, SRC-008</td></tr>
+<tr><td>6</td><td>MP-006</td><td>チケット詳細 / QR表示</td><td>利用者</td><td>Ph.1</td><td>購入済みチケット・QRの表示</td><td>review_required</td><td>REQ-001 チケット表示</td><td>SRC-001, SRC-008</td></tr>
+<tr><td>7</td><td>MP-007</td><td>購入履歴</td><td>利用者</td><td>Ph.1</td><td>購入済み取引の参照</td><td>candidate</td><td>REQ-001 履歴</td><td>SRC-001, SRC-008</td></tr>
+<tr><td>8</td><td>MP-008</td><td>顔認証登録案内</td><td>利用者</td><td>Ph.1.1</td><td>顔認証登録条件と同意の案内</td><td>pending_confirmation</td><td>REQ-001 顔認証</td><td>SRC-001, SRC-002, SRC-008</td></tr>
+<tr><td>9</td><td>MP-009</td><td>顔写真撮影・アップロード</td><td>利用者</td><td>Ph.1.1</td><td>顔認証用画像の登録</td><td>pending_confirmation</td><td>REQ-001 顔認証 / API-001</td><td>SRC-001, SRC-008</td></tr>
+<tr><td>10</td><td>MP-010</td><td>座席指定</td><td>利用者</td><td>Ph.2</td><td>便・座席の選択</td><td>pending_confirmation</td><td>REQ-001 座席指定</td><td>SRC-001, SRC-002, SRC-008</td></tr>
+<tr><td>11</td><td>MP-011</td><td>乗車QR表示</td><td>利用者</td><td>Ph.2</td><td>乗車・改札用QRの表示</td><td>pending_confirmation</td><td>REQ-001 QR乗車券</td><td>SRC-001, SRC-002, SRC-008</td></tr>
+<tr><td>12</td><td>MP-012</td><td>利用規約・同意</td><td>利用者</td><td>共通</td><td>規約、個人情報、顔情報等の同意</td><td>review_required</td><td>REQ-001 セキュリティ・法務</td><td>SRC-001, SRC-007</td></tr>
+<tr><td>13</td><td>MP-013</td><td>FAQ / 問い合わせ案内</td><td>利用者</td><td>共通</td><td>利用案内と問い合わせ導線</td><td>candidate</td><td>REQ-001 運用</td><td>SRC-001, SRC-008</td></tr>
+<tr><td>14</td><td>MP-014</td><td>エラー / 処理結果案内</td><td>利用者</td><td>共通</td><td>決済、発券、通信等の異常案内</td><td>review_required</td><td>API-001 状態・エラー</td><td>SRC-001, SRC-007</td></tr>
+<tr><td>15</td><td>ADM-001</td><td>管理者ログイン</td><td>管理者</td><td>共通</td><td>管理機能への認証</td><td>candidate</td><td>REQ-001 管理機能</td><td>SRC-002, SRC-007</td></tr>
+<tr><td>16</td><td>ADM-002</td><td>取引・チケット検索</td><td>管理者</td><td>Ph.1</td><td>購入・チケット状態の確認</td><td>pending_confirmation</td><td>REQ-001 管理機能 / API-001</td><td>SRC-002, SRC-007</td></tr>
+<tr><td>17</td><td>ADM-003</td><td>ユーザー・購入情報詳細</td><td>管理者</td><td>Ph.1</td><td>利用者・購入情報の参照</td><td>pending_confirmation</td><td>REQ-001 管理機能</td><td>SRC-002, SRC-007</td></tr>
+<tr><td>18</td><td>ADM-004</td><td>顔認証関連確認</td><td>管理者</td><td>Ph.1.1</td><td>顔認証登録・連携状態の確認</td><td>pending_confirmation</td><td>REQ-001 顔認証 / API-001</td><td>SRC-001, SRC-007</td></tr>
+<tr><td>19</td><td>ADM-005</td><td>エラー・ログ確認</td><td>管理者</td><td>共通</td><td>API・処理・操作ログの確認</td><td>pending_confirmation</td><td>ARC-001 / API-001</td><td>SRC-001, SRC-007</td></tr>
+<tr><td>20</td><td>ADM-006</td><td>権限管理</td><td>管理者</td><td>共通</td><td>管理者ロールと権限の管理</td><td>pending_confirmation</td><td>REQ-001 セキュリティ</td><td>SRC-007</td></tr>
+</tbody></table>
+<h4 id="フェーズ別整理サマリー">フェーズ別整理サマリー</h4>
+<table><thead><tr><th>フェーズ</th><th>主な候補画面</th><th>状態</th><th>確認事項</th></tr></thead><tbody>
+<tr><td>Ph.1</td><td>トップ、乗車券選択、購入確認、決済、購入完了、チケット詳細 / QR、履歴</td><td>candidate</td><td>現行eTicket相当範囲、QR用途、取消・返金</td></tr>
+<tr><td>Ph.1.1</td><td>顔認証案内、同意、写真撮影・アップロード、登録結果</td><td>pending_confirmation</td><td>顔情報処理、連携方式、再登録、責任分界</td></tr>
+<tr><td>Ph.2</td><td>座席指定、乗車QR表示</td><td>pending_confirmation</td><td>便・座席API、発券方式、改札運用、実施時期</td></tr>
+<tr><td>共通</td><td>規約、FAQ、問い合わせ、エラー、管理画面</td><td>review_required</td><td>全フェーズ共通か、段階導入か</td></tr>
+</tbody></table>
+<p>---</p>
+<h3 id="6.3-画面遷移">6.3 画面遷移</h3>
+<h4 id="画面遷移フロー">画面遷移フロー</h4>
+<ol>
+<li><strong>購入導線 (FLOW-001)</strong>: MP-001 → MP-002 → MP-003 → MP-004 → MP-005 → MP-006</li>
+<li><strong>履歴導線 (FLOW-002)</strong>: MP-001 → MP-007 → MP-006</li>
+<li><strong>顔認証導線 (FLOW-003)</strong>: MP-008 → MP-012 → MP-009</li>
+<li><strong>座席指定導線 (FLOW-004)</strong>: MP-006 → MP-010 → MP-003 → MP-011</li>
+<li><strong>管理者導線 (FLOW-005)</strong>: ADM-001 → ADM-002 → ADM-003</li>
+</ol>
+<p>*確認事項: 分岐、戻る操作、タイムアウト、重複操作、決済途中離脱、API異常、QR再表示等は確認中事項である。*</p>
+<p>---</p>
+<h3 id="6.4-画面共通仕様">6.4 画面共通仕様</h3>
+<ul>
+<li>利用者向けは中国語（簡体字）を中心に検討し、日本語・英語の要否と翻訳責任を確認する。</li>
+<li>通信・API遅延を考慮し、ローディング、待機、再確認のUIを設計する。</li>
+<li>決済・発券の多重操作防止、タイムアウト、再試行、状態不整合時の案内を定義する。</li>
+<li>個人情報・顔情報は最小表示、マスキング、権限制御、監査ログ、削除方針を定義する。</li>
+</ul>
+<p>---</p>
+<h3 id="6.5-画面個別仕様">6.5 画面個別仕様</h3>
+<blockquote>ステータス: <code>pending_confirmation</code></blockquote>
+<blockquote>画面単位の入力項目、API項目、文言、バリデーション、異常時制御は未確定であり、関係者確認後に詳細化する。</blockquote>
+<p>---</p>
+<h3 id="6.6-入力チェック・メッセージ">6.6 入力チェック・メッセージ</h3>
+<blockquote>ステータス: <code>pending_confirmation</code></blockquote>
+<blockquote>通信、決済、発券、顔認証、QR表示のエラー区分と利用者向け文言は未確定である。</blockquote>
+<p>---</p>
+<h3 id="6.7-権限制御">6.7 権限制御</h3>
+<blockquote>ステータス: <code>pending_confirmation</code></blockquote>
+<blockquote>管理画面の利用者、責任部署、運用頻度、権限および保持データは未確定である。</blockquote>
+<p>---</p>
+<h3 id="6.8-帳票一覧">6.8 帳票一覧</h3>
+<blockquote>ステータス: <code>not_applicable</code></blockquote>
+<blockquote><strong>対象外理由</strong>: 本プロジェクト（KEISEI WeChatミニプログラム）では帳票（帳票出力・印刷画面）の作成要件が存在しないため、対象外とする。</blockquote>
+<p>---</p>
+<h3 id="6.9-帳票個別仕様">6.9 帳票個別仕様</h3>
+<blockquote>ステータス: <code>not_applicable</code></blockquote>
+<blockquote><strong>対象外理由</strong>: 本プロジェクト（KEISEI WeChatミニプログラム）では帳票（帳票出力・印刷画面）の作成要件が存在しないため、対象外とする。</blockquote>
+<p>---</p>
+<h3 id="6.10-未決事項">6.10 未決事項</h3>
+<h4 id="未決事項一覧-正本">未決事項一覧（正本）</h4>
+<table><thead><tr><th>分類</th><th>確認トピック</th><th>ステータス</th><th>関連課題／リスク</th></tr></thead><tbody>
+<tr><td>顧客確認</td><td>Ph.1, Ph.1.1, Ph.2 対象画面と対象外画面の正式確定</td><td>pending_confirmation</td><td>ISSUE-019, ISSUE-020</td></tr>
+<tr><td>外部ベンダー確認</td><td>外部API仕様未確定に伴う画面遷移・状態・エラーの詳細化</td><td>pending_confirmation</td><td>ISSUE-003, ISSUE-009, RISK-005</td></tr>
+<tr><td>顧客確認</td><td>管理画面の利用部署・利用者・権限・必要機能</td><td>pending_confirmation</td><td>ISSUE-004, ISSUE-016</td></tr>
+<tr><td>法務・セキュリティ</td><td>個人情報・顔情報の表示・保存・削除方針</td><td>pending_confirmation</td><td>ISSUE-006, ISSUE-017, RISK-007, RISK-013</td></tr>
+</tbody></table>
+<h4 id="移行ギャップ一覧-参考">移行ギャップ一覧（参考）</h4>
+<table><thead><tr><th>GAP ID</th><th>区分</th><th>状態</th><th>正式課題参照</th><th>説明</th></tr></thead><tbody>
+<tr><td>GAP-SCR-001-001</td><td>migration_content_gap</td><td>needs_pm_review</td><td>null</td><td>現行Markdownは九部固定外枠を採用していない</td></tr>
+<tr><td>GAP-SCR-001-002</td><td>migration_content_gap</td><td>needs_pm_review</td><td>null</td><td>画面・帳票設計書の共通仕様・バリデーション・権限・帳票の欠落</td></tr>
+<tr><td>GAP-SCR-001-003</td><td>migration_content_gap</td><td>needs_pm_review</td><td>null</td><td>日中単一構造化コンテンツ源への移行要性</td></tr>
+<tr><td>GAP-SCR-001-004</td><td>migration_content_gap</td><td>needs_pm_review</td><td>null</td><td>言語別Previewパスの対応要性</td></tr>
+</tbody></table>
+<p>---</p>
+<h2 id="7.-未決事項-固定外枠投影">7. 未決事項（固定外枠投影）</h2>
+<p>*(本章は SEC-06-10 より自動バインド投影された内容である)*</p>
+<table><thead><tr><th>分類</th><th>確認トピック</th><th>ステータス</th><th>関連課題／リスク</th></tr></thead><tbody>
+<tr><td>顧客確認</td><td>Ph.1, Ph.1.1, Ph.2 対象画面と対象外画面の正式確定</td><td>pending_confirmation</td><td>ISSUE-019, ISSUE-020</td></tr>
+<tr><td>外部ベンダー確認</td><td>外部API仕様未確定に伴う画面遷移・状態・エラーの詳細化</td><td>pending_confirmation</td><td>ISSUE-003, ISSUE-009, RISK-005</td></tr>
+<tr><td>顧客確認</td><td>管理画面の利用部署・利用者・権限・必要機能</td><td>pending_confirmation</td><td>ISSUE-004, ISSUE-016</td></tr>
+<tr><td>法務・セキュリティ</td><td>個人情報・顔情報の表示・保存・削除方針</td><td>pending_confirmation</td><td>ISSUE-006, ISSUE-017, RISK-007, RISK-013</td></tr>
+</tbody></table>
+<p>---</p>
+<h2 id="8.-関連資料">8. 関連資料</h2>
+<ul>
+<li><strong>根拠資料 (source_refs)</strong>: SRC-001, SRC-002, SRC-005, SRC-007, SRC-008, SRC-009</li>
+<li><strong>参考資料 (reference_refs)</strong>: SRC-011 *(※他案件様式参考)*</li>
+<li><strong>関連成果物 (related_artifacts)</strong>: MGT-001, REQ-001, ARC-001, API-001, WBS-001, TST-001</li>
+</ul>
+<p>---</p>
+<h2 id="9.-付録">9. 付録</h2>
+<blockquote>ステータス: <code>not_applicable</code></blockquote>
+<blockquote><strong>対象外理由</strong>: 現時点では付録記載事項なし。</blockquote></main></div><script>
+(() => {
+  const links = [...document.querySelectorAll('.toc-sidebar a, .toc-mobile a')];
+  const headings = links.map(link => document.getElementById(decodeURIComponent(link.hash.slice(1)))).filter(Boolean);
+  if (!links.length || !headings.length || !('IntersectionObserver' in window)) return;
+  const byId = new Map(links.map(link => [link.hash.slice(1), link]));
+  const activate = id => {
+    links.forEach(link => link.classList.toggle('is-active', link.hash === '#' + id));
+  };
+  const observer = new IntersectionObserver(entries => {
+    const visible = entries.filter(entry => entry.isIntersecting).sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
+    if (visible[0]) activate(visible[0].target.id);
+  }, { rootMargin: '-12% 0px -70% 0px', threshold: [0, 1] });
+  headings.forEach(heading => observer.observe(heading));
+  if (location.hash && byId.has(location.hash.slice(1))) activate(location.hash.slice(1));
+})();
+</script></body></html>

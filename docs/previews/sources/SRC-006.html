@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SRC-006 社内タスク情報管理</title><style>
+:root { color-scheme: light; --ink:#1d2733; --muted:#687381; --line:#d9e0e8; --brand:#164f63; --panel:#fff; --bg:#f5f7fa; }
+* { box-sizing: border-box; }
+body { margin:0; padding:24px; color:var(--ink); background:var(--bg); font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans JP",Arial,sans-serif; line-height:1.65; }
+main { max-width:1040px; margin:0 auto; padding:24px 28px; background:var(--panel); border:1px solid var(--line); border-radius:8px; }
+h1,h2,h3 { color:var(--brand); line-height:1.3; }
+h1 { margin-top:0; font-size:26px; } h2 { margin-top:30px; padding-bottom:6px; border-bottom:1px solid var(--line); font-size:20px; } h3 { margin-top:22px; font-size:16px; }
+p { margin:9px 0; } ul,ol { padding-left:24px; }
+table { width:100%; margin:14px 0; border-collapse:collapse; table-layout:fixed; font-size:13px; }
+th,td { padding:8px 9px; border:1px solid var(--line); vertical-align:top; overflow-wrap:anywhere; }
+th { color:var(--brand); background:#edf4f8; text-align:left; }
+pre { overflow:auto; padding:14px; border-radius:6px; background:#111827; color:#e5edf5; white-space:pre-wrap; overflow-wrap:anywhere; font:12px/1.55 Consolas,"Courier New",monospace; }
+code { font-family:Consolas,"Courier New",monospace; }
+.meta { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:8px; margin:12px 0 20px; }
+.meta div { padding:8px 10px; border:1px solid var(--line); border-radius:6px; background:#f8fafc; }
+.meta span { display:block; color:var(--muted); font-size:11px; } .meta strong { display:block; overflow-wrap:anywhere; font-size:13px; }
+.frontmatter { margin:12px 0 22px; border:1px solid var(--line); border-radius:6px; background:#f8fafc; }
+.frontmatter summary { padding:10px 12px; color:var(--brand); cursor:pointer; font-weight:700; }
+.frontmatter pre { margin:0; border-radius:0 0 6px 6px; }
+.section { margin-top:20px; }
+.tag { display:inline-block; margin:2px 4px 2px 0; padding:2px 8px; border-radius:999px; background:#eef3f7; font-size:12px; font-weight:700; }
+.notice { padding:12px 14px; border-left:4px solid #b98200; background:#fff8e5; }
+blockquote { margin:14px 0; padding:10px 14px; border-left:4px solid #82aebd; background:#f3f8fa; color:#42515e; }
+hr { margin:24px 0; border:0; border-top:1px solid var(--line); }
+@media (max-width:720px) { body { padding:10px; } main { padding:18px; } .meta { grid-template-columns:1fr 1fr; } }
+</style></head><body><main><h1>社内タスク情報管理</h1><div class="meta"><div><span>Source ID</span><strong>SRC-006</strong></div><div><span>資料種別</span><strong>excel_workbook</strong></div><div><span>分類</span><strong>00_管理</strong></div><div><span>信頼度</span><strong>medium</strong></div><div><span>原文確認</span><strong>True</strong></div><div><span>資料場所</span><strong>00_管理/社内タスク情報管理.xlsx</strong></div></div><section class="section"><h2>概要</h2><p>本資料は、NSS社内タスク情報管理用のExcelであり、京成電鉄案件に関する内部タスク、担当、ステータス、確認事項を管理するための台帳である。</p></section><section class="section"><h2>主要事項</h2><ul><li>社内タスクの担当者、ステータス、期限を管理する用途の資料。</li><li>PMO dashboard では action-log、issue-log、risk-log への反映候補になる。</li><li>顧客確認事項と社内対応事項を分離して扱う必要がある。</li></ul></section><section class="section"><h2>確認事項候補</h2><ul><li>各タスクの正式 owner、due_date、顧客依存有無の整理。<br><small>NSS / SHEET-001</small></li></ul></section><section class="section"><h2>リスク候補</h2><ul><li>社内タスクと顧客依頼事項が混在すると、進捗報告や責任分界が不明確になる可能性。<br><small>medium / SHEET-001</small></li></ul></section><section class="section"><h2>アクション候補</h2><ul><li>タスク情報をaction-logへ整理し、顧客依頼事項と社内対応事項を分ける。<br><small>candidate / NSS PMO / SHEET-001</small></li></ul></section><section class="section"><h2>関連成果物</h2><ul><li>MGT-001</li><li>WBS-001</li><li>ISSUE-001</li><li>RISK-001</li></ul></section><section class="section"><h2>成果物への影響</h2><ul><li>update: MGT-001, WBS-001, ISSUE-001, RISK-001 / review_required: MGT-001, WBS-001, ISSUE-001, RISK-001</li></ul></section></main></body></html>

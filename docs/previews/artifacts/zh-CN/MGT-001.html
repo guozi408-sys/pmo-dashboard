@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="artifact-id" content="MGT-001"><meta name="artifact-version" content="v0.2">
+<meta name="source-hash" content="b0bcb5db442070eacd364b58ba44d6ea894d9bd4adc02f6addf6b0be317e5405"><meta name="source-path" content="artifacts/generated/zh-CN/MGT-001.md">
+<title>MGT-001 プロジェクト計画書</title><style>
+:root { color-scheme:light; --ink:#111; --muted:#555; --line:#d5d5d5; --panel:#fff; --bg:#f5f5f5; }
+* { box-sizing:border-box } html { scroll-behavior:smooth } body { margin:0;padding:24px;color:var(--ink);background:var(--bg);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans JP",Arial,sans-serif;line-height:1.65 }
+.artifact-shell { max-width:1440px;margin:auto;display:grid;grid-template-columns:minmax(220px,280px) minmax(0,1120px);gap:20px;align-items:start }
+main { min-width:0;padding:28px 32px;background:var(--panel);border:1px solid var(--line) } h1,h2,h3 { color:#111 } h1[id],h2[id],h3[id],h4[id] { scroll-margin-top:24px }
+.meta { display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:0 0 24px } .meta div { border:1px solid var(--line);padding:8px } .meta span { display:block;color:var(--muted);font-size:12px }
+table { width:100%;border-collapse:collapse;font-size:13px } th,td { border:1px solid var(--line);padding:8px;vertical-align:top;overflow-wrap:anywhere } th { background:#f0f0f0;text-align:left } pre { overflow:auto;padding:14px;background:#171717;color:#eee } code { font-family:Consolas,monospace } blockquote { border-left:4px solid #888;margin-left:0;padding-left:14px;color:#444 }
+.toc-sidebar { position:sticky;top:16px;max-height:calc(100vh - 32px);overflow-y:auto;padding:18px;background:var(--panel);border:1px solid var(--line) }
+.toc-sidebar h2 { margin:0 0 10px;font-size:14px;color:var(--muted);font-weight:600 } .toc-sidebar ul,.toc-mobile ul { list-style:none;margin:0;padding:0 } .toc-sidebar li,.toc-mobile li { margin:0 }
+.toc-sidebar a,.toc-mobile a { display:block;padding:5px 8px;color:var(--ink);text-decoration:none;border-left:3px solid transparent;font-size:13px;line-height:1.35 }
+.toc-sidebar a:hover,.toc-sidebar a.is-active,.toc-mobile a:hover,.toc-mobile a.is-active { background:#f0f0f0;border-left-color:#111 }
+.toc-level-3 a { padding-left:18px } .toc-level-4 a { padding-left:28px } .toc-mobile { display:none;margin:0 0 16px;padding:12px 14px;background:#fff;border:1px solid var(--line) } .toc-mobile summary { cursor:pointer;font-weight:600 }
+@media(max-width:900px) { body{padding:8px} .artifact-shell{display:block;max-width:1120px} .toc-sidebar{display:none} .toc-mobile{display:block} main{padding:16px} .meta{grid-template-columns:1fr} h1[id],h2[id],h3[id],h4[id]{scroll-margin-top:12px} }
+</style></head><body><div class="artifact-shell"><nav class="toc-sidebar" aria-label="目录 / 目次"><h2>目录 / 目次</h2><ul><li class="toc-level-2"><a href="#1.-プロジェクト概要">1. プロジェクト概要</a></li><li class="toc-level-3"><a href="#プロジェクト目的">プロジェクト目的</a></li><li class="toc-level-3"><a href="#背景">背景</a></li><li class="toc-level-3"><a href="#対象サービス">対象サービス</a></li><li class="toc-level-3"><a href="#想定发布方针">想定发布方针</a></li><li class="toc-level-2"><a href="#2.-プロジェクト体制">2. プロジェクト体制</a></li><li class="toc-level-3"><a href="#京成電鉄側">京成電鉄側</a></li><li class="toc-level-3"><a href="#nss側">NSS側</a></li><li class="toc-level-3"><a href="#関連ベンダー">関連ベンダー</a></li><li class="toc-level-3"><a href="#役割分担と未確定事項">役割分担と未確定事項</a></li><li class="toc-level-2"><a href="#3.-スコープ">3. スコープ</a></li><li class="toc-level-3"><a href="#対象範囲">対象範囲</a></li><li class="toc-level-3"><a href="#対象外範囲">対象外範囲</a></li><li class="toc-level-3"><a href="#pending-scope">Pending scope</a></li><li class="toc-level-3"><a href="#フェーズ分割">フェーズ分割</a></li><li class="toc-level-2"><a href="#4.-スケジュール概要">4. スケジュール概要</a></li><li class="toc-level-2"><a href="#5.-系统架构概要">5. 系统架构概要</a></li><li class="toc-level-2"><a href="#6.-推進プロセス">6. 推進プロセス</a></li><li class="toc-level-2"><a href="#7.-成果物一覧">7. 成果物一覧</a></li><li class="toc-level-2"><a href="#8.-リスク・課題">8. リスク・課題</a></li><li class="toc-level-3"><a href="#主要リスク">主要リスク</a></li><li class="toc-level-3"><a href="#主要課題・顧客確認事項">主要課題・顧客確認事項</a></li><li class="toc-level-2"><a href="#9.-コミュニケーション">9. コミュニケーション</a></li><li class="toc-level-2"><a href="#10.-確認事項">10. 確認事項</a></li><li class="toc-level-3"><a href="#顧客待确认">顧客待确认</a></li><li class="toc-level-3"><a href="#ベンダー待确认">ベンダー待确认</a></li><li class="toc-level-3"><a href="#nss内部待确认">NSS内部待确认</a></li><li class="toc-level-2"><a href="#11.-変更履歴">11. 変更履歴</a></li></ul></nav><main><details class="toc-mobile"><summary>目录 / 目次</summary><ul><li class="toc-level-2"><a href="#1.-プロジェクト概要">1. プロジェクト概要</a></li><li class="toc-level-3"><a href="#プロジェクト目的">プロジェクト目的</a></li><li class="toc-level-3"><a href="#背景">背景</a></li><li class="toc-level-3"><a href="#対象サービス">対象サービス</a></li><li class="toc-level-3"><a href="#想定发布方针">想定发布方针</a></li><li class="toc-level-2"><a href="#2.-プロジェクト体制">2. プロジェクト体制</a></li><li class="toc-level-3"><a href="#京成電鉄側">京成電鉄側</a></li><li class="toc-level-3"><a href="#nss側">NSS側</a></li><li class="toc-level-3"><a href="#関連ベンダー">関連ベンダー</a></li><li class="toc-level-3"><a href="#役割分担と未確定事項">役割分担と未確定事項</a></li><li class="toc-level-2"><a href="#3.-スコープ">3. スコープ</a></li><li class="toc-level-3"><a href="#対象範囲">対象範囲</a></li><li class="toc-level-3"><a href="#対象外範囲">対象外範囲</a></li><li class="toc-level-3"><a href="#pending-scope">Pending scope</a></li><li class="toc-level-3"><a href="#フェーズ分割">フェーズ分割</a></li><li class="toc-level-2"><a href="#4.-スケジュール概要">4. スケジュール概要</a></li><li class="toc-level-2"><a href="#5.-系统架构概要">5. 系统架构概要</a></li><li class="toc-level-2"><a href="#6.-推進プロセス">6. 推進プロセス</a></li><li class="toc-level-2"><a href="#7.-成果物一覧">7. 成果物一覧</a></li><li class="toc-level-2"><a href="#8.-リスク・課題">8. リスク・課題</a></li><li class="toc-level-3"><a href="#主要リスク">主要リスク</a></li><li class="toc-level-3"><a href="#主要課題・顧客確認事項">主要課題・顧客確認事項</a></li><li class="toc-level-2"><a href="#9.-コミュニケーション">9. コミュニケーション</a></li><li class="toc-level-2"><a href="#10.-確認事項">10. 確認事項</a></li><li class="toc-level-3"><a href="#顧客待确认">顧客待确认</a></li><li class="toc-level-3"><a href="#ベンダー待确认">ベンダー待确认</a></li><li class="toc-level-3"><a href="#nss内部待确认">NSS内部待确认</a></li><li class="toc-level-2"><a href="#11.-変更履歴">11. 変更履歴</a></li></ul></details>
+<h1>プロジェクト計画書</h1><div class="meta">
+<div><span>成果物ID</span><strong>MGT-001</strong></div><div><span>状態</span><strong>review_required</strong></div><div><span>版</span><strong>v0.2</strong></div>
+<div><span>担当</span><strong>PMO</strong></div><div><span>レビュー担当</span><strong>Client</strong></div><div><span>Source SHA-256</span><strong>b0bcb5db442070ea…</strong></div>
+</div><h1 id="mgt-001-プロジェクト計画書">MGT-001 プロジェクト計画書</h1>
+<blockquote>本書は ACAP 方法論および登録済み source summary に基づく初版である。未確定事項は候補または確認事項として記載し、顧客レビュー完了までは <code>review_required</code> とする。</blockquote>
+<h2 id="1.-プロジェクト概要">1. プロジェクト概要</h2>
+<h3 id="プロジェクト目的">プロジェクト目的</h3>
+<p>訪日中国人旅行者に対し、使い慣れた WeChat 上で Skyliner の情報確認、乗車券購入、決済および乗車認証を行えるサービスを構築する。利用者の購入・乗車体験を改善するとともに、京成電鉄の公式デジタル接点と管理基盤を整備する。</p>
+<h3 id="背景">背景</h3>
+<ul>
+<li>訪日中国人旅行者の回復を背景に、独立アプリのインストールを必要としない購入環境が求められている。</li>
+<li>既存の乗車券管理、顔認証、改札、座席管理等のシステムを活用しながら、新 WeChat ミニプログラムと中間サーバを構築する。</li>
+<li>API 仕様、ベンダー責任分界、個人情報・越境データ、性能・運用条件には未確定事項が残る。</li>
+</ul>
+<h3 id="対象サービス">対象サービス</h3>
+<ul>
+<li>WeChat ミニプログラムによる乗車券情報表示、購入、WeChat Pay 決済</li>
+<li>購入後の顔登録・認証連携および乗車状態表示</li>
+<li>中間サーバと管理機能</li>
+<li>既存システムとの API 連携</li>
+<li>後続段階における乗車用 QR および座席指定の検討</li>
+</ul>
+<h3 id="想定发布方针">想定发布方针</h3>
+<p>現時点では、顔認証を中心とする Ph.1 を先行し、乗車用 QR 対応を後続段階とする方向で整理する。サービス開始時期は 2027 年 1～3 月の複数口径が存在するため、2027 年 3 月前後を計画候補とし、要件定義完了後に正式確定する。座席指定は既存システムの大幅改修を伴う可能性があり、日程未定の後続範囲とする。</p>
+<p>参照: SRC-001、SRC-002、SRC-003、SRC-008、SRC-009、METHOD-007、METHOD-005</p>
+<h2 id="2.-プロジェクト体制">2. プロジェクト体制</h2>
+<h3 id="京成電鉄側">京成電鉄側</h3>
+<ul>
+<li>業務部門、システム部門、プロジェクト責任者および既存システムベンダーで構成する想定。</li>
+<li>京成側責任者として宇野様が ACAP project binding に記録されているが、承認権限と分野別責任者は顧客確認を要する。</li>
+<li>既存システム改修、関連ベンダー調整、API 実装および UAT の主管を担う想定。</li>
+</ul>
+<h3 id="nss側">NSS側</h3>
+<ul>
+<li>プロジェクト統括、PM/PMO、設計、開発、インフラ、テスト、UI/UX および保守検討を担当する想定。</li>
+<li>WeChat ミニプログラム側の開発コミュニケーション窓口を担う。</li>
+<li>社内の PM、技術ブリッジ、Tech Lead、UI/UX、QA の正式な担当範囲は要確認。</li>
+</ul>
+<h3 id="関連ベンダー">関連ベンダー</h3>
+<ul>
+<li>日立製作所様: 顔認証および乗車券管理システムの担当候補。購入情報連携 I/F とシステム概要資料の提供が必要。</li>
+<li>その他: 改札、座席管理、発券・印刷、ID/顧客管理等の担当会社と技術窓口は未確定。</li>
+</ul>
+<h3 id="役割分担と未確定事項">役割分担と未確定事項</h3>
+<table><thead><tr><th>領域</th><th>主担当候補</th><th>状態</th></tr></thead><tbody>
+<tr><td>WeChat ミニプログラム・中間サーバ</td><td>NSS</td><td>candidate</td></tr>
+<tr><td>既存システム改修・UAT</td><td>京成電鉄側</td><td>candidate</td></tr>
+<tr><td>顔認証・乗車券管理 I/F</td><td>京成電鉄側 / 日立製作所様</td><td>review_required</td></tr>
+<tr><td>決済・返金・照合</td><td>京成電鉄 / NSS / WeChat Pay 関係者</td><td>review_required</td></tr>
+<tr><td>最終承認・リリース判定</td><td>京成電鉄</td><td>review_required</td></tr>
+</tbody></table>
+<p>参照: SRC-001、SRC-002、SRC-003、SRC-004、SRC-005、SRC-009、METHOD-007</p>
+<h2 id="3.-スコープ">3. スコープ</h2>
+<h3 id="対象範囲">対象範囲</h3>
+<ul>
+<li>WeChat ミニプログラムの画面・画面遷移・簡体字対応</li>
+<li>乗車券購入、WeChat Pay 決済、注文・乗車状態表示</li>
+<li>購入後の顔登録 URL 連携、顔認証入場の支援</li>
+<li>中間サーバ、管理機能、開発・検証・本番環境</li>
+<li>乗車券管理、顔認証、改札等との対向 I/F 整理</li>
+<li>外部結合テストおよび京成電鉄 UAT 支援</li>
+</ul>
+<h3 id="対象外範囲">対象外範囲</h3>
+<ul>
+<li>既存システム側の改修実装は、原則として京成電鉄側主管の別作業とする想定。</li>
+<li>インバウンドプロモーション施策そのものは本開発範囲外の候補。</li>
+<li>運用保守は別途範囲・見積・契約を確認する。</li>
+<li>座席指定は Ph.1 の必須範囲に含めず、後続段階として検討する。</li>
+</ul>
+<h3 id="pending-scope">Pending scope</h3>
+<ul>
+<li>顔認証を完了しない利用者の有人窓口対応と例外条件</li>
+<li>返金・取消のシステム実装および状態連携</li>
+<li>管理機能、マーケティングデータ、行動ログの利用範囲</li>
+<li>QR改札機対応の駅、設備、票種、リリース方式</li>
+<li>非機能、セキュリティ、運用保守、監視・SLA/SLO</li>
+</ul>
+<h3 id="フェーズ分割">フェーズ分割</h3>
+<ul>
+<li><strong>Ph.1:</strong> 購入・決済、顔登録、顔認証入場、紙媒体による出場運用を中心とする候補。</li>
+<li><strong>Ph.1.1:</strong> 初期資料では顔写真撮影・アップロード追加段階として記載。Ph.1 への統合可否を確認する。</li>
+<li><strong>Ph.2/後続:</strong> 乗車用 QR の発行と QR改札機対応。座席指定は別判断とし、日程を固定しない。</li>
+</ul>
+<p>参照: SRC-001、SRC-002、SRC-003、SRC-007、SRC-008、METHOD-005</p>
+<h2 id="4.-スケジュール概要">4. スケジュール概要</h2>
+<table><thead><tr><th>区分</th><th>現時点の計画候補</th><th>状態</th></tr></thead><tbody>
+<tr><td>要件定義・API確認</td><td>進行中。I/F 仕様受領後に詳細化</td><td>review_required</td></tr>
+<tr><td>API接続</td><td>2026年8～9月候補</td><td>candidate</td></tr>
+<tr><td>外部結合テスト</td><td>2027年1月候補</td><td>candidate</td></tr>
+<tr><td>UAT</td><td>2027年1月下旬～2月上旬候補</td><td>candidate</td></tr>
+<tr><td>Ph.1リリース</td><td>2027年1～3月。最遅3月中旬という議事録口径あり</td><td>review_required</td></tr>
+<tr><td>QR対応</td><td>2027年3月下旬以降の候補</td><td>review_required</td></tr>
+<tr><td>座席指定</td><td>日程未定</td><td>open</td></tr>
+</tbody></table>
+<p>主要マイルストーンは WBS-001 で詳細化する。API 仕様提供、既存システム改修、京成・NSS・日立の三者調整がクリティカルな依存関係であり、早期資料にある「2026年中」や「2027年4月以降」と最新認識の差異を顧客レビューで統一する。</p>
+<p>参照: SRC-001、SRC-002、SRC-003、SRC-006、SRC-009、METHOD-007</p>
+<h2 id="5.-系统架构概要">5. 系统架构概要</h2>
+<ul>
+<li><strong>WeChatミニプログラム:</strong> 利用者向け画面、購入、決済、顔登録接続、注文・乗車情報表示を提供する。</li>
+<li><strong>中間サーバ:</strong> AWS 東京リージョン上の API Hub として、ミニプログラム、管理機能、既存システムを接続する想定。</li>
+<li><strong>既存システム連携:</strong> 乗車券管理、顔認証、改札、発券・印刷、座席管理を対象候補とする。</li>
+<li><strong>API連携前提:</strong> 購入情報連携 I/F、顔登録 URL、認証結果、注文状態、例外処理、ログ・監視の仕様確定が必要。</li>
+<li><strong>データ管理:</strong> 個人情報、顔情報、WeChat ユーザー識別子、越境データの保存・削除・同意条件を要件定義で確認する。</li>
+</ul>
+<p>AWS 東京リージョンの採用、API の具体的な本数・方向・責任分界は現時点では候補であり、ARC-001 と API-001 のレビューにより確定する。</p>
+<p>参照: SRC-001、SRC-002、SRC-003、SRC-007、METHOD-005</p>
+<h2 id="6.-推進プロセス">6. 推進プロセス</h2>
+<ol>
+<li><strong>要件定義:</strong> スコープ、UI/UX、業務フロー、対向 I/F、非機能要件を段階的に整理する。</li>
+<li><strong>レビュー:</strong> 文書と課題票を用いて、業務整合性、仕様、既存システム影響を関係者で確認する。</li>
+<li><strong>合意形成:</strong> 未解決事項を残したまま approved とせず、合意範囲を版管理して更新する。</li>
+<li><strong>変更管理:</strong> 変更理由、影響 artifact、source、決定状態を change-log と registry に記録する。</li>
+<li><strong>課題管理:</strong> issue/risk/action/decision log を分離し、candidate、open、review_required を維持する。</li>
+</ol>
+<p>参照: SRC-001、SRC-003、SRC-005、SRC-006、SRC-010、METHOD-007</p>
+<h2 id="7.-成果物一覧">7. 成果物一覧</h2>
+<table><thead><tr><th>Artifact</th><th>成果物</th><th>現在状態</th><th>用途</th></tr></thead><tbody>
+<tr><td>MGT-001</td><td>プロジェクト計画書</td><td>review_required</td><td>プロジェクト管理基準</td></tr>
+<tr><td>WBS-001</td><td>WBS / スケジュール</td><td>draft</td><td>マイルストーン・依存関係管理</td></tr>
+<tr><td>REQ-001</td><td>要件定義書</td><td>draft</td><td>業務・機能・非機能要件</td></tr>
+<tr><td>SCR-001</td><td>画面列表 / 画面定義</td><td>draft</td><td>ミニプログラム・管理画面整理</td></tr>
+<tr><td>ARC-001</td><td>系统架构図</td><td>draft</td><td>システム境界・責任分界</td></tr>
+<tr><td>API-001</td><td>API一覧 / API確認表</td><td>draft</td><td>対向 I/F・QA 管理</td></tr>
+<tr><td>RISK-001</td><td>リスク管理表</td><td>draft</td><td>リスクの評価・対応管理</td></tr>
+<tr><td>ISSUE-001</td><td>課題管理表</td><td>draft</td><td>顧客・ベンダー・社内課題管理</td></tr>
+</tbody></table>
+<p>テスト計画 TST-001 とリリース計画 REL-001 は、要件・API・日程の確定後に具体化する。</p>
+<p>参照: SRC-001、SRC-002、SRC-003、SRC-008、artifact-registry</p>
+<h2 id="8.-リスク・課題">8. リスク・課題</h2>
+<h3 id="主要リスク">主要リスク</h3>
+<table><thead><tr><th>ID</th><th>内容</th><th>対応方針</th></tr></thead><tbody>
+<tr><td>RISK-005</td><td>API仕様提供遅延</td><td>現行版を先行受領し、QAを段階化する</td></tr>
+<tr><td>RISK-006</td><td>結合・UAT・リリース日程の逼迫</td><td>WBSを再調整し、正式マイルストーンを合意する</td></tr>
+<tr><td>RISK-007</td><td>顔情報・個人情報の越境データ制約</td><td>データ最小化、保存・削除・同意条件を確認する</td></tr>
+<tr><td>RISK-015</td><td>性能・セキュリティ・運用要件未定義</td><td>非機能要件と検証条件を要件定義へ追加する</td></tr>
+</tbody></table>
+<h3 id="主要課題・顧客確認事項">主要課題・顧客確認事項</h3>
+<ul>
+<li>正式な体制、意思決定者、承認フロー</li>
+<li>I/F 仕様書、システム概要図、接続情報の提供日</li>
+<li>Ph.1、QR、座席指定の正式な範囲とリリース順序</li>
+<li>返金・取消・有人窓口対応の業務・システム責任分界</li>
+<li>UAT、残存障害、リリース判定の基準</li>
+</ul>
+<p>課題・リスクは解消確認まで open/candidate とし、顧客または責任者の確認記録なしに closed/approved としない。</p>
+<p>参照: SRC-001、SRC-002、SRC-003、SRC-007、risk-log、issue-log</p>
+<h2 id="9.-コミュニケーション">9. コミュニケーション</h2>
+<ul>
+<li><strong>進捗定例:</strong> 週1回候補。進捗、課題、リスク、確認事項を共有する。</li>
+<li><strong>フォローアップ:</strong> 隔週候補。横断課題や意思決定待ちを扱う。</li>
+<li><strong>個別ヒアリング:</strong> 京成電鉄各担当および関連ベンダーと随時実施する。</li>
+<li><strong>チャット / タスク管理:</strong> 京成電鉄指定ツールまたは Teams / Backlog 等を候補とし、正式運用を決定する。</li>
+<li><strong>ファイル共有:</strong> SharePoint を利用し、ファイル名に版番号または更新日を付与する。ルート管理と正式配置ルールは PMO が確認する。</li>
+<li><strong>重要事項:</strong> 契約、承認、正式決定はメールまたは合意記録を残す。</li>
+</ul>
+<p>参照: SRC-001、SRC-003、SRC-005、SRC-006、SRC-010</p>
+<h2 id="10.-確認事項">10. 確認事項</h2>
+<h3 id="顧客待确认">顧客待确认</h3>
+<ul>
+<li>プロジェクト承認者、予算・スコープ・UAT・リリース判定者</li>
+<li>Ph.1 主業務フロー、顔認証必須条件、有人窓口例外の正式統一</li>
+<li>Ph.1、QR、座席指定の範囲と正式マイルストーン</li>
+<li>管理機能、データ利用、運用保守、返金・取消の責任範囲</li>
+</ul>
+<h3 id="ベンダー待确认">ベンダー待确认</h3>
+<ul>
+<li>日立製作所様 I/F 仕様書の現行版・正式版とシステム概要図</li>
+<li>購入情報連携、顔登録 URL、認証結果、エラーコード、状態連携</li>
+<li>改札、印刷、座席管理を含む関連ベンダーと技術窓口</li>
+<li>API 認証、頻度制限、ネットワーク、試験環境、ログ条件</li>
+</ul>
+<h3 id="nss内部待确认">NSS内部待确认</h3>
+<ul>
+<li>PM、Tech Lead、UI/UX、QA、インフラ、運用担当の正式アサイン</li>
+<li>WBS、見積前提、非機能要件、テスト・移行・リリース計画</li>
+<li>顧客向け資料と社内検討資料の管理境界</li>
+<li>method input の正式 artifact への採用可否</li>
+</ul>
+<h2 id="11.-変更履歴">11. 変更履歴</h2>
+<table><thead><tr><th>Version</th><th>Date</th><th>内容</th><th>状態</th></tr></thead><tbody>
+<tr><td>v0.1</td><td>2026-07-10</td><td>source summary、ACAP PROJECT.md、project facts draft に基づく初版作成</td><td>review_required</td></tr>
+</tbody></table></main></div><script>
+(() => {
+  const links = [...document.querySelectorAll('.toc-sidebar a, .toc-mobile a')];
+  const headings = links.map(link => document.getElementById(decodeURIComponent(link.hash.slice(1)))).filter(Boolean);
+  if (!links.length || !headings.length || !('IntersectionObserver' in window)) return;
+  const byId = new Map(links.map(link => [link.hash.slice(1), link]));
+  const activate = id => {
+    links.forEach(link => link.classList.toggle('is-active', link.hash === '#' + id));
+  };
+  const observer = new IntersectionObserver(entries => {
+    const visible = entries.filter(entry => entry.isIntersecting).sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
+    if (visible[0]) activate(visible[0].target.id);
+  }, { rootMargin: '-12% 0px -70% 0px', threshold: [0, 1] });
+  headings.forEach(heading => observer.observe(heading));
+  if (location.hash && byId.has(location.hash.slice(1))) activate(location.hash.slice(1));
+})();
+</script></body></html>
